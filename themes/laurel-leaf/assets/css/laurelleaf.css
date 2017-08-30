@@ -1,0 +1,97 @@
+body {
+    font-family: 'Roboto Slab', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #424242;
+    padding-top: 150px;
+}
+
+h1, h2, h3 {
+    font-family: 'Kanit', sans-serif;
+    color: inherit;
+}
+
+.color-accent {
+    color: #00A74B;
+}
+
+a {
+    color: #00A74B;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+    color: #424242;
+}
+
+.navbar-header .navbar-brand {
+    padding-left: 247px;
+    background-image: url(/themes/laurel-leaf/assets/images/logo-laurel-leaf.png);
+    background-size: auto 85%;
+    background-repeat: no-repeat;
+    background-position: 7px 50%;
+    transition: color 0.2s ease 0.05s;
+    color: #ccc;
+}
+
+.subheader{
+    text-align: right;
+    height: 30px;
+    color: white;
+    background: #514E4E;
+    font-size: 14px;
+    line-height: 2.3;
+}
+
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+}
+ul.nav > li {
+    font-family: 'Kanit', serif;
+}
+
+
+
+/* iPhones, Smartphones Portrait */
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .navbar-header .navbar-brand {
+        padding-left: 233px;
+        background-size: auto 60%;
+        margin-left: 10px;
+    }
+}
+
+/* bigger Screens */
+@media screen and (min-width: 769px) {
+    .navbar {
+        min-height: 150px;
+    }
+
+    #layout-nav>.container {
+        height: 120px;
+        padding-top: 22px;
+    }
+    
+    .navbar-collapse {
+        float: right;
+    }
+
+    ul.nav > li{
+        font-size: 200%;
+    }
+
+    span.roboto-slab {
+        color: #00A74B;
+        font-family: 'Roboto Slab', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .navbar-inverse .navbar-collapse:not(.in):not(.collapsing) .navbar-nav li > a:hover:after {
+        background: #00A74B;
+    }
+}
