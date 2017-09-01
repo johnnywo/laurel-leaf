@@ -1,0 +1,6 @@
+1.0.1: First version of Sportstv
+1.0.2:
+    - Make Database Migrations Leagues, Teams, Games
+    - create_leagues_table.php
+    - create_teams_table.php
+    - create_games_table.php

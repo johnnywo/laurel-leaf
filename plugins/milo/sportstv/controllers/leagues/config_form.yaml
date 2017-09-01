@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: League
+
+# Model Form Field configuration
+form: $/milo/sportstv/models/league/fields.yaml
+
+# Model Class name
+modelClass: Milo\Sportstv\Models\League
+
+# Default redirect location
+defaultRedirect: milo/sportstv/leagues
+
+# Create page
+create:
+    title: Create League
+    redirect: milo/sportstv/leagues/update/:id
+    redirectClose: milo/sportstv/leagues
+
+# Update page
+update:
+    title: Edit League
+    redirect: milo/sportstv/leagues
+    redirectClose: milo/sportstv/leagues
+
+# Preview page
+preview:
+    title: Preview League

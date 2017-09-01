@@ -1,0 +1,27 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    datetime:
+        label: Date
+    home_team_id:
+        label: Home Team
+        relation: home_team
+        select: name
+    away_team_id:
+        label: Away Team
+        relation: away_team
+        select: name
+    league_id:
+        label: League
+        relation: league
+        select: name
+    conference:
+        label: Conference
+    comment:
+        label: Comment
+

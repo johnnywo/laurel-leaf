@@ -1,0 +1,14 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+home_team:
+    label: Home Team
+    view:
+        list: $/milo/sportstv/models/team/columns.yaml
+        form: $/milo/sportstv/models/team/fields.yaml
+        toolbarButtons: add|create
+    manage:
+        form: $/milo/sportstv/models/team/fields.yaml
+        list: $/milo/sportstv/models/team/columns.yaml
+        showSearch: true

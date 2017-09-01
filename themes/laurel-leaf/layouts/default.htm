@@ -1,4 +1,11 @@
 description = "Default layout"
+
+[cookieConsent]
+message = "This website uses cookies to ensure you get the best experience on our website."
+dismiss = "Okay!"
+learnMore = "Info"
+link = "{{ /cookie }}"
+theme = "dark-bottom"
 ==
 <!DOCTYPE html>
 <html>
@@ -24,10 +31,9 @@ description = "Default layout"
         <link rel="stylesheet" href="{{ 'assets/css/laurelleaf.css'|theme }}">
 
         {% styles %}
+        {% component 'cookieConsent' %}
     </head>
     <body>
-
-
 
         <!-- Header -->
         <header id="layout-header">

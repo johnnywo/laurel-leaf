@@ -1,0 +1,47 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    datetime:
+        label: Match Date
+        span: left
+        type: datepicker
+        mode: datetime
+        format: d.m.Y
+    league:
+        label: League
+        type: relation
+        nameFrom: name
+        span: right
+    conference:
+        label: Conference
+        type: checkbox
+    home_team:
+        label: Home Team
+        type: partial
+        path: field_home_team
+        span: left
+        trigger:
+            action: hide
+            field: conference
+            condition: checked
+    away_team:
+        label: Away Team
+        type: relation
+        nameFrom: name
+        span: right
+        trigger:
+            action: hide
+            field: conference
+            condition: checked
+    comment_check:
+        label: Add a comment for this game
+        type: checkbox
+    comment:
+        label: Comment
+        trigger:
+            action: show
+            field: comment_check
+            condition: checked
+

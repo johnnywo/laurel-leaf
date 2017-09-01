@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Game
+
+# Model Form Field configuration
+form: $/milo/sportstv/models/game/fields.yaml
+
+# Model Class name
+modelClass: Milo\Sportstv\Models\Game
+
+# Default redirect location
+defaultRedirect: milo/sportstv/games
+
+# Create page
+create:
+    title: Create Game
+    redirect: milo/sportstv/games/update/:id
+    redirectClose: milo/sportstv/games
+
+# Update page
+update:
+    title: Edit Game
+    redirect: milo/sportstv/games
+    redirectClose: milo/sportstv/games
+
+# Preview page
+preview:
+    title: Preview Game
