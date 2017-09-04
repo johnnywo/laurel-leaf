@@ -1,0 +1,20 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    image:
+        type: partial
+        path: ~/plugins/milo/heroimage/models/heroimage/_hero_image.htm
+    title:
+        label: Titel
+        searchable: true
+    description:
+        label: Description
+        searchable: true
+    cost:
+        label: Prize
+        searchable: true

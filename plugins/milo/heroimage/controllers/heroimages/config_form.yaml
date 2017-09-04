@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Hero Image
+
+# Model Form Field configuration
+form: $/milo/heroimage/models/heroimage/fields.yaml
+
+# Model Class name
+modelClass: Milo\HeroImage\Models\HeroImage
+
+# Default redirect location
+defaultRedirect: milo/heroimage/heroimages
+
+# Create page
+create:
+    title: Create Hero Image
+    redirect: milo/heroimage/heroimages/update/:id
+    redirectClose: milo/heroimage/heroimages
+
+# Update page
+update:
+    title: Edit Hero Image
+    redirect: milo/heroimage/heroimages
+    redirectClose: milo/heroimage/heroimages
+
+# Preview page
+preview:
+    title: Preview Hero Image

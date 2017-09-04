@@ -1,0 +1,12 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+foodcategories:
+    label: Food Categories
+    view:
+        list: $/milo/food/models/foodcategory/columns.yaml
+        toolbarButtons: create|delete
+    manage:
+        form: $/milo/food/models/foodcategory/fields.yaml
+        recordsPerPage: 10

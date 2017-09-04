@@ -1,0 +1,5 @@
+1.0.1: First version of Food
+1.0.2:
+    - Make Database Migrations Food Categories & Food
+    - create_food_categories_table.php
+    - create_foods_table.php

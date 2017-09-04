@@ -1,0 +1,57 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Food Title
+        comment: enter a title for your delicious food.
+        span: left
+    description:
+        label: Description
+        comment: enter a descriptive summary of your food.
+    amount:
+        label: Amount (€)
+        span: left
+        placeholder: 10.9
+        comment: use ' . ' for decimals instead of ' , '
+    foodcategory:
+        label: Category
+        type: relation
+        nameFrom: name
+        span: right
+        comment: choose a category for your food.
+    vegan:
+        label: Vegan
+        type: checkbox
+    vegetarisch:
+        label: Vegetarisch
+        type: checkbox
+    spicy:
+        label: Spicy
+        type: checkbox
+    new:
+        label: Neu
+        type: checkbox
+    allergene:
+        label: Allergene
+        type: checkboxlist
+        size: giant
+        options:
+            A: A Gluten
+            B: B Krebstiere
+            C: C Eier
+            D: D Fisch
+            E: E Erdnuss
+            F: F Soja
+            G: G Milch
+            H: H Schalenfrüchte
+            L: L Sellerie
+            M: M Senf
+            N: N Sesam
+            P: P Lupine
+            R: R Weichtiere
+            O: O Sulfite
+        comment: please choose incredients with allergical behavior.
+
+

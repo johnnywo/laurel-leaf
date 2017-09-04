@@ -1,0 +1,22 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Category
+    image:
+        label: Food Category Image
+        type: fileupload
+        mode: image
+        imageWidth: 240
+        imageHeight: 240
+        thumbOptions:
+                mode: crop
+                offset:
+                    - 0
+                    - 0
+                quality: 90
+                sharpen: 0
+                extension: auto
+

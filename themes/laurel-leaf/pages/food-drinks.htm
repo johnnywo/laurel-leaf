@@ -1,0 +1,435 @@
+title = "Food & Drinks"
+url = "/food-drinks"
+layout = "default"
+
+[foods]
+==
+
+<div class="container">
+
+    <div id="food" class="row hidden-lg hidden-md hidden-sm">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="food-drinks">Food</a></li>
+            <li><a href="#drinks">Drinks</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <h1 class="hidden">Laurel Leaf's Food & Drinks</h1>
+
+        <!-- Burger -->
+        <div class="col-sm-6 col-md-4">
+            <h3>Burger</h3>
+
+            {% for food in foods.burger %}
+
+                <div class="row">
+                    <div class="col-xs-9 col-md-9">
+                        <p id="item-{{ food.id }}" class="index">
+                            <strong
+                                    {% if food.new %}
+                                        class="new"
+                                    {% elseif food.vegetarisch %}
+                                        class="vegetarian"
+                                    {% elseif food.spicy %}
+                                        class="spicy"
+                                    {% elseif food.vegan %}
+                                        class="vegan"
+                                    {% endif %}
+                            >
+                                {{ food.name }} </strong>
+
+                            <sup>
+                                {% for allergene in food.allergene %}
+                                    {{ allergene }}
+                                {% endfor %}
+                            </sup> <br>
+                            {% if food.description %}
+                                {{ food.description }} <br>
+                            {% endif %}
+                            € {{ food.amount|number_format(2, ',', '.') }}
+                        </p>
+                    </div>
+
+                    <div class="col-xs-3 col-md-3">
+                        <form
+                                data-request="onTodaysFoodChoice"
+                                data-request-update="foodchoice: '#todaysfoodchoice'">
+
+                            <input type="hidden" name="id" value="{{ food.id }}">
+
+                            <button
+                                    id="heart"
+                                    type="submit"
+                                    class="icon-heart icon-2x light-green">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+
+            {% partial 'site/food/bestellsdazu.htm' %}
+
+            {% partial 'site/food/spanferkel.htm' %}
+
+
+        </div>
+
+        <!-- Fingerfood im Körberl -->
+        <div class="col-sm-6 col-md-4">
+            <h3>Fingerfood im Körberl</h3>
+            {% for food in foods.koerberl %}
+
+                <div class="row">
+                    <div class="col-xs-9 col-md-9">
+                        <p id="item-{{ food.id }}" class="index">
+                            <strong
+                                    {% if food.new %}
+                                        class="new"
+                                    {% elseif food.vegetarisch %}
+                                        class="vegetarian"
+                                    {% elseif food.spicy %}
+                                        class="spicy"
+                                    {% elseif food.vegan %}
+                                        class="vegan"
+                                    {% endif %}
+                            >
+                                {{ food.name }} </strong>
+                            <sup>
+                                {% for allergene in food.allergene %}
+                                    {{ allergene }}
+                                {% endfor %}
+                            </sup> <br>
+                            {% if food.description %}
+                                {{ food.description }} <br>
+                            {% endif %}
+                            € {{ food.amount|number_format(2, ',', '.') }}
+                        </p>
+                    </div>
+
+                    <div class="col-xs-3 col-md-3">
+                        <form
+                                data-request="onTodaysFoodChoice"
+                                data-request-update="foodchoice: '#todaysfoodchoice'">
+
+                            <input type="hidden" name="id" value="{{ food.id }}">
+
+                            <button
+                                    id="heart"
+                                    type="submit"
+                                    class="icon-heart icon-2x light-green">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
+
+        <!-- Classics -->
+        <div class="col-sm-6 col-md-4">
+            <h3>Classics</h3>
+            {% for food in foods.classics %}
+
+                {#        <div class="image-container">
+                            {% if food.image %}
+                                <img src="{{ food.image.path }}" alt="{{ food.name }}" title="{{ food.name }}">
+                            {% else %}
+
+                            {% endif %}
+                            <h3 class="section">{{ food.name }}</h3>
+                        </div>#}
+
+
+                <div class="row">
+                    <div class="col-xs-9 col-md-9">
+                        <p id="item-{{ food.id }}" class="index">
+                            <strong
+                                    {% if food.new %}
+                                        class="new"
+                                    {% elseif food.vegetarisch %}
+                                        class="vegetarian"
+                                    {% elseif food.spicy %}
+                                        class="spicy"
+                                    {% elseif food.vegan %}
+                                        class="vegan"
+                                    {% endif %}
+                            >
+                                {{ food.name }} </strong>
+                            <sup>
+                                {% for allergene in food.allergene %}
+                                    {{ allergene }}
+                                {% endfor %}
+                            </sup> <br>
+                            {% if food.description %}
+                                {{ food.description }} <br>
+                            {% endif %}
+                            € {{ food.amount|number_format(2, ',', '.') }}
+                        </p>
+                    </div>
+
+                    <div class="col-xs-3 col-md-3">
+                        <form
+                                data-request="onTodaysFoodChoice"
+                                data-request-update="foodchoice: '#todaysfoodchoice'">
+
+                            <input type="hidden" name="id" value="{{ food.id }}">
+
+                            <button
+                                    id="heart"
+                                    type="submit"
+                                    class="icon-heart icon-2x light-green">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
+
+        <!-- Riesenschwarzbrote -->
+        <div class="col-sm-6 col-md-4">
+            <h3>Riesen Schwarzbrote</h3>
+            {% for food in foods.riesenSchwarzBrote %}
+
+                {#        <div class="image-container">
+                            {% if food.image %}
+                                <img src="{{ food.image.path }}" alt="{{ food.name }}" title="{{ food.name }}">
+                            {% else %}
+
+                            {% endif %}
+                            <h3 class="section">{{ food.name }}</h3>
+                        </div>#}
+
+
+                <div class="row">
+                    <div class="col-xs-9 col-md-9">
+                        <strong
+                                {% if food.new %}
+                                    class="new"
+                                {% elseif food.vegetarisch %}
+                                    class="vegetarian"
+                                {% elseif food.spicy %}
+                                    class="spicy"
+                                {% elseif food.vegan %}
+                                    class="vegan"
+                                {% endif %}
+                        >
+                            {{ food.name }} </strong>
+
+                            <sup>
+                                {% for allergene in food.allergene %}
+                                    {{ allergene }}
+                                {% endfor %}
+                            </sup> <br>
+                            {% if food.description %}
+                                {{ food.description }} <br>
+                            {% endif %}
+                            € {{ food.amount|number_format(2, ',', '.') }}
+                        </p>
+                    </div>
+
+                    <div class="col-xs-3 col-md-3">
+                        <form
+                                data-request="onTodaysFoodChoice"
+                                data-request-update="foodchoice: '#todaysfoodchoice'">
+
+                            <input type="hidden" name="id" value="{{ food.id }}">
+
+                            <button
+                                    id="heart"
+                                    type="submit"
+                                    class="icon-heart icon-2x light-green">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
+
+        <!-- Salate -->
+        <div class="col-sm-6 col-md-4">
+            <h3>Salate</h3>
+            {% for food in foods.salate %}
+
+                {#        <div class="image-container">
+                            {% if food.image %}
+                                <img src="{{ food.image.path }}" alt="{{ food.name }}" title="{{ food.name }}">
+                            {% else %}
+
+                            {% endif %}
+                            <h3 class="section">{{ food.name }}</h3>
+                        </div>#}
+
+
+                <div class="row">
+                    <div class="col-xs-9 col-md-9">
+                        <p id="item-{{ food.id }}" class="index">
+                            <strong
+                                    {% if food.new %}
+                                        class="new"
+                                    {% elseif food.vegetarisch %}
+                                        class="vegetarian"
+                                    {% elseif food.spicy %}
+                                        class="spicy"
+                                    {% elseif food.vegan %}
+                                        class="vegan"
+                                    {% endif %}
+                            >
+                                {{ food.name }} </strong>
+                            <sup>
+                                {% for allergene in food.allergene %}
+                                    {{ allergene }}
+                                {% endfor %}
+                            </sup> <br>
+                            {% if food.description %}
+                                {{ food.description }} <br>
+                            {% endif %}
+                            € {{ food.amount|number_format(2, ',', '.') }}
+                        </p>
+                    </div>
+
+                    <div class="col-xs-3 col-md-3">
+                        <form
+                                data-request="onTodaysFoodChoice"
+                                data-request-update="foodchoice: '#todaysfoodchoice'">
+
+                            <input type="hidden" name="id" value="{{ food.id }}">
+
+                            <button
+                                    id="heart"
+                                    type="submit"
+                                    class="icon-heart icon-2x light-green">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
+
+        <!-- Nachspeisen -->
+        <div class="col-sm-6 col-md-4">
+            <h3>Nachspeisen</h3>
+            {% for food in foods.nachSpeisen %}
+
+                {#        <div class="image-container">
+                            {% if food.image %}
+                                <img src="{{ food.image.path }}" alt="{{ food.name }}" title="{{ food.name }}">
+                            {% else %}
+
+                            {% endif %}
+                            <h3 class="section">{{ food.name }}</h3>
+                        </div>#}
+
+
+                <div class="row">
+                    <div class="col-xs-9 col-md-9">
+                        <p id="item-{{ food.id }}" class="index">
+                            <strong
+                                    {% if food.new %}
+                                        class="new"
+                                    {% elseif food.vegetarisch %}
+                                        class="vegetarian"
+                                    {% elseif food.spicy %}
+                                        class="spicy"
+                                    {% elseif food.vegan %}
+                                        class="vegan"
+                                    {% endif %}
+                            >
+                                {{ food.name }} </strong>
+                            <sup>
+                                {% for allergene in food.allergene %}
+                                    {{ allergene }}
+                                {% endfor %}
+                            </sup> <br>
+                            {% if food.description %}
+                                {{ food.description }} <br>
+                            {% endif %}
+                            € {{ food.amount|number_format(2, ',', '.') }}
+                        </p>
+                    </div>
+
+                    <div class="col-xs-3 col-md-3">
+                        <form
+                                data-request="onTodaysFoodChoice"
+                                data-request-update="foodchoice: '#todaysfoodchoice'">
+
+                            <input type="hidden" name="id" value="{{ food.id }}">
+
+                            <button
+                                    id="heart"
+                                    type="submit"
+                                    class="icon-heart icon-2x light-green">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
+
+        <div class="col-sm-12">
+            {% partial 'site/food/allergene.htm' %}
+        </div>
+    </div>
+
+
+    <div id="drinks" class="row hidden-lg hidden-md hidden-sm">
+        <ul class="nav nav-pills">
+            <li><a href="#food">Food</a></li>
+            <li class="active"><a href="#drinks">Drinks</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <h2 class="hidden">Drinks</h2>
+
+            <p>
+                Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Mauris
+                blandit aliquet elit, eget tincidunt nibh pulvinar a. Nulla porttitor accumsan tincidunt. Donec
+                sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada feugiat. Donec sollicitudin
+                molestie malesuada.
+
+                Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla porttitor accumsan
+                tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in ipsum id orci porta
+                dapibus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor
+                sit amet aliquam vel, ullamcorper sit amet ligula.
+
+                Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta
+                dapibus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Sed porttitor lectus nibh.
+                Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Proin eget tortor risus.
+
+                Curabitur aliquet quam id dui posuere blandit. Vestibulum ac diam sit amet quam vehicula elementum sed
+                sit amet dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet
+                elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
+                dui. Donec sollicitudin molestie malesuada. Donec sollicitudin molestie malesuada.
+
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
+                neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Nulla porttitor accumsan tincidunt.
+                Proin eget tortor risus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ante ipsum primis in
+                faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel,
+                ullamcorper sit amet ligula. Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget
+                tincidunt nibh pulvinar a.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

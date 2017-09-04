@@ -82,7 +82,7 @@ class Plugin extends PluginBase
 
         return [
             'sportstv' => [
-                'label'       => 'Sportstv',
+                'label'       => 'Sports TV',
                 'url'         => Backend::url('milo/sportstv/games'),
                 'icon'        => 'icon-futbol-o',
                 'permissions' => ['milo.sportstv.*'],

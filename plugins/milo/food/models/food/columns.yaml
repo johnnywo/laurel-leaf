@@ -1,0 +1,42 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    name:
+        label: Food Title
+        searchable: true
+    allergene:
+        label: Allergene
+        searchable: false
+    description:
+        label: Description
+        searchable: true
+    vegan:
+        label: Vegan
+        searchable: true
+    vegetarisch:
+        label: Vegetarisch
+        searchable: true
+    spicy:
+        label: Spicy
+        searchable: true
+    new:
+        label: Neu
+    amount:
+        label: Euro
+        searchable: true
+    food_category_id:
+        label: Food Category
+        relation: foodcategory
+        select: name
+        searchable: true
+    hearts:
+        label: liked
+    sort_order:
+        label: Sort Order
+        invisible: true
+

@@ -1,0 +1,24 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    image:
+        label: Hero Image
+        type: fileupload
+        mode: image
+        imageHeight: 400
+        imageWidth: 1200
+    title:
+        label: Titel
+        span: left
+    description:
+        label: Description
+        type: textarea
+        size: large
+        span: full
+    cost:
+        label: Prize
+        span: left
+
+

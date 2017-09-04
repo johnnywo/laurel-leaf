@@ -1,0 +1,32 @@
+==
+use \milo\sportstv\models\game;
+use Carbon\Carbon;
+function onStart()
+{
+    $this['sportstv'] = Game::where('datetime', '>=', Carbon::now())
+                        ->orderBy('datetime', 'asc')
+                        ->get();
+}
+==
+<div class="table-responsive">
+    <table class="table">
+        {% set newArray = [] %}
+        {% for item in sportstv %}
+            <tr>
+                {% if item.datetime|date('d.m.Y') not in newArray %}
+                <td>{{ item.datetime|date('d.m.Y') }}</td>
+                {% set newArray = newArray|merge([item.datetime|date('d.m.Y')]) %}
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td>{{ item.datetime|date('H:i') }}</td>
+                {% if item.home_team.id == 1 %}
+                <td><strong><i>CONFERENCE</i></strong></td>
+                {% else %}
+                <td><strong>{{ item.home_team.name }} v {{ item.away_team.name }}</strong></td>
+                {% endif %}
+                <td>{{ item.league.name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>

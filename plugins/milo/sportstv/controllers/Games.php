@@ -48,6 +48,4 @@ class Games extends Controller
 		return $this->listRefresh();
 	}
 
-
-
 }

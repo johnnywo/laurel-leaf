@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Food
+
+# Model Form Field configuration
+form: $/milo/food/models/food/fields.yaml
+
+# Model Class name
+modelClass: Milo\Food\Models\Food
+
+# Default redirect location
+defaultRedirect: milo/food/foods
+
+# Create page
+create:
+    title: Create Food
+    redirect: milo/food/foods/update/:id
+    redirectClose: milo/food/foods
+
+# Update page
+update:
+    title: Edit Food
+    redirect: milo/food/foods
+    redirectClose: milo/food/foods
+
+# Preview page
+preview:
+    title: Preview Food
