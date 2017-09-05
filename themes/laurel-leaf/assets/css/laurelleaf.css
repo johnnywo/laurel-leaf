@@ -12,6 +12,11 @@ h1, h2, h3 {
     color: inherit;
 }
 
+/* disable horizontal scrolling !!! headache saver */
+.container{
+    overflow: hidden;
+}
+
 .color-accent {
     color: #00A74B;
 }
@@ -135,10 +140,9 @@ ul.nav > li {
 }
 
 .nav-pills > li {
-    float: left;
-    width: 50%;
-    border: 1px solid #1fb05f;
     text-align: center;
+    width: 50%;
+    float: left;
 }
 
 .nav-pills > li + li {
@@ -149,6 +153,12 @@ ul.nav > li {
     color: #ffffff;
     background-color: #1fb05f;
     border-radius: inherit;
+    border: 1px solid #1fb05f;
+}
+
+.nav-pills > li > a {
+    border-radius: inherit;
+    border: 1px solid #1fb05f;
 }
 
 .vegan::after{
@@ -175,6 +185,16 @@ ul.nav > li {
     content: "";
 }
 
+.vegetarian.spicy:after{
+    background-image: url('/themes/laurel-leaf/assets/images/custom-icons/veggy-spicy@2x.png');
+    background-repeat: no-repeat;
+    background-size: 55px 34px;
+    display: inline-block;
+    width: 55px;
+    height: 28px;
+    content: "";
+}
+
 .new:before{
     background-image: url('/themes/laurel-leaf/assets/images/custom-icons/new@2x.png');
     background-repeat: no-repeat;
@@ -197,7 +217,7 @@ table.allergene td.char {
 }
 
 /* bigger Screens */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
     .navbar {
         min-height: 150px;
     }
@@ -232,7 +252,7 @@ table.allergene td.char {
 }
 
 /* iPhones, Smartphones Portrait */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     body {
         padding-top: 70px;
     }
@@ -274,10 +294,14 @@ table.allergene td.char {
         position: absolute;
         width: 100%;
         height: 100%;
-        -webkit-box-shadow: inset 0px 0px 10px 2px rgba(0,0,0,0.55);
-        -moz-box-shadow: inset 0px 0px 10px 2px rgba(0,0,0,0.55);
-        box-shadow: inset 0px 0px 10px 2px rgba(0,0,0,0.55);
+        -webkit-box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.55);
+        -moz-box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.55);
+        box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.55);
         top: 0;
         left: 0;
+    }
+
+    .table-responsive{
+        border: none;
     }
 }

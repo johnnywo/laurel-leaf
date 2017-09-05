@@ -1,0 +1,5 @@
+1.0.1: First version of Drinks
+1.0.2:
+    - Make Database Migrations Drinks Categories & Drinks
+    - create_drink_categories_table.php
+    - create_drinks_table.php

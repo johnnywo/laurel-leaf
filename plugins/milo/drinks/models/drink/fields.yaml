@@ -1,0 +1,36 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        comment: enter a name for your drink.
+        span: left
+    description:
+        label: Description
+        comment: enter a descriptive summary of your drink.
+        span: right
+    size:
+        label: Size
+        span: left
+        comment: e.g. 0,5 or 1/4
+    amount:
+        label: Amount (€)
+        span: right
+        placeholder: 3.9
+        comment: use ' . ' for decimals instead of ' , '
+    drinkcategory:
+        label: Category
+        type: relation
+        nameFrom: name
+        span: left
+        comment: choose a category for your drink.
+    allergene:
+        label: Allergene
+        type: checkboxlist
+        span: right
+        options:
+            A: A Gluten
+            O: O Sulfite
+        comment: please choose incredients with allergical behavior.

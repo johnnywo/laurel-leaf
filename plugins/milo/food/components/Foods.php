@@ -69,6 +69,14 @@ class Foods extends ComponentBase
 		return $food;
 	}
 
+	public function onShowBurger()
+	{
+		$food = Food::where('food_category_id', '=', 1)
+		            ->get();
+
+		return $food;
+	}
+
 
 	public function onTodaysFoodChoice()
 	{

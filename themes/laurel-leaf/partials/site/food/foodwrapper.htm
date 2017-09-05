@@ -1,0 +1,56 @@
+{% for food in foods.burger %}
+    {% set class = '' %}
+
+    <div class="row">
+        <div class="col-xs-9 col-md-9">
+            <p id="item-{{ food.id }}" class="index">
+                <strong class="
+                                    {% if food.new == true %}
+                                        {% set class = 'new ' %}
+                                    {% endif %}
+
+                                    {% if food.vegetarisch == true %}
+                                        {% set class = class ~ 'vegetarian ' %}
+                                    {% endif %}
+
+                                    {% if food.vegan == true %}
+                                        {% set class = class ~ 'vegan ' %}
+                                    {% endif %}
+
+                                    {% if food.spicy == true %}
+                                        {% set class = class ~ 'spicy ' %}
+                                    {% endif %}
+                            {{ class }}">
+                    {{ food.name }} </strong>
+                <sup>
+                    <small>
+                        {% for allergene in food.allergene %}
+                            {{ allergene }}
+                        {% endfor %}
+                    </small>
+                </sup> <br>
+                {% if food.description %}
+                    {{ food.description }} <br>
+                {% endif %}
+                € {{ food.amount|number_format(2, ',', '.') }}
+            </p>
+        </div>
+
+        <div class="col-xs-3 col-md-3">
+            <form
+                    data-request="onTodaysFoodChoice"
+                    data-request-update="foodchoice: '#todaysfoodchoice'">
+
+                <input type="hidden" name="id" value="{{ food.id }}">
+
+                <button
+                        id="heart"
+                        type="submit"
+                        class="icon-heart icon-2x light-green">
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+{% endfor %}

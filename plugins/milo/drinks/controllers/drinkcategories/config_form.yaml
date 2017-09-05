@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Drink Category
+
+# Model Form Field configuration
+form: $/milo/drinks/models/drinkcategory/fields.yaml
+
+# Model Class name
+modelClass: Milo\Drinks\Models\DrinkCategory
+
+# Default redirect location
+defaultRedirect: milo/drinks/drinkcategories
+
+# Create page
+create:
+    title: Create Drink Category
+    redirect: milo/drinks/drinkcategories/update/:id
+    redirectClose: milo/drinks/drinkcategories
+
+# Update page
+update:
+    title: Edit Drink Category
+    redirect: milo/drinks/drinkcategories
+    redirectClose: milo/drinks/drinkcategories
+
+# Preview page
+preview:
+    title: Preview Drink Category
