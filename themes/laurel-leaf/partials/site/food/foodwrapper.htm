@@ -1,10 +1,28 @@
-{% for food in foods.burger %}
-    {% set class = '' %}
+{% if foods|length %}
 
     <div class="row">
-        <div class="col-xs-9 col-md-9">
-            <p id="item-{{ food.id }}" class="index">
-                <strong class="
+
+
+        {% set foodCategory = '' %}
+
+        {% for chunked in foods.chunk(13) %}
+
+            <div class="col-sm-6 col-md-4">
+
+                {% for food in chunked %}
+
+                    {% set class = '' %}
+
+                    {% if food.foodcategory.name not in foodCategory %}
+
+                        <h3>{{ food.foodcategory.name }}</h3>
+
+                        {% set foodCategory = food.foodcategory.name %}
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-xs-9 col-md-9">
+                            <p id="item-{{ food.id }}" class="index">
+                                <strong class="
                                     {% if food.new == true %}
                                         {% set class = 'new ' %}
                                     {% endif %}
@@ -21,36 +39,54 @@
                                         {% set class = class ~ 'spicy ' %}
                                     {% endif %}
                             {{ class }}">
-                    {{ food.name }} </strong>
-                <sup>
-                    <small>
-                        {% for allergene in food.allergene %}
-                            {{ allergene }}
-                        {% endfor %}
-                    </small>
-                </sup> <br>
-                {% if food.description %}
-                    {{ food.description }} <br>
-                {% endif %}
-                € {{ food.amount|number_format(2, ',', '.') }}
-            </p>
-        </div>
+                                    {{ food.name }} </strong>
+                                <sup>
+                                    <small>
+                                        {% for allergene in food.allergene %}
+                                            {{ allergene }}
+                                        {% endfor %}
+                                    </small>
+                                </sup> <br>
+                                {% if food.description %}
+                                    {{ food.description }} <br>
+                                {% endif %}
+                                € {{ food.amount|number_format(2, ',', '.') }}
+                            </p>
+                        </div>
 
-        <div class="col-xs-3 col-md-3">
-            <form
-                    data-request="onTodaysFoodChoice"
-                    data-request-update="foodchoice: '#todaysfoodchoice'">
+                        <div class="col-xs-3 col-md-3">
+                            <form
+                                    data-request="onTodaysFoodChoice"
+                                    data-request-update="foodchoice: '#todaysfoodchoice'">
 
-                <input type="hidden" name="id" value="{{ food.id }}">
+                                <input type="hidden" name="id" value="{{ food.id }}">
 
-                <button
-                        id="heart"
-                        type="submit"
-                        class="icon-heart icon-2x light-green">
-                </button>
-            </form>
-        </div>
+                                <button
+                                        id="heart"
+                                        type="submit"
+                                        class="icon-heart icon-2x light-green">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% endfor %}
+
+
     </div>
 
+{% else %}
 
-{% endfor %}
+
+
+    <div class="text-center">
+        <p>
+            ...noch keine Speisen vorhanden...
+        </p>
+    </div>
+
+{% endif %}

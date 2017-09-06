@@ -216,6 +216,10 @@ table.allergene td.char {
     width: 3%;
 }
 
+.nice-select{
+    line-height: 29px;
+}
+
 /* bigger Screens */
 @media screen and (min-width: 768px) {
     .navbar {

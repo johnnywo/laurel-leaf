@@ -45,4 +45,16 @@ jQuery(document).ready(function($){
         previousTop = currentTop
         scrolling = false
     }
+
+    (function($){
+
+        $('#CategoriesFilter').on('change', 'input, select', function(){
+            var $form = $(this).closest('form');
+            $form.request();
+        });
+
+    })(jQuery);
+
+    $('select').niceSelect();
+
 });
