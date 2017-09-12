@@ -1,0 +1,14 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+food:
+    label: Food
+    view:
+        list: $/milo/food/models/food/columns.yaml
+        form: $/milo/food/models/food/fields.yaml
+        toolbarButtons: add|update|create
+    manage:
+        form: $/milo/food/models/food/fields.yaml
+        list: $/milo/food/models/food/columns.yaml
+        showSearch: true

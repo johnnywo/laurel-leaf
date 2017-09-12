@@ -1,819 +1,334 @@
-title = "Food & Drinks"
-url = "/food-drinks"
-layout = "default"
+title = 'Food & Drinks'
+description = 'Listing with Ajax filtering capabilities'
+url = '/food-drinks'
+layout = default
 
+[lunchoffers]
 [foods]
-[drinks]
+[drinks] 
 ==
 
-{#<div class="container-fluid">
-    <div class="row">
-        #}{#{% partial 'site/heroimage.htm' %}#}{#
-    </div>
-</div>#}
 
 <div class="container">
 
-        <div id="food" class="row hidden-lg hidden-md hidden-sm">
-            <ul class="nav nav-pills nav-justified">
-                <li class="active"><a href="food-drinks">Food</a></li>
-                <li><a href="#drinks">Drinks</a></li>
-            </ul>
-        </div>
+    <!-- Nav tabs -->
     <div class="row">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#lunchoffer" aria-controls="lunchoffer" role="tab" data-toggle="tab">Lunchoffer</a>
+            </li>
+            <li role="presentation">
+                <a href="#food" aria-controls="food" role="tab" data-toggle="tab">Food</a>
+            </li>
+            <li role="presentation">
+                <a href="#drinks" aria-controls="drinks" role="tab" data-toggle="tab">Drinks</a>
+            </li>
+        </ul>
         <br>
-        <div class="col text-center">
-            <h1>FOOD</h1>
-        </div>
-        <br>
+    </div>
 
-        <!-- Burger -->
-        <div class="col-sm-6 col-md-4">
-            <h3>Burger</h3>
 
-            {% for food in foods.burger %}
-                {% set class = '' %}
-
-                <div class="row">
-                    <div class="col-xs-9 col-md-9">
-                        <p id="item-{{ food.id }}" class="index">
-                            <strong class="
-                                    {% if food.new == true %}
-                                        {% set class = 'new ' %}
-                                    {% endif %}
-
-                                    {% if food.vegetarisch == true %}
-                                        {% set class = class ~ 'vegetarian ' %}
-                                    {% endif %}
-
-                                    {% if food.vegan == true %}
-                                        {% set class = class ~ 'vegan ' %}
-                                    {% endif %}
-
-                                    {% if food.spicy == true %}
-                                        {% set class = class ~ 'spicy ' %}
-                                    {% endif %}
-                            {{ class }}">
-                                {{ food.name }} </strong>
-                            <sup>
-                                <small>
-                                    {% for allergene in food.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </small>
-                            </sup> <br>
-                            {% if food.description %}
-                                {{ food.description }} <br>
-                            {% endif %}
-                            € {{ food.amount|number_format(2, ',', '.') }}
-                        </p>
-                    </div>
-
-                    <div class="col-xs-3 col-md-3">
-                        <form
-                                data-request="onTodaysFoodChoice"
-                                data-request-update="foodchoice: '#todaysfoodchoice'">
-
-                            <input type="hidden" name="id" value="{{ food.id }}">
-
-                            <button
-                                    id="heart"
-                                    type="submit"
-                                    class="icon-heart icon-2x light-green">
-                            </button>
-                        </form>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <!-- Lunchoffer -->
+        <div id="lunchoffer" role="tabpanel" class="tab-pane fade in active">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="text-center relativ">
+                        <h1 class="lunchoffer">Mittagsangebot</h1>
+                        <p><em>wähle täglich Montags - Freitags jeweils von 11°° - 17°° aus 3 unterschiedlichen Menüs mit Suppe:</em></p>
                     </div>
                 </div>
+            </div>
 
+            
 
-            {% endfor %}
-
-            {% partial 'site/food/bestellsdazu.htm' %}
-
-            {% partial 'site/food/spanferkel.htm' %}
-
-
-        </div>
-
-        <!-- Fingerfood im Körberl -->
-        <div class="col-sm-6 col-md-4">
-            <h3>Fingerfood im Körberl</h3>
-            {% for food in foods.koerberl %}
-                {% set class = '' %}
-                <div class="row">
-                    <div class="col-xs-9 col-md-9">
-                        <p id="item-{{ food.id }}" class="index">
-                            <strong class="
-                                    {% if food.new == true %}
-                                        {% set class = 'new ' %}
-                                    {% endif %}
-
-                                    {% if food.vegetarisch == true %}
-                                        {% set class = class ~ 'vegetarian ' %}
-                                    {% endif %}
-
-                                    {% if food.vegan == true %}
-                                        {% set class = class ~ 'vegan ' %}
-                                    {% endif %}
-
-                                    {% if food.spicy == true %}
-                                        {% set class = class ~ 'spicy ' %}
-                                    {% endif %}
-                            {{ class }}">
-                                {{ food.name }} </strong>
-                            <sup>
-                                <small>
-                                    {% for allergene in food.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </small>
-                            </sup> <br>
-                            {% if food.description %}
-                                {{ food.description }} <br>
-                            {% endif %}
-                            € {{ food.amount|number_format(2, ',', '.') }}
-                        </p>
-                    </div>
-
-                    <div class="col-xs-3 col-md-3">
-                        <form
-                                data-request="onTodaysFoodChoice"
-                                data-request-update="foodchoice: '#todaysfoodchoice'">
-
-                            <input type="hidden" name="id" value="{{ food.id }}">
-
-                            <button
-                                    id="heart"
-                                    type="submit"
-                                    class="icon-heart icon-2x light-green">
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-
-            {% endfor %}
-        </div>
-
-        <!-- Classics -->
-        <div class="col-sm-6 col-md-4">
-            <h3>Classics</h3>
-            {% for food in foods.classics %}
-                {% set class = '' %}
-                {#        <div class="image-container">
-                            {% if food.image %}
-                                <img src="{{ food.image.path }}" alt="{{ food.name }}" title="{{ food.name }}">
-                            {% else %}
-
-                            {% endif %}
-                            <h3 class="section">{{ food.name }}</h3>
-                        </div>#}
-
+            {% if lunchoffers|length %}
 
                 <div class="row">
-                    <div class="col-xs-9 col-md-9">
-                        <p id="item-{{ food.id }}" class="index">
-                            <strong class="
-                                    {% if food.new == true %}
-                                        {% set class = 'new ' %}
-                                    {% endif %}
 
-                                    {% if food.vegetarisch == true %}
-                                        {% set class = class ~ 'vegetarian ' %}
-                                    {% endif %}
+                    <div class="col-sm-6 col-sm-offset-3">
 
-                                    {% if food.vegan == true %}
-                                        {% set class = class ~ 'vegan ' %}
-                                    {% endif %}
+                    {% set weekdateArray = [] %}
 
-                                    {% if food.spicy == true %}
-                                        {% set class = class ~ 'spicy ' %}
-                                    {% endif %}
-                            {{ class }}">
-                                {{ food.name }} </strong>
-                            <sup>
-                                <small>
-                                    {% for allergene in food.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </small>
-                            </sup> <br>
-                            {% if food.description %}
-                                {{ food.description }} <br>
-                            {% endif %}
-                            € {{ food.amount|number_format(2, ',', '.') }}
-                        </p>
-                    </div>
+                    {% set soups = '' %}
 
-                    <div class="col-xs-3 col-md-3">
-                        <form
-                                data-request="onTodaysFoodChoice"
-                                data-request-update="foodchoice: '#todaysfoodchoice'">
+                    {% for weekly_food in lunchoffers %}
 
-                            <input type="hidden" name="id" value="{{ food.id }}">
-
-                            <button
-                                    id="heart"
-                                    type="submit"
-                                    class="icon-heart icon-2x light-green">
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-
-            {% endfor %}
-        </div>
-
-        <!-- Riesenschwarzbrote -->
-        <div class="col-sm-6 col-md-4">
-            <h3>Riesen Schwarzbrote</h3>
-            {% for food in foods.riesenSchwarzBrote %}
-                {% set class = '' %}
-                <div class="row">
-                    <div class="col-xs-9 col-md-9">
-                        <strong class="
-                                    {% if food.new == true %}
-                                        {% set class = 'new ' %}
-                                    {% endif %}
-
-                                    {% if food.vegetarisch == true %}
-                                        {% set class = class ~ 'vegetarian ' %}
-                                    {% endif %}
-
-                                    {% if food.vegan == true %}
-                                        {% set class = class ~ 'vegan ' %}
-                                    {% endif %}
-
-                                    {% if food.spicy == true %}
-                                        {% set class = class ~ 'spicy ' %}
-                                    {% endif %}
-                            {{ class }}">
-                            {{ food.name }} </strong>
-                        <sup>
-                            <small>
-                                {% for allergene in food.allergene %}
-                                    {{ allergene }}
-                                {% endfor %}
-                            </small>
-                        </sup> <br>
-                        {% if food.description %}
-                            {{ food.description }} <br>
+                        {% if weekly_food.all_week %}
+                        {% if weekly_food.date|date('d.m.Y') not in weekdateArray %}
+                            <div class="text-center weekday">{{ weekly_food.date|date('d.m.Y') }} - {{ weekly_food.date_until|date('d.m.Y') }}</div>
+                            <hr>
+                            {% set weekdateArray = weekly_food.date|date('d.m.Y') %}
                         {% endif %}
-                        € {{ food.amount|number_format(2, ',', '.') }}
-                        </p>
-                    </div>
 
-                    <div class="col-xs-3 col-md-3">
-                        <form
-                                data-request="onTodaysFoodChoice"
-                                data-request-update="foodchoice: '#todaysfoodchoice'">
+                        {% if soups == '' %}
+                            <p class="text-center"><em>-- {% content 'food_soup.txt' %} --</em></p>
+                        {% set soups = 1 %}
+                        {% endif %}
+                            <div class="row">
+                                <div class="col-xs-9">
+                                
+                                    <p id="item-{{ weekly_food.id }}" class="index">
+                                        <strong class="
+                                            {% if weekly_food.new == true %}
+                                                {% set class = 'new ' %}
+                                            {% endif %}
 
-                            <input type="hidden" name="id" value="{{ food.id }}">
+                                            {% if weekly_food.vegetarisch == true %}
+                                                {% set class = class ~ 'vegetarian ' %}
+                                            {% endif %}
 
-                            <button
-                                    id="heart"
-                                    type="submit"
-                                    class="icon-heart icon-2x light-green">
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                                            {% if weekly_food.vegan == true %}
+                                                {% set class = class ~ 'vegan ' %}
+                                            {% endif %}
 
+                                            {% if weekly_food.spicy == true %}
+                                                {% set class = class ~ 'spicy ' %}
+                                            {% endif %}
 
-            {% endfor %}
-        </div>
+                                            {{ class }}">
 
-        <!-- Salate -->
-        <div class="col-sm-6 col-md-4">
-            <h3>Salate</h3>
-            {% for food in foods.salate %}
-                {% set class = '' %}
-                <div class="row">
-                    <div class="col-xs-9 col-md-9">
-                        <p id="item-{{ food.id }}" class="index">
-                            <strong class="
-                                    {% if food.new == true %}
-                                        {% set class = 'new ' %}
-                                    {% endif %}
+                                            {{ weekly_food.name }} 
+                                        </strong>
+                                        <sup>
+                                            <small>
+                                                {% for allergene in weekly_food.allergene %}
+                                                    {{ allergene }}
+                                                {% endfor %}
+                                            </small>
+                                        </sup>
+                                        {% if weekly_food.description %}
+                                            <br> {{ weekly_food.description }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    € {{ weekly_food.offer_price|number_format(2, ',', '.') }}
+                                </div>
+                            </div>
+                        {% else %}
+                        {% endif %}
 
-                                    {% if food.vegetarisch == true %}
-                                        {% set class = class ~ 'vegetarian ' %}
-                                    {% endif %}
+                    {% endfor %} <!-- Weekly Food End -->
 
-                                    {% if food.vegan == true %}
-                                        {% set class = class ~ 'vegan ' %}
-                                    {% endif %}
+                        {% set dateArray = [] %} 
 
-                                    {% if food.spicy == true %}
-                                        {% set class = class ~ 'spicy ' %}
-                                    {% endif %}
-                            {{ class }}">
-                                {{ food.name }} </strong>
-                            <sup>
-                                <small>
-                                    {% for allergene in food.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </small>
-                            </sup> <br>
-                            {% if food.description %}
-                                {{ food.description }} <br>
-                            {% endif %}
-                            € {{ food.amount|number_format(2, ',', '.') }}
-                        </p>
-                    </div>
+                        {% for food in lunchoffers %}
 
-                    <div class="col-xs-3 col-md-3">
-                        <form
-                                data-request="onTodaysFoodChoice"
-                                data-request-update="foodchoice: '#todaysfoodchoice'">
+                            {% set class = '' %}
 
-                            <input type="hidden" name="id" value="{{ food.id }}">
-
-                            <button
-                                    id="heart"
-                                    type="submit"
-                                    class="icon-heart icon-2x light-green">
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-
-            {% endfor %}
-        </div>
-
-        <!-- Nachspeisen -->
-        <div class="col-sm-6 col-md-4">
-            <h3>Nachspeisen</h3>
-            {% for food in foods.nachSpeisen %}
-                {% set class = '' %}
-                {#        <div class="image-container">
-                            {% if food.image %}
-                                <img src="{{ food.image.path }}" alt="{{ food.name }}" title="{{ food.name }}">
+                            {% if food.always_hot %}
                             {% else %}
 
+                            {% if date(food.date) >= date() %}
+
+                            {% if food.date|date('d.m.Y') not in dateArray %} 
+                            <div class="row">
+                                <div class="col-sm-12 text-center weekday">
+                               
+                                        {{ food.date|strftime('%A, %d.%m.%Y') }} 
+                                        <hr>
+                                
+                                {% set dateArray = food.date|date('d.m.Y') %}
+                                </div>
+
+                            </div>
                             {% endif %}
-                            <h3 class="section">{{ food.name }}</h3>
-                        </div>#}
 
-
-                <div class="row">
-                    <div class="col-xs-9 col-md-9">
-                        <p id="item-{{ food.id }}" class="index">
-                            <strong class="
-                                    {% if food.new == true %}
-                                        {% set class = 'new ' %}
-                                    {% endif %}
-
-                                    {% if food.vegetarisch == true %}
-                                        {% set class = class ~ 'vegetarian ' %}
-                                    {% endif %}
-
-                                    {% if food.vegan == true %}
-                                        {% set class = class ~ 'vegan ' %}
-                                    {% endif %}
-
-                                    {% if food.spicy == true %}
-                                        {% set class = class ~ 'spicy ' %}
-                                    {% endif %}
-                            {{ class }}">
-                                {{ food.name }} </strong>
-                            <sup>
-                                <small>
-                                    {% for allergene in food.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </small>
-                            </sup> <br>
-                            {% if food.description %}
-                                {{ food.description }} <br>
                             {% endif %}
-                            € {{ food.amount|number_format(2, ',', '.') }}
-                        </p>
+
+                            {% if not food.all_week %}
+                            <div class="row">
+                                <div class="col-xs-9">
+                                
+                                    <p id="item-{{ food.id }}" class="index">
+                                        <strong class="
+                                            {% if food.new == true %}
+                                                {% set class = 'new ' %}
+                                            {% endif %}
+
+                                            {% if food.vegetarisch == true %}
+                                                {% set class = class ~ 'vegetarian ' %}
+                                            {% endif %}
+
+                                            {% if food.vegan == true %}
+                                                {% set class = class ~ 'vegan ' %}
+                                            {% endif %}
+
+                                            {% if food.spicy == true %}
+                                                {% set class = class ~ 'spicy ' %}
+                                            {% endif %}
+
+                                            {{ class }}">
+
+                                            {{ food.name }} 
+                                        </strong>
+                                        <sup>
+                                            <small>
+                                                {% for allergene in food.allergene %}
+                                                    {{ allergene }}
+                                                {% endfor %}
+                                            </small>
+                                        </sup>
+                                        {% if food.description %}
+                                            <br> {{ food.description }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    € {{ food.offer_price|number_format(2, ',', '.') }}
+                                </div>
+                            </div> <!-- End row of regular Menues -->
+                            {% endif %}
+
+                        {% endif %}
+
+                        {% endfor %}
+
+
+
                     </div>
 
-                    <div class="col-xs-3 col-md-3">
-                        <form
-                                data-request="onTodaysFoodChoice"
-                                data-request-update="foodchoice: '#todaysfoodchoice'">
 
-                            <input type="hidden" name="id" value="{{ food.id }}">
+                    <!-- Always Hot -->
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <br>
+                        <br>
+                        <hr>
 
-                            <button
-                                    id="heart"
-                                    type="submit"
-                                    class="icon-heart icon-2x light-green">
-                            </button>
-                        </form>
-                    </div>
+                        <h3 class="text-center">.. always Hot!</h3>
+
+                        {% for food in lunchoffers %}
+
+                            {% set class = '' %}
+
+                            {% if not food.always_hot %}
+                            {% else %}    
+
+                            <div class="row">
+                                <div class="col-xs-9">
+                                
+                                    <p id="item-{{ food.id }}" class="index">
+                                        <strong class="
+                                            {% if food.new == true %}
+                                                {% set class = 'new ' %}
+                                            {% endif %}
+
+                                            {% if food.vegetarisch == true %}
+                                                {% set class = class ~ 'vegetarian ' %}
+                                            {% endif %}
+
+                                            {% if food.vegan == true %}
+                                                {% set class = class ~ 'vegan ' %}
+                                            {% endif %}
+
+                                            {% if food.spicy == true %}
+                                                {% set class = class ~ 'spicy ' %}
+                                            {% endif %}
+
+                                            {{ class }}">
+
+                                            {{ food.name }} 
+                                        </strong>
+                                        <sup>
+                                            <small>
+                                                {% for allergene in food.allergene %}
+                                                    {{ allergene }}
+                                                {% endfor %}
+                                            </small>
+                                        </sup>
+                                        {% if food.description %}
+                                            <br> {{ food.description }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    € {{ food.offer_price|number_format(2, ',', '.') }}
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                        {% endfor %}
+                    </div>  
+
                 </div>
 
+            {% else %}
 
-            {% endfor %}
-        </div>
+                <div class="text-center">
+                    <p>
+                        ... derzeit kein Mittagsangebot ...
+                    </p>
+                </div>
 
-        <div class="col-sm-8 ">
+            {% endif %}
+
             <br>
-            {% partial 'site/food/allergene.htm' %}
+            <hr>
+            <p>Hinweis: Wir akzeptieren auch Sodexo Gutscheine.</p>
+
+                
+        </div> <!-- End #lunchoffer -->
+
+        <!-- Food -->
+        <div role="tabpanel" class="tab-pane fade in" id="food">
+            <div class="text-center">
+                <h1 class="hidden-xs">FOOD</h1>
+            </div>
+            
+
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 hidden-sm hidden-md hidden-lg">
+                    {{ form_ajax('foods::onFilterCategories', { update: { 'site/food/foodwrapper': '#foodWrapper' } }) }}
+                    <div id="FoodCategoriesFilter">
+                        <select class="wide" name="Filter[foodcategory]">
+                            <option value="">Alle Speisen</option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {{ form_close() }}
+                </div>
+            </div>
+
+            <div id="foodWrapper">{% partial 'site/food/foodwrapper' %}</div>
+
+            {% partial 'site/food/bestellsdazu' %}
+
+            {% partial 'site/food/spanferkel' %}
+
+            {% partial 'site/food/allergene' %}
+
+        </div>
+
+        <!-- Drinks -->
+        <div role="tabpanel" class="tab-pane dropdown fade" id="drinks">
+            <div class="text-center">
+                <h1 class="hidden-xs">DRINKS</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 hidden-sm hidden-md hidden-lg">
+                    {{ form_ajax('drinks::onFilterDrinkCategories', { update: { 'site/drink/drinkwrapper': '#drinkWrapper' } }) }}
+                    <div id="DrinkCategoriesFilter">
+                        <select class="wide" name="Filter[drinkcategory]">
+                            <option value="">Alle Drinks</option>
+                            {% for category in drinkcategories %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {{ form_close() }}
+                </div>
+            </div>
+
+            <div id="drinkWrapper">{% partial 'site/drink/drinkwrapper' %}</div>
+
         </div>
     </div>
 
 
-    <div class="row">
-        <div id="drinks" class="hidden-lg hidden-md hidden-sm">
-                <ul class="nav nav-pills">
-                    <li><a href="#food">Food</a></li>
-                    <li class="active"><a href="#drinks">Drinks</a></li>
-                </ul>
-        </div>
-
-        <br>
-        <div class="col text-center">
-            <h1>DRINKS</h1>
-        </div>
-        <br>
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Draught</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.draught %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-            <h3>Bottles</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.bottles %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Craft Beer</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.craftBeer %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Cider Draught</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.ciderDraught %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Cider Bottles</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.ciderBottles %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Wine</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.wine %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Whiskey</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.whiskey %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Spirits</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.spirits %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Long Drinks</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.longDrinks %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Shots</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.shots %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Spirits Bottles</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.spiritsBottles %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Combi Bottles</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.combiBottles %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Non-Alcoholic Drinks</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.nonAlcoholicDrinks %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-
-            <h3>Hot Drinks</h3>
-
-            <div id="app">
-                {% set newArray = [] %}
-                {% for drink in drinks.hotDrinks %}
-                    <ul class="list-unstyled drink">
-                        {% if drink.name not in newArray %}
-                            <li id="item-{{ drink.id }}" class="index">
-                                <strong>{{ drink.name }} </strong>
-                                <sup>
-                                    {% for allergene in drink.allergene %}
-                                        {{ allergene }}
-                                    {% endfor %}
-                                </sup> <i>{{ drink.description }}</i>
-                            </li>
-                            {% set newArray = newArray|merge([drink.name]) %}
-                        {% endif %}
-
-                    </ul>
-                {% endfor %}
-
-            </div>
-
-        </div>
-    </div>
 </div>
-
-
-
-
-
-
-
-

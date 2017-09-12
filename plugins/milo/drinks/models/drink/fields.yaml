@@ -14,7 +14,7 @@ fields:
     size:
         label: Size
         span: left
-        comment: e.g. 0,5 or 1/4
+        comment: e.g. 0,5l or 1/4l or 2cl. Enter unit!
     amount:
         label: Amount (€)
         span: right

@@ -1,0 +1,73 @@
+      
+{% if lunchoffers|length %}
+
+    <p>Mittagsangebot {{ "now"|date("l, d.m.Y") }}</p>
+
+    {% set soups = '' %}
+
+    {% for today in todays_food %}
+
+        {% if soups == '' %}
+            <p><em>-- {% content 'food_soup.txt' %} --</em></p>
+        {% set soups = 1 %}
+        {% endif %}
+
+        {% if not today.always_hot %}
+    
+            <div class="row">
+                <div class="col-xs-9">
+                
+                    <p id="item-{{ today.id }}" class="index">
+                        <strong class="
+                            {% if today.new == true %}
+                                {% set class = 'new ' %}
+                            {% endif %}
+
+                            {% if today.vegetarisch == true %}
+                                {% set class = class ~ 'vegetarian ' %}
+                            {% endif %}
+
+                            {% if today.vegan == true %}
+                                {% set class = class ~ 'vegan ' %}
+                            {% endif %}
+
+                            {% if today.spicy == true %}
+                                {% set class = class ~ 'spicy ' %}
+                            {% endif %}
+
+                            {{ class }}">
+
+                            {{ today.name }} 
+                        </strong>
+                        <sup>
+                            <small>
+                                {% for allergene in today.allergene %}
+                                    {{ allergene }}
+                                {% endfor %}
+                            </small>
+                        </sup>
+                        {% if today.description %}
+                            <br> {{ today.description }}
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-xs-3 text-right">
+                    € {{ today.offer_price|number_format(2, ',', '.') }}
+                </div>
+            </div>
+            {% endif %}
+
+    {% endfor %} <!-- Today Food End -->
+ 
+
+    <p class="text-center">
+        <a class="btn btn-info" href="/food-drinks">
+            zum Wochenmenü
+        </a>
+    </p>
+
+{% else %}
+
+<!-- derzeit kein Mittagsangebot -->
+
+{% endif %}

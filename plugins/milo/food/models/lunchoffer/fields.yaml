@@ -1,0 +1,35 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    food:
+        label: Food
+        type: partial
+        path: field_food
+        span: left
+        comment: choose desired food
+    offer_price:
+        label: Lunch Offer Price
+        span: left
+        comment: use . instead of , for decimals
+    soup_starters:
+        label: Soups, Starters
+        span: left
+        type: text
+    always_hot:
+        label: Always Hot (unten gelistet, z.B. Burger)
+        type: checkbox
+    all_week:
+        label: Wochenangebot
+        type: checkbox
+    date:
+        label: Date
+        span: left
+        type: datepicker
+        mode: date
+    date_until:
+        label: Until Date
+        span: right 
+        type: datepicker
+        mode: date

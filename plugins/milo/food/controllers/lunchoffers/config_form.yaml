@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Lunchoffer
+
+# Model Form Field configuration
+form: $/milo/food/models/lunchoffer/fields.yaml
+
+# Model Class name
+modelClass: Milo\Food\Models\Lunchoffer
+
+# Default redirect location
+defaultRedirect: milo/food/lunchoffers
+
+# Create page
+create:
+    title: Create Lunchoffer
+    redirect: milo/food/lunchoffers/update/:id
+    redirectClose: milo/food/lunchoffers
+
+# Update page
+update:
+    title: Edit Lunchoffer
+    redirect: milo/food/lunchoffers
+    redirectClose: milo/food/lunchoffers
+
+# Preview page
+preview:
+    title: Preview Lunchoffer

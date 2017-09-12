@@ -1,0 +1,23 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    food_id:
+        label: Food
+        relation: food
+        select: name
+        searchable: true
+    date: 
+        label: Date
+        type: date
+    date_until:
+        label: Until Date
+        type: date
+    always_hot:
+        label: Always Hot
+    offer_price:
+        label: Offer Price

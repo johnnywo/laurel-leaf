@@ -29,12 +29,22 @@ theme = "dark-bottom"
         'assets/vendor/jquery-nice-select-1.1.0/css/nice-select.css',
         'assets/css/theme.css'
         ]|theme }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ 'assets/css/laurelleaf.css'|theme }}">
+        <link href="{{ 'assets/css/laurelleaf.css'|theme }}" rel="stylesheet">
 
         {% styles %}
         {% component 'cookieConsent' %}
     </head>
     <body>
+
+        <!-- Flash Messages -->
+        {% flash %}
+        <p
+                data-control="flash-message"
+                class="flash-message fade {{ type }}"
+                data-interval="5">
+            {{ message }}
+        </p>
+        {% endflash %}
 
         <!-- Header -->
         <header id="layout-header">

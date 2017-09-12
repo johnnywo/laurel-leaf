@@ -1,0 +1,28 @@
+title = "Photo Gallery"
+url = "/photo-gallery"
+layout = "default"
+description = "Photo Galleries from Past until now."
+is_hidden = 0
+
+[galleriesList]
+galleryPage = "photo-gallery-detail"
+categoryPage = 404
+noGalleriesMessage = "No galleries found"
+==
+<div class="container">	
+
+<h1>Laurel Leaf's Gallery</h1>
+
+<ul>
+{% for gallery in galleries %}
+	<li>
+		<h3><a href="{{gallery.url}}">{{gallery.name}}</a></h3>
+		{% for image in gallery.images|slice(0, 5) %}
+			<img src="{{ image.getThumb(100, 50) }}">
+		{% endfor %}
+	</li>
+{% else %}
+	{{noGalleriesMessage}}
+{% endfor %}
+</ul>
+</div>

@@ -52,6 +52,7 @@ class Plugin extends PluginBase
     {
         return [
             'Milo\Food\Components\Foods' => 'foods',
+            'Milo\Food\Components\lunchoffers' => 'lunchoffers'
         ];
     }
 
@@ -100,7 +101,13 @@ class Plugin extends PluginBase
 			            'url'         => Backend::url('milo/food/foodcategories'),
 			            'icon'        => 'icon-tags',
 			            'permissions' => ['milo.food.*'],
-		            ]
+		            ],
+                    'lunchoffer' => [
+                        'label'       => 'Lunch Offer',
+                        'url'         => Backend::url('milo/food/lunchoffers'),
+                        'icon'        => 'icon-bullhorn',
+                        'permissions' => ['milo.food.*'],
+                    ]
 	            ]
             ],
         ];

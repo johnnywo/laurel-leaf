@@ -2,9 +2,15 @@
 
 use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 use Milo\Food\Models\Food;
+use Milo\Food\Models\FoodCategory;
+use Milo\Food\Models\Like;
+use October\Rain\Support\Facades\Flash;
 
 class Foods extends ComponentBase
 {
@@ -21,60 +27,31 @@ class Foods extends ComponentBase
         return [];
     }
 
-	public function burger()
-	{
-		$food = Food::where('food_category_id', '=', 1)
-				->get();
-
-		return $food;
-    }
-
-	public function koerberl()
-	{
-		$food = Food::where('food_category_id', '=', 2)
-		            ->get();
-
-		return $food;
+    /*
+     * Page Execution Lifecycle
+     */
+	public function onRun() {
+		$this->prepareVars();
 	}
 
-	public function classics()
-	{
-		$food = Food::where('food_category_id', '=', 3)
-		            ->get();
-
-		return $food;
+	/*
+	 * Page Partial Updates through Ajax
+	 */
+	public function onFilterCategories() {
+		$this->prepareVars();
 	}
 
-	public function riesenSchwarzBrote()
-	{
-		$food = Food::where('food_category_id', '=', 4)
-		            ->get();
+	/*
+	 * if Input Options from Select Menu,
+	 * add them to Array foodcategory (post('Filter', [])
+	 * @var foods become available through scope Method from Plugin Class
+	 * @var categories lists names of Categories for Select Menu
+	 */
+	public function prepareVars() {
+		$options = post('Filter', []);
 
-		return $food;
-	}
-
-	public function salate()
-	{
-		$food = Food::where('food_category_id', '=', 5)
-		            ->get();
-
-		return $food;
-	}
-
-	public function nachSpeisen()
-	{
-		$food = Food::where('food_category_id', '=', 6)
-		            ->get();
-
-		return $food;
-	}
-
-	public function onShowBurger()
-	{
-		$food = Food::where('food_category_id', '=', 1)
-		            ->get();
-
-		return $food;
+		$this->page['foods'] = Food::listFrontendFood($options);
+		$this->page['categories'] = FoodCategory::all();
 	}
 
 
@@ -112,5 +89,50 @@ class Foods extends ComponentBase
 
 		return Redirect::to('/food');
 	}
+
+
+	public function onLikeFood()
+	{
+
+		$request_ip = request()->ip();
+
+		$request_food_id = Input::get('id');
+
+		if ($request_ip !== '') {
+
+			// ist diese IP bereits in der Tabelle enthalten?
+			if (Like::where('ip', $request_ip)->get()->last()) {
+
+				$like_exists = Like::where('ip', $request_ip)->get()->last();
+
+				// Falls ja, wurde das letzte mal innerhalb der letzten 3h geklickt?
+				if (Carbon::now()->subHours(3) <= $like_exists->created_at)  {
+
+					//	wenn nein (also Versuch mehrmals hintereinander zu klicken), Datensatz verwerfen und Flash Message ausgeben: Bewertung nur 1x pro Tag zulässig.
+					Flash::warning('Like nur 1x pro Tag möglich');
+					return back();
+				}
+
+			}
+
+			// wenn nein, Datensatz erstellen
+			Like::create([
+				'ip' 		=> $request_ip,
+				'food_id'	=> $request_food_id
+			]);
+
+			// SELECT food_id count(*) FROM milo_food_guest_likes WHERE food_id = 3
+			$count_food_id = Like::where('food_id', '=', $request_food_id)->count();
+
+
+			$this->page['count_likes_food_id'] = $count_food_id;
+
+		}
+
+	}
+
+
+
+
 
 }

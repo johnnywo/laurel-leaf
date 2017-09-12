@@ -48,10 +48,16 @@ jQuery(document).ready(function($){
 
     (function($){
 
-        $('#CategoriesFilter').on('change', 'input, select', function(){
+        $('#FoodCategoriesFilter').on('change', 'input, select', function(){
             var $form = $(this).closest('form');
             $form.request();
         });
+
+        $('#DrinkCategoriesFilter').on('change', 'input, select', function(){
+            var $form = $(this).closest('form');
+            $form.request();
+        });
+
 
     })(jQuery);
 

@@ -36,13 +36,17 @@ class Food extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [];
+    public $hasOne = [
+    	'lunchoffer' => [
+    		'Milo\Food\Models\LunchOffer'
+    	]
+    ];
     public $hasMany = [];
     public $belongsTo = [
 	    'foodcategory' => [
 	    	'Milo\Food\Models\FoodCategory',
 		    'key' => 'food_category_id'
-	    ]
+	    ],
     ];
     public $belongsToMany = [];
     public $morphTo = [];
@@ -65,6 +69,9 @@ class Food extends Model
 			'foodcategory' => ''
 		], $options));
 
+		// exclude all items tagged with 'nur im Mittagsangebot'(hide_in_regular)
+		$query->where('hide_in_regular', '=', false)->orWhere('hide_in_regular', '=', null);
+
 		if($foodcategory !== '') {
 
 			if(!is_array($foodcategory)) {
@@ -82,7 +89,6 @@ class Food extends Model
 
 		return $query->paginate($perPage, $page);
 	}
-
 
 
 

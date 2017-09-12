@@ -19,7 +19,7 @@ class CreateFoodsTable extends Migration
             $table->boolean('vegetarisch')->default(false);
             $table->boolean('spicy')->default(false);
             $table->boolean('new')->default(false);
-            $table->integer('heart')->unsigned();
+            $table->boolean('hide_in_regular')->default(false);
             $table->integer('food_category_id')->unsigned();
             $table->foreign('food_category_id')->references('id')->on('milo_food_food_categories');
             $table->integer('sort_order')->default(1);

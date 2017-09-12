@@ -3,3 +3,6 @@
     - Make Database Migrations Food Categories & Food
     - create_food_categories_table.php
     - create_foods_table.php
+1.0.3:
+    - Make new Table Lunchoffers
+    - create_lunchoffers_table.php

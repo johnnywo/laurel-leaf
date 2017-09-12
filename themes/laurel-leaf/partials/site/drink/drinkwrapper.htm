@@ -1,0 +1,93 @@
+{% if drinks|length %}
+
+    <div class="row">
+
+
+        {% set drinkCategory = '' %}
+
+        {% for chunked in drinks.chunk(41) %}
+
+            <div class="col-sm-6 col-md-4">
+
+                {% for drink in chunked %}
+
+                    {% set class = '' %}
+
+                    {% if drink.drinkcategory.name not in drinkCategory %}
+
+                        <h3 class="menue-header">{{ drink.drinkcategory.name }}</h3>
+                        <hr>
+                        {% set drinkCategory = drink.drinkcategory.name %}
+                    {% endif %}
+
+
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <p id="item-{{ drink.id }}" class="index">
+                                <strong>{{ drink.name }}</strong>
+                                <sup>
+                                    <small>
+                                        {% for allergene in drink.allergene %}
+                                            {{ allergene }}
+                                        {% endfor %}
+                                    </small>
+                                </sup>
+                                {{ drink.size }}
+                                {% if drink.description %}
+                                    <br>{{ drink.description }}
+                                {% endif %}
+                                </p>
+                            </div>
+                            <div class="col-xs-3 text-right">
+                                € {{ drink.amount|number_format(2, ',', '.') }}
+                            </div>
+                        </div>
+                        {#<table class="table">#}
+                            {#<tr>#}
+                                {#<td>#}
+
+                                {#</td>#}
+                                {#<td>#}
+                                   {##}
+                                {#</td>#}
+                            {#</tr>#}
+                        {#</table>#}
+
+
+                {% endfor %}
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% else %}
+
+
+
+    <div class="text-center">
+        <p>
+            ...noch keine Drinks vorhanden...
+        </p>
+    </div>
+
+{% endif %}
+
+            {#{% set newArray = [] %}#}
+            {#{% for drink in drinks.draught %}#}
+            {#<ul class="list-unstyled drink">#}
+            {#{% if drink.name not in newArray %}#}
+            {#<li id="item-{{ drink.id }}" class="index">#}
+            {#<strong>{{ drink.name }} </strong>#}
+            {#<sup>#}
+            {#{% for allergene in drink.allergene %}#}
+            {#{{ allergene }}#}
+            {#{% endfor %}#}
+            {#</sup> <i>{{ drink.description }}</i>#}
+            {#</li>#}
+            {#{% set newArray = newArray|merge([drink.name]) %}#}
+            {#{% endif %}#}
+
+            {#</ul>#}
+{#{% endfor %}#}

@@ -22,16 +22,19 @@ fields:
         span: right
         comment: choose a category for your food.
     vegan:
-        label: Vegan
+        label: vegan
         type: checkbox
     vegetarisch:
-        label: Vegetarisch
+        label: vegetarisch
         type: checkbox
     spicy:
-        label: Spicy
+        label: spicy
         type: checkbox
     new:
-        label: Neu
+        label: neu
+        type: checkbox
+    hide_in_regular:
+        label: nur im Mittagsangebot 
         type: checkbox
     allergene:
         label: Allergene

@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Milo\Drinks\Models\Drink;
+use Milo\Drinks\Models\DrinkCategory;
 
 class Drinks extends ComponentBase
 {
@@ -18,115 +19,30 @@ class Drinks extends ComponentBase
         return [];
     }
 
-	public function draught()
-	{
-		$drink = Drink::where('drink_category_id', '=', 1)
-			->get();
-
-		return $drink;
+	/*
+	 * Page Execution Lifecycle
+	 */
+	public function onRun() {
+		$this->prepareVars();
 	}
 
-	public function bottles()
-	{
-		$drink = Drink::where('drink_category_id', '=', 2)
-		              ->get();
-
-		return $drink;
+	/*
+	 * Page Partial Updates through Ajax
+	 */
+	public function onFilterDrinkCategories() {
+		$this->prepareVars();
 	}
 
-	public function craftBeer()
-	{
-		$drink = Drink::where('drink_category_id', '=', 3)
-		              ->get();
+	/*
+	 * if Input Options from Select Menu,
+	 * add them to Array foodcategory (post('Filter', [])
+	 * @var foods become available through scope Method from Plugin Class
+	 * @var categories lists names of Categories for Select Menu
+	 */
+	public function prepareVars() {
+		$options = post('Filter', []);
 
-		return $drink;
-	}
-
-	public function ciderDraught()
-	{
-		$drink = Drink::where('drink_category_id', '=', 4)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function ciderBottles()
-	{
-		$drink = Drink::where('drink_category_id', '=', 5)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function wine()
-	{
-		$drink = Drink::where('drink_category_id', '=', 6)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function whiskey()
-	{
-		$drink = Drink::where('drink_category_id', '=', 7)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function spirits()
-	{
-		$drink = Drink::where('drink_category_id', '=', 8)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function longDrinks()
-	{
-		$drink = Drink::where('drink_category_id', '=', 9)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function shots()
-	{
-		$drink = Drink::where('drink_category_id', '=', 10)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function spiritsBottles()
-	{
-		$drink = Drink::where('drink_category_id', '=', 11)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function combiBottles()
-	{
-		$drink = Drink::where('drink_category_id', '=', 12)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function nonAlcoholicDrinks()
-	{
-		$drink = Drink::where('drink_category_id', '=', 13)
-		              ->get();
-
-		return $drink;
-	}
-
-	public function hotDrinks()
-	{
-		$drink = Drink::where('drink_category_id', '=', 14)
-		              ->get();
-
-		return $drink;
+		$this->page['drinks'] = Drink::listFrontendDrink($options);
+		$this->page['drinkcategories'] = DrinkCategory::all();
 	}
 }
