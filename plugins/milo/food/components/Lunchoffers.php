@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Milo\Food\Models\Lunchoffer;
+use Carbon\Carbon;
 
 class Lunchoffers extends ComponentBase
 {
@@ -24,5 +25,57 @@ class Lunchoffers extends ComponentBase
     public function onRun() {
         $this->page['lunchoffers'] = Lunchoffer::listLunchoffers();
         $this->page['todays_food'] = Lunchoffer::todayLunchoffers();
+
+        $this->page['week_start_date'] = Carbon::now()
+                                        ->startOfWeek()
+                                        ->format('d.m.Y');
+        $this->page['week_end_date'] = Carbon::now()
+                                        ->startOfWeek()
+                                        ->addDays(4)
+                                        ->format('d.m.Y');
+
+        $this->page['lunchoffer_daily'] = $this->lunchOfferDaily();
+        $this->page['lunchoffer_weekly'] = $this->lunchOfferWeekly();
+        $this->page['lunchoffer_always_hot'] = $this->lunchOfferAlwaysHot();
     }
+
+    public function lunchOfferDaily()
+    {
+        $food = Lunchoffer::where('date', '>=', Carbon::now())
+                            ->orderBy('date', 'asc')
+                            ->with('food')
+                            ->get();
+
+        // dd($lunchoffers);
+
+        return $food;
+
+    }
+
+    public function lunchOfferWeekly()
+    {
+        $food = Lunchoffer::where('date_until', '>=', Carbon::now())
+                            ->where('always_hot', '=', false)
+                            ->orderBy('date', 'asc')
+                            ->with('food')          
+                            ->get();
+
+        return $food;
+
+    }
+
+    public function lunchOfferAlwaysHot()
+    {
+        $food = Lunchoffer::where('date_until', '>=', Carbon::now())
+                            ->where('always_hot', '=', true)
+                            ->orderBy('date', 'asc')
+                            ->with('food')
+                            ->get();
+
+        //dd($lunchoffers);
+
+        return $food;
+
+    }
+
 }

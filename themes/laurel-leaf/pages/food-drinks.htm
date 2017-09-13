@@ -5,7 +5,7 @@ layout = default
 
 [lunchoffers]
 [foods]
-[drinks] 
+[drinks]
 ==
 
 
@@ -15,13 +15,19 @@ layout = default
     <div class="row">
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
-                <a href="#lunchoffer" aria-controls="lunchoffer" role="tab" data-toggle="tab">Lunchoffer</a>
+                <a href="#lunchoffer" aria-controls="lunchoffer" role="tab" data-toggle="tab">
+                    Lunchoffer
+                </a>
             </li>
             <li role="presentation">
-                <a href="#food" aria-controls="food" role="tab" data-toggle="tab">Food</a>
+                <a href="#food" aria-controls="food" role="tab" data-toggle="tab">
+                    Food
+                </a>
             </li>
             <li role="presentation">
-                <a href="#drinks" aria-controls="drinks" role="tab" data-toggle="tab">Drinks</a>
+                <a href="#drinks" aria-controls="drinks" role="tab" data-toggle="tab">
+                    Drinks
+                </a>
             </li>
         </ul>
         <br>
@@ -35,211 +41,180 @@ layout = default
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="text-center relativ">
-                        <h1 class="lunchoffer">Mittagsangebot</h1>
-                        <p><em>wähle täglich Montags - Freitags jeweils von 11°° - 17°° aus 3 unterschiedlichen Menüs mit Suppe:</em></p>
+                        <h1 class="lunchoffer">
+                            Mittagsangebot
+                        </h1>
+                        <p><em>
+                                wähle täglich Montags - Freitags jeweils von 11°° - 17°° aus 3 unterschiedlichen Menüs
+                                mit Suppe:
+                            </em></p>
+                        <div class="text-center weekday">
+                            {{ week_start_date }} - {{ week_end_date }}
+                        </div>
+                        <hr>
+                        <p class="text-center">
+                            <em>
+                                -- {% content 'food_soup.txt' %} --
+                            </em>
+                        </p>
                     </div>
                 </div>
             </div>
 
-            
+            {% if lunchoffer_weekly|length %}
 
-            {% if lunchoffers|length %}
+            <div class="row">
 
-                <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
 
-                    <div class="col-sm-6 col-sm-offset-3">
+                    {% for weekly_food in lunchoffer_weekly %}
 
-                    {% set weekdateArray = [] %}
+                        <div class="row">
+                            <div class="col-xs-9">
 
-                    {% set soups = '' %}
+                                <p id="item-{{ weekly_food.food.id }}" class="index">
+                                    <strong class="
+                                {% if weekly_food.new == true %}
+                                {% set class = 'new ' %}
+                                {% endif %}
 
-                    {% for weekly_food in lunchoffers %}
+                                {% if weekly_food.food.vegetarisch == true %}
+                                {% set class = class ~ 'vegetarian ' %}
+                                {% endif %}
 
-                        {% if weekly_food.all_week %}
-                        {% if weekly_food.date|date('d.m.Y') not in weekdateArray %}
-                            <div class="text-center weekday">{{ weekly_food.date|date('d.m.Y') }} - {{ weekly_food.date_until|date('d.m.Y') }}</div>
-                            <hr>
-                            {% set weekdateArray = weekly_food.date|date('d.m.Y') %}
-                        {% endif %}
+                                {% if weekly_food.food.vegan == true %}
+                                {% set class = class ~ 'vegan ' %}
+                                {% endif %}
 
-                        {% if soups == '' %}
-                            <p class="text-center"><em>-- {% content 'food_soup.txt' %} --</em></p>
-                        {% set soups = 1 %}
-                        {% endif %}
-                            <div class="row">
-                                <div class="col-xs-9">
-                                
-                                    <p id="item-{{ weekly_food.id }}" class="index">
-                                        <strong class="
-                                            {% if weekly_food.new == true %}
-                                                {% set class = 'new ' %}
-                                            {% endif %}
+                                {% if weekly_food.food.spicy == true %}
+                                {% set class = class ~ 'spicy ' %}
+                                {% endif %}
 
-                                            {% if weekly_food.vegetarisch == true %}
-                                                {% set class = class ~ 'vegetarian ' %}
-                                            {% endif %}
+                                {{ class }}">
 
-                                            {% if weekly_food.vegan == true %}
-                                                {% set class = class ~ 'vegan ' %}
-                                            {% endif %}
-
-                                            {% if weekly_food.spicy == true %}
-                                                {% set class = class ~ 'spicy ' %}
-                                            {% endif %}
-
-                                            {{ class }}">
-
-                                            {{ weekly_food.name }} 
-                                        </strong>
-                                        <sup>
-                                            <small>
-                                                {% for allergene in weekly_food.allergene %}
-                                                    {{ allergene }}
-                                                {% endfor %}
-                                            </small>
-                                        </sup>
-                                        {% if weekly_food.description %}
-                                            <br> {{ weekly_food.description }}
-                                        {% endif %}
-                                    </p>
-                                </div>
-                                <div class="col-xs-3 text-right">
-                                    € {{ weekly_food.offer_price|number_format(2, ',', '.') }}
-                                </div>
+                                        {{ weekly_food.food.name }}
+                                    </strong>
+                                    <sup>
+                                        <small>
+                                            {% for allergene in weekly_food.food.allergene %}
+                                                {{ allergene }}
+                                            {% endfor %}
+                                        </small>
+                                    </sup>
+                                    {% if weekly_food.food.description %}
+                                        <br> {{ weekly_food.food.description }}
+                                    {% endif %}
+                                </p>
                             </div>
-                        {% else %}
-                        {% endif %}
+                            <div class="col-xs-3 text-right">
+                                € {{ weekly_food.offer_price|number_format(2, ',', '.') }}
+                            </div>
+
+
+                        </div>
 
                     {% endfor %} <!-- Weekly Food End -->
 
-                        {% set dateArray = [] %} 
 
-                        {% for food in lunchoffers %}
+                    {% for food in lunchoffer_daily %}
 
-                            {% set class = '' %}
+                        {% set class = '' %}
 
-                            {% if food.always_hot %}
-                            {% else %}
-
-                            {% if date(food.date) >= date() %}
-
-                            {% if food.date|date('d.m.Y') not in dateArray %} 
-                            <div class="row">
-                                <div class="col-sm-12 text-center weekday">
-                               
-                                        {{ food.date|strftime('%A, %d.%m.%Y') }} 
-                                        <hr>
-                                
-                                {% set dateArray = food.date|date('d.m.Y') %}
-                                </div>
-
+                        <div class="row">
+                            <div class="col-sm-12 text-center weekday">
+                                {{ food.date|strftime('%A, %d.%m.%Y') }}
+                                <hr>
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <p id="item-{{ food.food.id }}" class="index">
+                                    <strong class="
+                            {% if food.food.new == true %}
+                            {% set class = 'new ' %}
                             {% endif %}
 
+                            {% if food.food.vegetarisch == true %}
+                            {% set class = class ~ 'vegetarian ' %}
                             {% endif %}
 
-                            {% if not food.all_week %}
-                            <div class="row">
-                                <div class="col-xs-9">
-                                
-                                    <p id="item-{{ food.id }}" class="index">
-                                        <strong class="
-                                            {% if food.new == true %}
-                                                {% set class = 'new ' %}
-                                            {% endif %}
-
-                                            {% if food.vegetarisch == true %}
-                                                {% set class = class ~ 'vegetarian ' %}
-                                            {% endif %}
-
-                                            {% if food.vegan == true %}
-                                                {% set class = class ~ 'vegan ' %}
-                                            {% endif %}
-
-                                            {% if food.spicy == true %}
-                                                {% set class = class ~ 'spicy ' %}
-                                            {% endif %}
-
-                                            {{ class }}">
-
-                                            {{ food.name }} 
-                                        </strong>
-                                        <sup>
-                                            <small>
-                                                {% for allergene in food.allergene %}
-                                                    {{ allergene }}
-                                                {% endfor %}
-                                            </small>
-                                        </sup>
-                                        {% if food.description %}
-                                            <br> {{ food.description }}
-                                        {% endif %}
-                                    </p>
-                                </div>
-                                <div class="col-xs-3 text-right">
-                                    € {{ food.offer_price|number_format(2, ',', '.') }}
-                                </div>
-                            </div> <!-- End row of regular Menues -->
+                            {% if food.food.vegan == true %}
+                            {% set class = class ~ 'vegan ' %}
                             {% endif %}
 
-                        {% endif %}
+                            {% if food.food.spicy == true %}
+                            {% set class = class ~ 'spicy ' %}
+                            {% endif %}
 
-                        {% endfor %}
+                            {{ class }}">
 
+                            {{ food.food.name }}
+                            </strong>
+                                    <sup>
+                                        <small>
+                                            {% for allergene in food.food.allergene %}
+                                                {{ allergene }}
+                                            {% endfor %}
+                                        </small>
+                                    </sup>
+                                    {% if food.food.description %}
+                                        <br> {{ food.food.description }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="col-xs-3 text-right">
+                                € {{ food.offer_price|number_format(2, ',', '.') }}
+                            </div>
+                        </div> <!-- End row of regular Menues -->
 
-
-                    </div>
-
+                    {% endfor %}
 
                     <!-- Always Hot -->
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <br>
-                        <br>
-                        <hr>
+                    <br>
+                    <br>
+                    <hr>
 
-                        <h3 class="text-center">.. always Hot!</h3>
+                    <h3 class="text-center">.. always Hot!</h3>
 
-                        {% for food in lunchoffers %}
+                    {% for food in lunchoffer_always_hot %}
 
-                            {% set class = '' %}
-
-                            {% if not food.always_hot %}
-                            {% else %}    
+                        {% set class = '' %}
 
                             <div class="row">
                                 <div class="col-xs-9">
-                                
-                                    <p id="item-{{ food.id }}" class="index">
+
+                                    <p id="item-{{ food.food.id }}" class="index">
                                         <strong class="
-                                            {% if food.new == true %}
-                                                {% set class = 'new ' %}
-                                            {% endif %}
+                        {% if food.food.new == true %}
+                        {% set class = 'new ' %}
+                        {% endif %}
 
-                                            {% if food.vegetarisch == true %}
-                                                {% set class = class ~ 'vegetarian ' %}
-                                            {% endif %}
+                        {% if food.food.vegetarisch == true %}
+                        {% set class = class ~ 'vegetarian ' %}
+                        {% endif %}
 
-                                            {% if food.vegan == true %}
-                                                {% set class = class ~ 'vegan ' %}
-                                            {% endif %}
+                        {% if food.food.vegan == true %}
+                        {% set class = class ~ 'vegan ' %}
+                        {% endif %}
 
-                                            {% if food.spicy == true %}
-                                                {% set class = class ~ 'spicy ' %}
-                                            {% endif %}
+                        {% if food.food.spicy == true %}
+                        {% set class = class ~ 'spicy ' %}
+                        {% endif %}
 
-                                            {{ class }}">
+                        {{ class }}">
 
-                                            {{ food.name }} 
-                                        </strong>
+                        {{ food.food.name }}
+                        </strong>
                                         <sup>
                                             <small>
-                                                {% for allergene in food.allergene %}
+                                                {% for allergene in food.food.allergene %}
                                                     {{ allergene }}
                                                 {% endfor %}
                                             </small>
                                         </sup>
-                                        {% if food.description %}
-                                            <br> {{ food.description }}
+                                        {% if food.food.description %}
+                                            <br> {{ food.food.description }}
                                         {% endif %}
                                     </p>
                                 </div>
@@ -248,36 +223,37 @@ layout = default
                                 </div>
                             </div>
 
-                        {% endif %}
+                {% endfor %}
 
-                        {% endfor %}
-                    </div>  
+                {% else %}
+
+                    <div class="text-center">
+                        <p>
+                            ... derzeit kein Mittagsangebot ...
+                        </p>
+                    </div>
+
+                {% endif %}
+
+                <br>
+                <hr>
+                <p>Hinweis: Wir akzeptieren auch Sodexo Gutscheine.</p>
+
 
                 </div>
 
-            {% else %}
 
-                <div class="text-center">
-                    <p>
-                        ... derzeit kein Mittagsangebot ...
-                    </p>
-                </div>
+            </div>
 
-            {% endif %}
-
-            <br>
-            <hr>
-            <p>Hinweis: Wir akzeptieren auch Sodexo Gutscheine.</p>
-
-                
         </div> <!-- End #lunchoffer -->
+
 
         <!-- Food -->
         <div role="tabpanel" class="tab-pane fade in" id="food">
             <div class="text-center">
                 <h1 class="hidden-xs">FOOD</h1>
             </div>
-            
+
 
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-1 hidden-sm hidden-md hidden-lg">
