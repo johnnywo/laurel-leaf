@@ -10,6 +10,7 @@ $(document).tooltip({
  * Auto hide navbar
  */
 jQuery(document).ready(function($){
+
     var $header = $('.navbar-autohide'),
         scrolling = false,
         previousTop = 0,
@@ -46,6 +47,8 @@ jQuery(document).ready(function($){
         scrolling = false
     }
 
+
+    // AJAX Requests for Food/Drinks
     (function($){
 
         $('#FoodCategoriesFilter').on('change', 'input, select', function(){
@@ -58,9 +61,20 @@ jQuery(document).ready(function($){
             $form.request();
         });
 
-
     })(jQuery);
 
-    $('select').niceSelect();
+    // JS Plugin niceSelect
+        $('select').niceSelect();
+
+   // Javascript to enable link to tab
+        var url = document.location.toString();
+        if (url.match('#')) {
+            $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+        } 
+        // Change hash for page-reload 
+        $('.nav-tabs a').on('shown.bs.tab', function (e) {
+            window.location.hash = e.target.hash;
+            window.scrollTo(0, 0);
+        })
 
 });

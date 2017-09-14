@@ -1,0 +1,110 @@
+subject = "Autoreply: Tischreservierungsanfrage"
+layout = "guuest"
+==
+
+Hi {{ name }},
+
+danke für deine Tischreservierungsanfrage,
+
+Datum: {{ date }}
+Zeit: {{ time }}
+Personen: {{ people }}
+
+im {% if smoker == "nonsmoker" %}Nichtraucher Bereich{% elseif smoker == "smoker" %}Raucherbereich{% else %}Laurel Leaf Pub{% endif %}.
+
+Nachricht:
+{{ sometext }}
+
+Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfrage zu bestätigen oder abzulehnen.
+
+==
+
+<!-- body -->
+<table class="body-wrap" bgcolor="#f6f6f6">
+    <tr>
+        <td></td>
+        <td class="container" bgcolor="#FFFFFF">
+
+            <!-- content -->
+            <div class="content">
+                <table>
+                    <tr>
+                        <td>
+                            <p>Auto System E-Mail —> deine Anfrage hat unsere Mailbox erreicht <br>
+                                und wird in Kürze beantwortet. <br>
+                                <br>
+                                <strong>Diese Nachricht ist keine Reservierungsbestätigung!</strong></p>
+                            <br>
+                            <p>Hi {{ name }},<br>
+                                danke für deine Tischreservierungsanfrage,
+                            </p>
+
+                            <table>
+                                <tr>
+                                    <td>Datum:</td>
+                                    <td><strong>{{ date|date("d.m.Y") }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Zeit:</td>
+                                    <td><strong>{{ time }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Personen:</td>
+                                    <td><strong>{{ people }}</strong></td>
+                                </tr>
+                            </table>
+
+                            <p>im {% if smoker == "nonsmoker" %}<strong>Nichtraucher Bereich</strong>{% elseif smoker == "smoker" %}<strong>Raucher Bereich</strong>{% else %}Laurel Leaf Pub{% endif %}.</p>
+
+                            <p>Nachricht: <br>
+                            {{ sometext }}</p>
+
+                            <p>Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfrage zu bestätigen oder abzulehnen.</p>
+
+                            <p>Bis bald im Laurel Leaf, <br>
+                                die Laurel Leaf Crew
+                            </p>
+
+                            <p>
+                                Laurel Leaf Irish Pub Vienna <br>
+                                Theobaldgasse 15 <br>
+                                A-1060 Wien <br>
+                                T: +43 1 585 68 65
+                            </p>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /content -->
+
+        </td>
+        <td></td>
+    </tr>
+</table>
+<!-- /body -->
+
+<!-- footer -->
+<table class="footer-wrap">
+    <tr>
+        <td></td>
+        <td class="container">
+
+            <!-- content -->
+            <div class="content">
+                <table>
+                    <tr>
+                        <td align="center">
+                            <p><a href="http://www.laurel-leaf.at">&copy;2017 Laurel Leaf Irish Pub</a></p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /content -->
+
+        </td>
+        <td></td>
+    </tr>
+</table>
+<!-- /footer -->
+

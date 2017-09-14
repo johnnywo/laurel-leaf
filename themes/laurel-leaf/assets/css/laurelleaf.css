@@ -342,6 +342,21 @@ h3.menue-header + hr{
     border-color: #189950;
 }
 
+.p50{
+    padding: 50px;
+}
+
+.chalkboard {
+    background: url('/themes/laurel-leaf/assets/images/chalkboard.jpg');
+    background-size: contain;
+    color: white;
+}
+
+.chalkboard p{
+    font-family: 'Indie Flower', cursive;
+    font-size: 150%;
+}
+
 /* bigger Screens */
 @media screen and (min-width: 768px) {
     .navbar {
@@ -377,24 +392,26 @@ h3.menue-header + hr{
     }
 
     h1.lunchoffer {
-    background: url('/themes/laurel-leaf/assets/images/lunchoffer-3leafs.png');
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 30px;
+        background: url('/themes/laurel-leaf/assets/images/lunchoffer-3leafs.png');
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 30px;
+    }
+
+    h1.lunchoffer::after {
+        content: "";
+        background: url('/themes/laurel-leaf/assets/images/lunchoffer-3leafs.png');
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 30px;  
+        display: inline-block;
+        position: absolute;
+        width: 130px;
+        height: 50px;
+    }
 }
 
-h1.lunchoffer::after {
-    content: "";
-    background: url('/themes/laurel-leaf/assets/images/lunchoffer-3leafs.png');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 30px;  
-    display: inline-block;
-    position: absolute;
-    width: 130px;
-    height: 50px;
-}
-}
+
 
 /* iPhones, Smartphones Portrait */
 @media screen and (max-width: 767px) {
@@ -448,5 +465,18 @@ h1.lunchoffer::after {
 
     .table-responsive{
         border: none;
+    }
+
+    .chalkboard{
+        background-size: cover;
+    }
+
+    .chalkboard p {
+        font-family: 'Indie Flower', cursive;
+        font-size: 120%;
+    }
+
+    .p50{
+        padding: 30px;
     }
 }

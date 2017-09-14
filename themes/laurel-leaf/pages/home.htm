@@ -4,23 +4,25 @@ layout = "default"
 
 [lunchoffers]
 ==
+<!-- Hero Section -->
 <div class="container-fluid">
     <div class="row">
-        {% partial 'site/heroimage.htm' %}
+       {#  {% partial 'site/heroimage.htm' %} #}
     </div>
 </div>
 
-<div class="container">
-
-	<div class="row">
-		<div class="col-sm-6">
+<!-- Content Section -->
+<div class="container-fluid">
+	<div class="row chalkboard">
+		<div class="col-sm-6 col-sm-offset-3 p50">
 			{% partial "food_today.htm" %}
 		</div>
-		<div class="col-sm-6">
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
 			{% partial "site/sportstv.htm" %}
 		</div>
 	</div>
-	
 </div>
 
 

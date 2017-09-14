@@ -1,0 +1,21 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    datetime:
+        label: Date and Time
+    name:
+        label: Name
+        searchable: true
+    email:
+        label: E-Mail
+        searchable: true
+    people:
+        label: People
+    area:
+        label: Area
+        searchable: true
+    message:
+        label: Message
+        searchable: true

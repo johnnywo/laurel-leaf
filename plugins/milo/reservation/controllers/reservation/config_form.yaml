@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Reservation
+
+# Model Form Field configuration
+form: $/milo/reservation/models/reservation/fields.yaml
+
+# Model Class name
+modelClass: Milo\Reservation\Models\Reservation
+
+# Default redirect location
+defaultRedirect: milo/reservation/reservation
+
+# Create page
+create:
+    title: Create Reservation
+    redirect: milo/reservation/reservation/update/:id
+    redirectClose: milo/reservation/reservation
+
+# Update page
+update:
+    title: Edit Reservation
+    redirect: milo/reservation/reservation
+    redirectClose: milo/reservation/reservation
+
+# Preview page
+preview:
+    title: Preview Reservation

@@ -15,11 +15,6 @@ layout = default
     <div class="row">
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
-                <a href="#lunchoffer" aria-controls="lunchoffer" role="tab" data-toggle="tab">
-                    Lunchoffer
-                </a>
-            </li>
-            <li role="presentation">
                 <a href="#food" aria-controls="food" role="tab" data-toggle="tab">
                     Food
                 </a>
@@ -29,6 +24,11 @@ layout = default
                     Drinks
                 </a>
             </li>
+            <li role="presentation">
+                <a href="#lunchoffer" aria-controls="lunchoffer" role="tab" data-toggle="tab">
+                    Lunchoffer
+                </a>
+            </li>
         </ul>
         <br>
     </div>
@@ -36,8 +36,66 @@ layout = default
 
     <!-- Tab panes -->
     <div class="tab-content">
+
+        <!-- Food -->
+        <div id="food" role="tabpanel" class="tab-pane fade in active">
+            <div class="text-center">
+                <h1 class="hidden-xs">FOOD</h1>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 hidden-sm hidden-md hidden-lg">
+                    {{ form_ajax('foods::onFilterCategories', { update: { 'site/food/foodwrapper': '#foodWrapper' } }) }}
+                    <div id="FoodCategoriesFilter">
+                        <select class="wide" name="Filter[foodcategory]">
+                            <option value="">Alle Speisen</option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {{ form_close() }}
+                </div>
+            </div>
+
+            <div id="foodWrapper">{% partial 'site/food/foodwrapper' %}</div>
+
+            {% partial 'site/food/bestellsdazu' %}
+
+            {% partial 'site/food/spanferkel' %}
+
+            {% partial 'site/food/allergene' %}
+
+        </div>
+
+        <!-- Drinks -->
+        <div id="drinks" role="tabpanel" class="tab-pane fade in">
+            <div class="text-center">
+                <h1 class="hidden-xs">DRINKS</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 hidden-sm hidden-md hidden-lg">
+                    {{ form_ajax('drinks::onFilterDrinkCategories', { update: { 'site/drink/drinkwrapper': '#drinkWrapper' } }) }}
+                    <div id="DrinkCategoriesFilter">
+                        <select class="wide" name="Filter[drinkcategory]">
+                            <option value="">Alle Drinks</option>
+                            {% for category in drinkcategories %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {{ form_close() }}
+                </div>
+            </div>
+
+            <div id="drinkWrapper">{% partial 'site/drink/drinkwrapper' %}</div>
+
+        </div>
+
         <!-- Lunchoffer -->
-        <div id="lunchoffer" role="tabpanel" class="tab-pane fade in active">
+        <div id="lunchoffer" role="tabpanel" class="tab-pane fade in">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="text-center relativ">
@@ -246,64 +304,6 @@ layout = default
             </div>
 
         </div> <!-- End #lunchoffer -->
-
-
-        <!-- Food -->
-        <div role="tabpanel" class="tab-pane fade in" id="food">
-            <div class="text-center">
-                <h1 class="hidden-xs">FOOD</h1>
-            </div>
-
-
-            <div class="row">
-                <div class="col-xs-10 col-xs-offset-1 hidden-sm hidden-md hidden-lg">
-                    {{ form_ajax('foods::onFilterCategories', { update: { 'site/food/foodwrapper': '#foodWrapper' } }) }}
-                    <div id="FoodCategoriesFilter">
-                        <select class="wide" name="Filter[foodcategory]">
-                            <option value="">Alle Speisen</option>
-                            {% for category in categories %}
-                                <option value="{{ category.id }}">{{ category.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    {{ form_close() }}
-                </div>
-            </div>
-
-            <div id="foodWrapper">{% partial 'site/food/foodwrapper' %}</div>
-
-            {% partial 'site/food/bestellsdazu' %}
-
-            {% partial 'site/food/spanferkel' %}
-
-            {% partial 'site/food/allergene' %}
-
-        </div>
-
-        <!-- Drinks -->
-        <div role="tabpanel" class="tab-pane dropdown fade" id="drinks">
-            <div class="text-center">
-                <h1 class="hidden-xs">DRINKS</h1>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-10 col-xs-offset-1 hidden-sm hidden-md hidden-lg">
-                    {{ form_ajax('drinks::onFilterDrinkCategories', { update: { 'site/drink/drinkwrapper': '#drinkWrapper' } }) }}
-                    <div id="DrinkCategoriesFilter">
-                        <select class="wide" name="Filter[drinkcategory]">
-                            <option value="">Alle Drinks</option>
-                            {% for category in drinkcategories %}
-                                <option value="{{ category.id }}">{{ category.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    {{ form_close() }}
-                </div>
-            </div>
-
-            <div id="drinkWrapper">{% partial 'site/drink/drinkwrapper' %}</div>
-
-        </div>
     </div>
 
 

@@ -51,7 +51,7 @@ class Foods extends ComponentBase
 		$options = post('Filter', []);
 
 		$this->page['foods'] = Food::listFrontendFood($options);
-		$this->page['categories'] = FoodCategory::all();
+		$this->page['categories'] = FoodCategory::where('id', '!=', 7)->get();
 	}
 
 
