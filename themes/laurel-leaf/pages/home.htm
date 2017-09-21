@@ -3,26 +3,61 @@ url = "/"
 layout = "default"
 
 [lunchoffers]
+[games]
 ==
 <!-- Hero Section -->
 <div class="container-fluid">
     <div class="row">
-       {#  {% partial 'site/heroimage.htm' %} #}
+         {# {% partial 'site/heroimage.htm' %} #}
     </div>
-</div>
+</div> <!-- End Hero Section -->
 
-<!-- Content Section -->
-<div class="container-fluid">
-	<div class="row chalkboard">
-		<div class="col-sm-6 col-sm-offset-3 p50">
-			{% partial "food_today.htm" %}
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
-			{% partial "site/sportstv.htm" %}
+
+<!-- Today's Food Section -->
+{% if todays_food|length %}
+<div class="jumbotron chalkboard">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				{% partial "food_today.htm" %}
+			</div>
 		</div>
 	</div>
 </div>
+{% endif %} <!-- End Today's Food Section -->
+
+<!-- Sports TV Section -->
+{% if sportstv|length %}
+<div class="jumbotron sportstv">
+	<div class="container">
+		<div class="row">	
+			<div class="col-sm-6 col-sm-offset-6">
+				<h1>Sports TV</h1>
+				{% partial "site/sportstv.htm" %}
+			</div>
+		</div>
+	</div> 
+</div>
+{% endif %} <!-- End Sports TV Section -->
+
+<!-- Billard & Darts Section -->
+<div class="jumbotron red-gradient">
+	<div class="bricks">	
+		<div class="container">
+			<div class="text-center">
+				<h1>Billard &amp; Darts</h1>
+			</div>	
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-2">
+					<img src="{{ 'assets/images/billard.png'|theme }}" alt="play Billard in Laurel Leaf" class="img-responsive img-rotate-up">
+				</div>
+				<div class="col-sm-4">
+					<img src="{{ 'assets/images/darts.png'|theme }}" alt="play Darts in Laurel Leaf" class="img-responsive img-rotate-down">
+				</div>
+			</div>
+		</div>
+	</div>
+</div> <!-- End Billard & Darts Section -->
+
 
 

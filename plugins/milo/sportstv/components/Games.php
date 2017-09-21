@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Milo\Sportstv\Models\Game;
+use Carbon\Carbon;
 
 class Games extends ComponentBase
 {
@@ -38,4 +39,11 @@ class Games extends ComponentBase
 
 		return $todays_games;
     }
+
+    public function onRun()
+	{
+	    $this->page['sportstv'] = Game::where('datetime', '>=', Carbon::now()->subHours(2))
+	                        ->orderBy('datetime', 'asc')
+	                        ->get();
+	}
 }

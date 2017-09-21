@@ -1,65 +1,58 @@
       
-{% if lunchoffers|length %}
 
-    <p class="text-center">Mittagsangebot {{ "now"|date("l, d.m.Y") }}</p>
+<p class="text-center">Mittagsangebot {{ "now"|date("l, d.m.Y") }}</p>
 
-    <p class="text-center"><em>{% content 'food_soup.txt' %}</em></p>
+<p class="text-center"><em>{% content 'food_soup.txt' %}</em></p>
 
-    {% for today in todays_food %}
-    
-            <div class="row">
-                <div class="col-xs-9">
-                
-                    <p id="item-{{ today.food.id }}" class="index">
-                        <strong class="
-                            {% if today.food.new == true %}
-                                {% set class = 'new ' %}
-                            {% endif %}
+{% for today in todays_food %}
 
-                            {% if today.food.vegetarisch == true %}
-                                {% set class = class ~ 'vegetarian ' %}
-                            {% endif %}
+<div class="row">
+    <div class="col-xs-9">
 
-                            {% if today.food.vegan == true %}
-                                {% set class = class ~ 'vegan ' %}
-                            {% endif %}
+        <p id="item-{{ today.food.id }}" class="index">
+            <strong class="
+            {% if today.food.new == true %}
+            {% set class = 'new ' %}
+            {% endif %}
 
-                            {% if today.food.spicy == true %}
-                                {% set class = class ~ 'spicy ' %}
-                            {% endif %}
+            {% if today.food.vegetarisch == true %}
+            {% set class = class ~ 'vegetarian ' %}
+            {% endif %}
 
-                            {{ class }}">
+            {% if today.food.vegan == true %}
+            {% set class = class ~ 'vegan ' %}
+            {% endif %}
 
-                            {{ today.food.name }} 
-                        </strong>
-                        <sup>
-                            <small>
-                                {% for allergene in today.food.allergene %}
-                                    {{ allergene }}
-                                {% endfor %}
-                            </small>
-                        </sup>
-                        {% if today.food.description %}
-                            <br> {{ today.food.description }}
-                        {% endif %}
-                    </p>
-                </div>
-                <div class="col-xs-3 text-right">
-                    <p>€ {{ today.offer_price|number_format(2, ',', '.') }}</p>
-                </div>
-            </div>
+            {% if today.food.spicy == true %}
+            {% set class = class ~ 'spicy ' %}
+            {% endif %}
 
-    {% endfor %} <!-- Today Food End -->
- 
+            {{ class }}">
 
-    <div class="text-center">
-        <a class="btn btn-info" href="/food-drinks/#lunchoffer">
-            zum Wochenmenü
-        </a>
-    </div>
+            {{ today.food.name }} 
+        </strong>
+        <sup>
+            <small>
+                {% for allergene in today.food.allergene %}
+                {{ allergene }}
+                {% endfor %}
+            </small>
+        </sup>
+        {% if today.food.description %}
+        <br> {{ today.food.description }}
+        {% endif %}
+    </p>
+</div>
+<div class="col-xs-3 text-right">
+    <p>€ {{ today.offer_price|number_format(2, ',', '.') }}</p>
+</div>
+</div>
 
-{% else %}
+{% endfor %} <!-- Today Food End -->
 
-<!-- derzeit kein Mittagsangebot -->
 
-{% endif %}
+<div class="text-center">
+    <a class="btn btn-info" href="/food-drinks/#lunchoffer">
+        zum Wochenmenü
+    </a>
+</div>

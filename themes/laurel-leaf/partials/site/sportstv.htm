@@ -1,32 +1,44 @@
-==
-use \milo\sportstv\models\game;
-use Carbon\Carbon;
-function onStart()
-{
-    $this['sportstv'] = Game::where('datetime', '>=', Carbon::now())
-                        ->orderBy('datetime', 'asc')
-                        ->get();
-}
-==
-<div class="table-responsive">
-    <table class="table">
-        {% set newArray = [] %}
-        {% for item in sportstv %}
-            <tr>
-                {% if item.datetime|date('d.m.Y') not in newArray %}
-                <td>{{ item.datetime|date('d.m.Y') }}</td>
-                {% set newArray = newArray|merge([item.datetime|date('d.m.Y')]) %}
-                {% else %}
-                <td></td>
-                {% endif %}
-                <td>{{ item.datetime|date('H:i') }}</td>
-                {% if item.home_team.id == 1 %}
-                <td><strong><i>CONFERENCE</i></strong></td>
-                {% else %}
-                <td><strong>{{ item.home_team.name }} v {{ item.away_team.name }}</strong></td>
-                {% endif %}
-                <td>{{ item.league.name }}</td>
-            </tr>
+{% set newArray = [] %}
+
+<div id="sports-tv-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators hidden">
+        <li data-target="#sports-tv-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#sports-tv-carousel" data-slide-to="1" class=""></li>
+        <li data-target="#sports-tv-carousel" data-slide-to="2" class=""></li>
+    </ol>
+    <div class="carousel-inner">
+
+        {% set first = 0 %}
+
+        {% for chunked in sportstv.chunk(5) %}
+        <div class="item 
+            {% if first == 0 %}
+        active
+            {% endif %}
+            {% set first = first + 1 %}
+        ">
+            {% for item in chunked %}
+            {% if item.datetime|date('d.m.Y') not in newArray %}
+            
+            <p class="date">{{ item.datetime|date('D, d.m.Y') }}</p>
+            {% set newArray = newArray|merge([item.datetime|date('d.m.Y')]) %}
+            {% else %}
+            {% endif %}
+            <p>{{ item.datetime|date('H:i') }}
+            {% if item.home_team.id == 1 %}
+            <strong><i>Conference</i></strong>
+            {% else %}
+            <strong>{{ item.home_team.name }}</strong> v <strong>{{ item.away_team.name }}</strong>
+            {% endif %}
+            <i>{{ item.league.name }}</i></p>
+            {% endfor %}
+        </div>
         {% endfor %}
-    </table>
+        
+    </div>
+    <a class="left carousel-control" href="#sports-tv-carousel" data-slide="prev"><span class="icon icon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#sports-tv-carousel" data-slide="next"><span class="icon icon-chevron-right"></span></a>
 </div>
+
+
+

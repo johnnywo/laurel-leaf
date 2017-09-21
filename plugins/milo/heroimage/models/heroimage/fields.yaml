@@ -9,6 +9,7 @@ fields:
         mode: image
         imageHeight: 400
         imageWidth: 1200
+        comment: 1200x400 Foto.
     title:
         label: Titel
         span: left

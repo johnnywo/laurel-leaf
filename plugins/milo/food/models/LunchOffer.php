@@ -29,7 +29,7 @@ class LunchOffer extends Model
     public $hasOne = [];
     public $hasMany = [];
     public $belongsTo = [
-        'food' => ['Milo\Food\Models\Food', 'key' => 'food_id', 'otherKey' => 'id'] 
+        'food' => ['Milo\Food\Models\Food', 'key' => 'food_id', 'otherKey' => 'id']
         ];
     public $belongsToMany = [];
     public $morphTo = [];
@@ -40,7 +40,7 @@ class LunchOffer extends Model
 
     public function scopeListLunchoffers($query) 
     {
-        $query = DB::select('SELECT * 
+        $query = DB::select('SELECT *
                             FROM milo_food_lunchoffers
                             LEFT JOIN milo_food_foods 
                             ON milo_food_lunchoffers.`food_id` = milo_food_foods.id

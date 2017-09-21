@@ -6,14 +6,45 @@ body {
     padding-top: 150px;
 }
 
+#footer{
+    background: #333333;
+    color: white;
+}
+
+.navbar-inverse {
+    background-color: #212121;
+    border-color: #212121;
+}
+
 h1, h2, h3 {
     font-family: 'Kanit', sans-serif;
     font-weight: 800;
     color: inherit;
 }
 
+h1{
+    font-size: 41px;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+}
+
+.jumbotron.red-gradient h1 {
+    color: white;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+    color: #424242;
+    font-size: 41px;
+}
+
+.jumbotron p {
+    font-size: inherit;
+}
+
 /* disable horizontal scrolling !!! headache saver */
-.container{
+.container {
     overflow: hidden;
 }
 
@@ -23,10 +54,6 @@ h1, h2, h3 {
 
 a {
     color: #00A74B;
-}
-
-.jumbotron h1, .jumbotron .h1 {
-    color: #424242;
 }
 
 .navbar-header .navbar-brand {
@@ -43,9 +70,9 @@ a {
     text-align: right;
     height: 30px;
     color: white;
-    background: #514E4E;
     font-size: 14px;
     line-height: 2.3;
+    background-color: gray;
 }
 
 .navbar-fixed-top {
@@ -55,6 +82,7 @@ a {
 ul.nav > li {
     font-family: 'Kanit', sans-serif;
     font-weight: 800;
+    text-align: center;
 }
 
 .shadow {
@@ -348,13 +376,69 @@ h3.menue-header + hr{
 
 .chalkboard {
     background: url('/themes/laurel-leaf/assets/images/chalkboard.jpg');
-    background-size: contain;
+    background-size: cover;
     color: white;
 }
 
 .chalkboard p{
     font-family: 'Indie Flower', cursive;
     font-size: 150%;
+}
+
+.sportstv {
+    background: url('/themes/laurel-leaf/assets/images/sportstv-bg.jpg');
+    background-size: cover;
+    color: white;
+}
+
+.sportstv h1{
+    color: white;
+}
+
+.sportstv .date{
+    padding-top: 20px;
+}
+
+.sportstv .carousel-control.left {
+    background-image: none;
+    left: -90px;
+}
+
+.sportstv .carousel-control.right {
+    background-image: none;
+    right: -20px;
+}
+
+.p50tb{
+    padding: 50px 0;
+}
+
+.red-gradient {
+    background: #c93b35; /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-linear-gradient(left, #c93b35 0%, #d03731 100%);
+    background: -o-linear-gradient(left, #c93b35 0%, #d03731 100%);
+    background: linear-gradient(to right, #c93b35 0%, #d03731 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c93b35', endColorstr='#d03731',GradientType=1 ); /* IE6-9 */
+    color: white;
+}
+
+.bricks {
+    background-image: url('/themes/laurel-leaf/assets/images/raw-prick-texture-seamless-frontend-large-2.jpg');
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    display: flex;
+    margin-bottom: -48px;
+    padding-bottom: 48px;
+}
+
+.img-rotate-up{
+    transform: rotate(-3deg);
+    margin-top: -1px;
+}
+
+.img-rotate-down{
+    transform: rotate(5deg);
+    margin-top: -9px;
 }
 
 /* bigger Screens */
@@ -374,6 +458,20 @@ h3.menue-header + hr{
 
     ul.nav > li{
         font-size: 200%;
+        margin-top: -3px;
+    }
+
+    .navbar-nav > li > a {
+        text-align: center;
+        /*display: table-caption;*/
+        white-space: nowrap;
+        padding-bottom: 25px;
+        margin-top: -3px;
+    }
+
+    .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+        color: #ffffff;
+        background-color: #212121;
     }
 
     span.roboto-slab {
@@ -478,5 +576,27 @@ h3.menue-header + hr{
 
     .p50{
         padding: 30px;
+    }
+
+    .img-rotate-up{
+        transform: rotate(-3deg);
+        margin-top: -1px;
+    }
+
+    .img-rotate-down{
+        transform: rotate(3deg);
+        margin-top: 0px;
+    }
+
+    .sportstv .carousel-control.left {
+        left: -20px;
+    }
+
+    .sportstv .carousel-control.right {
+        right: -10px;
+    }
+
+    .sportstv .carousel .item {
+        padding: 0 30px;
     }
 }
