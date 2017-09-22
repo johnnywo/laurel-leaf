@@ -26,6 +26,28 @@ h1{
     font-size: 41px;
 }
 
+.btn {
+    border-radius: 0;
+}
+
+.btn-default {
+    background-color: inherit; 
+    border-color: #cccccc;
+}
+
+.btn-default.onblack {
+    color: #ffffff;
+}
+
+.btn-default.onblack:hover, .btn-default.onblack:focus {
+    background-color: #2a2a2a;
+}
+
+.cc_container .cc_btn, .cc_container .cc_btn:visited {
+    background-color: #1fb05f !important;
+    color: white !important;
+}
+
 .jumbotron {
     margin-bottom: 0;
 }
@@ -41,6 +63,22 @@ h1{
 
 .jumbotron p {
     font-size: inherit;
+}
+
+.jumbotron.sportstv p{    
+    margin-bottom: 0;
+}
+
+.hero {
+}
+
+.date-sportstv {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+div#sports-tv-carousel {
+    min-height: 450px;
 }
 
 /* disable horizontal scrolling !!! headache saver */
@@ -391,7 +429,7 @@ h3.menue-header + hr{
     color: white;
 }
 
-.sportstv h1{
+.sportstv h1, .chalkboard h1{
     color: white;
 }
 
@@ -507,6 +545,10 @@ h3.menue-header + hr{
         width: 130px;
         height: 50px;
     }
+
+    div#sports-tv-carousel {
+        min-height: 350px;
+    }
 }
 
 
@@ -598,5 +640,9 @@ h3.menue-header + hr{
 
     .sportstv .carousel .item {
         padding: 0 30px;
+    }
+
+    div#sports-tv-carousel {
+        min-height: 450px;
     }
 }

@@ -6,9 +6,9 @@ layout = "default"
 [games]
 ==
 <!-- Hero Section -->
-<div class="container-fluid">
+<div class="container-fluid hero">
     <div class="row">
-         {# {% partial 'site/heroimage.htm' %} #}
+         {% partial 'site/heroimage.htm' %}
     </div>
 </div> <!-- End Hero Section -->
 
@@ -31,7 +31,7 @@ layout = "default"
 <div class="jumbotron sportstv">
 	<div class="container">
 		<div class="row">	
-			<div class="col-sm-6 col-sm-offset-6">
+			<div class="col-sm-6 col-sm-offset-3">
 				<h1>Sports TV</h1>
 				{% partial "site/sportstv.htm" %}
 			</div>
@@ -44,9 +44,8 @@ layout = "default"
 <div class="jumbotron red-gradient">
 	<div class="bricks">	
 		<div class="container">
-			<div class="text-center">
-				<h1>Billard &amp; Darts</h1>
-			</div>	
+			<div class="row"><div class="col-sm-6 col-sm-offset-3"><h1>Billard &amp; Darts</h1></div></div>
+			<br>
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-2">
 					<img src="{{ 'assets/images/billard.png'|theme }}" alt="play Billard in Laurel Leaf" class="img-responsive img-rotate-up">
