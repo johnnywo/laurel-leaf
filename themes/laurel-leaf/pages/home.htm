@@ -5,12 +5,21 @@ layout = "default"
 [lunchoffers]
 [games]
 ==
+<?
+use Milo\HeroImage\Models\HeroImage;
+    function onStart() {
+        $this['heroimages'] = HeroImage::limit(3)->get();
+    }
+?>
+==
 <!-- Hero Section -->
+{% if heroimages|length %}
 <div class="container-fluid hero">
     <div class="row">
          {% partial 'site/heroimage.htm' %}
     </div>
-</div> <!-- End Hero Section -->
+</div> 
+{% endif %} <!-- End Hero Section -->
 
 
 <!-- Today's Food Section -->
