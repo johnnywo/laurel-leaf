@@ -528,7 +528,7 @@ h3.menue-header + hr{
     }
 
     h1.lunchoffer {
-        background: url('/themes/laurel-leaf/assets/images/lunchoffer-3leafs.png');
+        background: url('../images/lunchoffer-3leafs.png');
         background-repeat: no-repeat;
         background-position: left center;
         background-size: 30px;
@@ -536,7 +536,7 @@ h3.menue-header + hr{
 
     h1.lunchoffer::after {
         content: "";
-        background: url('/themes/laurel-leaf/assets/images/lunchoffer-3leafs.png');
+        background: url('../images/lunchoffer-3leafs.png');
         background-repeat: no-repeat;
         background-position: right center;
         background-size: 30px;  
