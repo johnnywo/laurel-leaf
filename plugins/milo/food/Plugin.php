@@ -52,7 +52,7 @@ class Plugin extends PluginBase
     {
         return [
             'Milo\Food\Components\Foods' => 'foods',
-            'Milo\Food\Components\lunchoffers' => 'lunchoffers'
+            'Milo\Food\Components\LunchOffers' => 'lunchoffers',
         ];
     }
 

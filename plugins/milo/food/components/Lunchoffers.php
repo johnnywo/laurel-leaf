@@ -4,7 +4,7 @@ use Cms\Classes\ComponentBase;
 use Milo\Food\Models\Lunchoffer;
 use Carbon\Carbon;
 
-class Lunchoffers extends ComponentBase
+class LunchOffers extends ComponentBase
 {
     public function componentDetails()
     {
