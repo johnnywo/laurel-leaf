@@ -237,7 +237,7 @@ ul.nav > li {
 }
 
 .vegetarian:after{
-    background-image: url('/themes/laurel-leaf/assets/images/custom-icons/vegetarian@2x.png');
+    background-image: url('../images/custom-icons/vegetarian@2x.png');
     background-repeat: no-repeat;
     background-size: 20px 20px;
     display: inline-block;
@@ -247,7 +247,7 @@ ul.nav > li {
 }
 
 .spicy:after{
-    background-image: url('/themes/laurel-leaf/assets/images/custom-icons/spicy@2x.png');
+    background-image: url('../images/custom-icons/spicy@2x.png');
     background-repeat: no-repeat;
     background-size: 25px 25px;
     display: inline-block;
@@ -257,7 +257,7 @@ ul.nav > li {
 }
 
 .vegetarian.spicy:after{
-    background-image: url('/themes/laurel-leaf/assets/images/custom-icons/veggy-spicy@2x.png');
+    background-image: url('../images/custom-icons/veggy-spicy@2x.png');
     background-repeat: no-repeat;
     background-size: 55px 34px;
     display: inline-block;
@@ -267,7 +267,7 @@ ul.nav > li {
 }
 
 .new:before{
-    background-image: url('/themes/laurel-leaf/assets/images/custom-icons/new@2x.png');
+    background-image: url('../images/custom-icons/new@2x.png');
     background-repeat: no-repeat;
     background-size: 30px 30px;
     display: inline-block;
@@ -413,7 +413,7 @@ h3.menue-header + hr{
 }
 
 .chalkboard {
-    background: url('/themes/laurel-leaf/assets/images/chalkboard.jpg');
+    background: url('../images/chalkboard.jpg');
     background-size: cover;
     color: white;
 }
@@ -424,7 +424,7 @@ h3.menue-header + hr{
 }
 
 .sportstv {
-    background: url('/themes/laurel-leaf/assets/images/sportstv-bg.jpg');
+    background: url('../images/sportstv-bg.jpg');
     background-size: cover;
     color: white;
 }
@@ -461,7 +461,7 @@ h3.menue-header + hr{
 }
 
 .bricks {
-    background-image: url('/themes/laurel-leaf/assets/images/raw-prick-texture-seamless-frontend-large-2.jpg');
+    background-image: url('../images/raw-prick-texture-seamless-frontend-large-2.jpg');
     background-repeat: repeat-x;
     background-position: left bottom;
     display: flex;
