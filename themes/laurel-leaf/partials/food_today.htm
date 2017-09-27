@@ -1,7 +1,7 @@
       
 <h1>Mittagsangebot</h1>
 
-<p>{{ "now"|date("l, d.m.Y") }}</p>
+<p>{{ "now"|strftime('%A, %d.%m.%Y') }}</p>
 
 <p><em>{% content 'food_soup.txt' %}</em></p>
 

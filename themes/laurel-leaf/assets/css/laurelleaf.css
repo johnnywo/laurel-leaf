@@ -94,6 +94,11 @@ a {
     color: #00A74B;
 }
 
+a:hover, a:focus {
+    color: #198c4c;
+    text-decoration: underline;
+}
+
 .navbar-header .navbar-brand {
     padding-left: 247px;
     background-image: url(../images/logo-laurel-leaf.png);
@@ -412,6 +417,10 @@ h3.menue-header + hr{
     padding: 50px;
 }
 
+.mb15 {
+    margin-bottom: 15px; 
+}
+
 .chalkboard {
     background: url('../images/chalkboard.jpg');
     background-size: cover;
@@ -479,6 +488,119 @@ h3.menue-header + hr{
     margin-top: -9px;
 }
 
+.image-row {
+    margin-bottom: 20px;
+    padding-top: 14px;
+    border-bottom: 2px solid #E1E5E9;
+}
+
+.image-row:last-child{
+    border-bottom: none;
+}
+
+.mr-30 {
+    margin-right: -30px;
+} 
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.ml-10 {
+    margin-left: -10px;
+}
+
+.thumbnail {
+    background-color: inherit;
+    display: block;
+    padding: 0;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    border: none;
+    border-radius: 0px;
+    -webkit-transition: border 0.2s ease-in-out;
+    -o-transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out;
+}
+
+.image-row .col-xs-6, .image-row .col-sm-3, .image-row .col-md-3, .image-row .col-lg-3 {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.p0 {
+    padding: 0;
+}
+
+.mr-10 {
+    margin-right: -20px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.imagewrapper {
+    position: relative;
+    float: left;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.imagewrapper .img-responsive {
+    width: 100%;
+}
+
+.textwrapper {
+    position: absolute;
+    z-index: 99;
+    top: 20%;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.textwrapper a {
+    color: white;
+}
+
+.textwrapper h3 {
+    font-size: 17px;
+    text-align: center;
+}
+
+.counterwrapper {
+    position: absolute;
+    z-index: 99;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3px 10px;
+    width: 100%;
+    height: 30px;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+}
+
+#gallerySlug div {
+    margin: 7px !important;
+}
+
+@media screen and (min-width: 1200px) {
+    ul.nav > li{
+        font-size: 200%;
+        margin-top: -3px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px){
+    ul.nav > li{
+        font-size: 170%;
+        margin-top: -3px;
+    }
+}
+
 /* bigger Screens */
 @media screen and (min-width: 768px) {
     .navbar {
@@ -492,11 +614,6 @@ h3.menue-header + hr{
 
     .navbar-collapse {
         float: right;
-    }
-
-    ul.nav > li{
-        font-size: 200%;
-        margin-top: -3px;
     }
 
     .navbar-nav > li > a {
@@ -549,6 +666,20 @@ h3.menue-header + hr{
     div#sports-tv-carousel {
         min-height: 350px;
     }
+
+    .gallery {
+        padding-left: 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    ul.nav > li{
+        font-size: 120%;
+        margin-top: 5px;
+    }
+    .navbar-collapse:not(.in):not(.collapsing) .navbar-nav li > a:after {
+        margin-bottom: -23px;
+}
 }
 
 

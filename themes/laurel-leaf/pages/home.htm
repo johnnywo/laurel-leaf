@@ -24,6 +24,7 @@ use Milo\HeroImage\Models\HeroImage;
 
 <!-- Today's Food Section -->
 {% if todays_food|length %}
+{% if weekend == false %}
 <div class="jumbotron chalkboard">
 	<div class="container">
 		<div class="row">
@@ -33,6 +34,7 @@ use Milo\HeroImage\Models\HeroImage;
 		</div>
 	</div>
 </div>
+{% endif %}
 {% endif %} <!-- End Today's Food Section -->
 
 <!-- Sports TV Section -->

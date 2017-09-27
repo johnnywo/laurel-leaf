@@ -9,20 +9,94 @@ galleryPage = "photo-gallery-detail"
 categoryPage = 404
 noGalleriesMessage = "No galleries found"
 ==
-<div class="container">	
+<?php
+	function onEnd() 
+	{
+		$this['galleries'] = $this->galleries->sortByDesc('published_at');
 
-<h1>Laurel Leaf's Gallery</h1>
+		//dd($galleries);
+	}	
+?>
+==
+<div class="container-fluid photo-gallery">	
 
-<ul>
-{% for gallery in galleries %}
-	<li>
-		<h3><a href="{{gallery.url}}">{{gallery.name}}</a></h3>
-		{% for image in gallery.images|slice(0, 5) %}
-			<img src="{{ image.getThumb(100, 50) }}">
-		{% endfor %}
-	</li>
-{% else %}
-	{{noGalleriesMessage}}
-{% endfor %}
-</ul>
+	<div class="container">
+
+		<h1 class="text-center">GALLERY</h1>
+
+		<div class="row">
+				{% for gallery in galleries %}
+					
+
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 gallery">
+
+						{% for image in gallery.images|slice(0, 1) %}
+
+							    <div class="imagewrapper">
+							    	<img class="img-responsive" src="{{ image.getThumb(283, 283, 'crop') }}" alt="{{ gallery.name }}" alt="{{ gallery.name }}">
+							    	<div class="textwrapper">
+							    		<h3>
+							    			<a href="{{ gallery.url }}">{{ gallery.name }} <br> {{ gallery.published_at|date('d.m.Y') }}</a>
+							    		</h3>
+							    	</div>
+							    	<div class="counterwrapper">
+							    		{{ gallery.images|length }} Fotos
+							    	</div>
+							    </div>
+
+					{% endfor %}
+					</div>
+					
+
+				{% else %}
+					{{noGalleriesMessage}}
+				{% endfor %}
+			</div>
+
+			<div class="row">
+				
+				{# <div class="col-sm-6 mt-30">
+					<img src="{{ 'assets/images/photo-gallery/ll1060gesichter.png'|theme }}" alt="Laurel Leaf Faces" class="img-responsive">
+					<div class="row">
+						<div class="col-sm-6 p0 mr-30 ml10">
+							<img src="{{ 'assets/images/photo-gallery/billard.png'|theme }}" alt="" class="img-responsive">
+							<img src="{{ 'assets/images/photo-gallery/backroom.png'|theme }}" alt="" class="img-responsive">
+						</div>
+						<div class="col-sm-6 p0 ml-10">
+							<img src="{{ 'assets/images/photo-gallery/bottles.png'|theme }}" alt="" class="img-responsive">
+							<img src="{{ 'assets/images/photo-gallery/frontroom.png'|theme }}" alt="" class="img-responsive">
+						</div>
+					</div> 
+				</div> #}
+
+				<div class="col-xs-12 col-sm-6 col-md-9 col-lg-9 gallery mb15">
+					<img src="{{ 'assets/images/photo-gallery/ll1060-gesichter.jpg'|theme }}" class="img-responsive" alt="Laurel Leaf Billard">
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 gallery mb15">
+					<img src="{{ 'assets/images/photo-gallery/backroom.jpg'|theme }}" class="img-responsive" alt="Laurel Leaf Billard">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 gallery mb15">
+					<img src="{{ 'assets/images/photo-gallery/bottles.jpg'|theme }}" class="img-responsive" alt="Laurel Leaf Billard">
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 gallery mb15">
+					<img src="{{ 'assets/images/photo-gallery/frontroom.jpg'|theme }}" class="img-responsive" alt="Laurel Leaf Billard">
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 gallery mb15">
+					<img src="{{ 'assets/images/photo-gallery/thekenbereich.jpg'|theme }}" class="img-responsive" alt="Laurel Leaf Billard">
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 gallery mb15">
+					<img src="{{ 'assets/images/photo-gallery/billard.jpg'|theme }}" class="img-responsive" alt="Laurel Leaf Billard">
+				</div>
+			</div>
+
+			
+		
+
+
+
+
+		
+	</div>
 </div>

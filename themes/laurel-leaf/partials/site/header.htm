@@ -30,21 +30,21 @@
             <ul class="nav navbar-nav">
                 <li class="{% if this.page.id == 'home' %}active{% endif %}">
                     <a href="{{ 'home'|page }}">HOME <br>
-                    <span class="roboto-slab hidden-xs">News &amp; Events</span></a>
+                    <span class="roboto-slab hidden-xs hidden-sm">News &amp; Events</span></a>
                 </li>
                 <li class="{% if this.page.id == 'food-drinks' %}active{% endif %}">
                     <a href="{{ 'food-drinks'|page }}">MENU <br>
-                    <span class="roboto-slab hidden-xs">Food &amp; Drinks</span></a>
+                    <span class="roboto-slab hidden-xs hidden-sm">Food &amp; Drinks</span></a>
                 </li>
                 <li class="{% if this.page.id == 'photo-gallery' %}active{% endif %}">
                     <a href="{{ 'photo-gallery'|page }}">GALLERY <br>
-                        <span class="roboto-slab hidden-xs">Events &amp; Location</span></a>
+                        <span class="roboto-slab hidden-xs hidden-sm">Events &amp; Location</span></a>
                 </li>
                 <li class="{% if this.page.id == 'contact-reservation' %}active{% endif %}">
                     <a href="{{ 'contact-reservation'|page }}">CONTACT <br>
-                        <span class="roboto-slab hidden-xs">&amp; Table Reservation</span></a>
+                        <span class="roboto-slab hidden-xs hidden-sm">&amp; Table Reservation</span></a>
                 </li>
-                <li class="hidden-xs">
+                <li class="hidden-xs hidden-sm">
                     <img src="{{ 'assets/images/custom-icons/billard-darts.png'|theme }}" alt="Billard & Darts">
                 </li>
 

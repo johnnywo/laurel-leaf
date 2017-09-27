@@ -104,8 +104,10 @@ layout = default
                         </h1>
                         <p><em>
                                 wähle täglich Montags - Freitags jeweils von 11°° - 17°° aus 3 unterschiedlichen Menüs
-                                mit Suppe:
+                                mit Suppe
                             </em></p>
+                <!-- Wenn Mittagsmenü vorhanden -->
+                {% if lunchoffer_weekly|length %} 
                         <div class="text-center weekday">
                             {{ week_start_date }} - {{ week_end_date }}
                         </div>
@@ -119,7 +121,7 @@ layout = default
                 </div>
             </div>
 
-            {% if lunchoffer_weekly|length %}
+            
 
             <div class="row">
 
@@ -287,11 +289,11 @@ layout = default
 
                     <div class="text-center">
                         <p>
-                            ... derzeit kein Mittagsangebot ...
+                            ... das neue Wochenmenü folgt in Kürze ...
                         </p>
                     </div>
 
-                {% endif %}
+                {% endif %} <!-- EndeWenn Mittagsmenü vorhanden -->
 
                 <br>
                 <hr>

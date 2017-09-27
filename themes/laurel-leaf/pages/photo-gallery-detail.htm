@@ -20,13 +20,14 @@ loop = "true"
 auto = "false"
 pause = 2000
 escKey = "true"
-height = 70
-width = 100
-resizer = "auto"
+height = 271
+width = 271
+resizer = "crop"
 ==
 <div class="container">	
 
-<h1>{{ gallery.name }}</h1>
+<h1 class="text-center">{{ gallery.name }}</h1>
+<p class="text-center"><em>{{ gallery.published_at|date('d.m.Y') }}</em></p>
 
 {% component 'gallerySlug' %}
 </div>

@@ -2,6 +2,7 @@
 
 use Backend;
 use System\Classes\PluginBase;
+use Lang;
 
 /**
  * Food Plugin Information File
@@ -35,12 +36,12 @@ class Plugin extends PluginBase
 
     /**
      * Boot method, called right before the request route.
-     *
      * @return array
      */
     public function boot()
     {
-
+        $localeCode = Lang::getLocale();
+        setlocale(LC_TIME, $localeCode . '_' . strtoupper($localeCode) . '.UTF-8');
     }
 
     /**
