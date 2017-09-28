@@ -38,7 +38,7 @@ class ReservationForm extends ComponentBase
 			],
 			[
 				'date' => 'required|date|after:yesterday',
-				'time' => array('regex:/[1][1-9]:[0-5]\d|2[0]:[0][0]|[1][1-9].[0-5]\d|2[0].[0][0]$/'),
+				'time' => array('regex:/[1][1-9]:[0-5]\d|2[0]:[0-5]\d|[1][1-9].[0-5]\d|2[0].[0][0]$/'),
 				'name' => 'required',
 				'email' => 'required|email',
 				'people' => 'required|integer'
@@ -84,14 +84,14 @@ class ReservationForm extends ComponentBase
 
 			Mail::send('milo.reservation::mail.message', $vars, function($message) {
 
-				$message->from('1060@laurel-leaf.at', 'Laurel Leaf Irish Pub');
+				$message->from(Input::get('email'), Input::get('name'));
 				$message->to('1060@laurel-leaf.at', 'Laurel Leaf Irish Pub');
-				$message->cc(Input::get('email'), Input::get('name'));
-				$message->subject('auto-reply: deine Reservierungsanfrage');
-
+				$message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf GMail');
+				$message->bcc(Input::get('email'), Input::get('name'));
+				$message->subject('Reservierungsanfrage (auto-reply)');
 			});
 
-			Flash::success('Reservation Request sent!');
+			Flash::success('Reservierungsanfrage übermittelt!');
 		}
 
     }

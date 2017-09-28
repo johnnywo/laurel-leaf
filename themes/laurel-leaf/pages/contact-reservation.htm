@@ -1,9 +1,13 @@
 title = "Contact & Reservation"
-description = "Contact Details and Reservation Form"
 url = "/contact-reservation"
 layout = "default"
+description = "Contact Details and Reservation Form"
+is_hidden = 0
 
 [reservation]
+
+[renderForm]
+formCode = "renatio.formbuilder::contact1506583937"
 ==
 <div class="container">
 
@@ -72,6 +76,45 @@ layout = "default"
                         </div>
                         <script src="https://www.jscache.com/wejs?wtype=restaurantWidgetWhite&amp;uniq=76&amp;locationId=6786833&amp;icon=knifeAndFork&amp;lang=de_AT&amp;display_version=2"></script>
                     </div>
+
+                    {# <form action="contact"
+                            method="POST"
+                            id="contactForm"
+                            data-request="onSend"
+                            data-request-validate
+                            data-request-flash>
+
+                        <legend>Contact</legend>
+                    
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="text" class="form-control" id="email" placeholder="E-Mail">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Betreff</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Betreff">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Nachricht</label>
+                            <textarea name="message" id="message" class="form-control" rows="3" required="required"></textarea>
+                        </div>
+
+                        <label class="btn btn-default">
+                            Attachments <input type="file" hidden>
+                        </label>
+
+                        <button type="submit" class="btn btn-info">Absenden</button>
+            
+                    </form> #}
+                    {% component 'renderForm' %}     
+                    <br>  
                 </div>
 
                 <div class="col-sm-6">
