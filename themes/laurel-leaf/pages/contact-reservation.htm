@@ -31,7 +31,7 @@ formCode = "renatio.formbuilder::contact1506583937"
         <!-- Contact -->
         <div role="tabpanel" class="tab-pane fade in active" id="contact">
             <div class="text-center">
-                <h1 class="hidden-xs">Contact</h1>
+                <h1 class="hidden-xs title">Contact</h1>
             </div>
 
             <div class="row">
@@ -129,15 +129,15 @@ formCode = "renatio.formbuilder::contact1506583937"
         <!-- Reservation -->
         <div role="tabpanel" class="tab-pane dropdown fade" id="reservation">
             <div class="text-center">
-                <h1 class="hidden-xs">Reserve a table</h1>
+                <h1 class="hidden-xs title">Reserve a table</h1>
             </div>
 
             <div class="row">
 
-                <div class="col-md-12">
-                    <p><strong>Tischreservierung im Laurel Leaf, wichtige Hinweise:</strong><br>
-                        Wir antworten innerhalb von 24 Stunden auf eine Reservierungsanfrage. Solltest du innerhalb dieser Zeit keine Antwort bekommen haben, bitten wir dich, telefonisch unter 01 /585 68 65 während unserer regulären Öffnungszeiten anzurufen. Für Gruppen grösser als 10 Personen (Geburtstagsparty's, Sponsionsfeier, etc.) bitten wir dich, telefonisch anzufragen.
-                    </p>
+                <div class="col-md-6">
+                    <p><strong>Tischreservierung im Laurel Leaf, wichtige Hinweise:</strong></p>
+                    <p>Wir antworten innerhalb von 24 Stunden auf eine Reservierungsanfrage. Solltest du innerhalb dieser Zeit keine Antwort bekommen haben, bitten wir dich, telefonisch unter 01 /585 68 65 während unserer regulären Öffnungszeiten anzurufen.</p> 
+                    <p>Für Gruppen grösser als 10 Personen (Geburtstagsparty's, Sponsionsfeier, etc.) bitten wir dich, telefonisch anzufragen.</p>
                     <hr>
                 </div>
 
@@ -163,7 +163,7 @@ formCode = "renatio.formbuilder::contact1506583937"
                             <label for="time" class="required">Zeit</label>
                             <input type='time' name="time" value="{{ form_value('time') }}" class="form-control" required/>
                             <p class="help-block">Format hh:ii - z.B. <strong>18:00</strong></p>
-                            <div data-validate-for="time">Sorry aber wir akzeptieren keine Reservierungen nach 20:00!</div>
+                            <div data-validate-for="time">Sorry aber wir akzeptieren keine Reservierungen nach 21:00!</div>
                         </div>
 
                         <div class="form-group">
@@ -199,6 +199,10 @@ formCode = "renatio.formbuilder::contact1506583937"
                             </p>
                         </div>
 
+                        <div class="antispam">Leave this empty:
+                            <input type="text" name="url">
+                        </div>
+
                         <div class="form-group">
                             {{ form_label('message', 'Nachricht') }}
                             <textarea class="form-control" name="sometext" rows="3">{{ form_value('sometext') }}</textarea>
@@ -208,7 +212,7 @@ formCode = "renatio.formbuilder::contact1506583937"
                             <button
                                     id="submit"
                                     type="submit"
-                                    class="btn btn-info btn-lg">
+                                    class="btn btn-info">
                                 Absenden
                             </button>
                         </div>

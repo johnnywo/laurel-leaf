@@ -28,6 +28,7 @@ class ReservationForm extends ComponentBase
 
 	public function onSend()
 	{
+
 		$validator = Validator::make(
 			[
 				'date' => Input::get('date'),
@@ -46,53 +47,61 @@ class ReservationForm extends ComponentBase
 		);
 
 
-
-		if($validator->fails()) {
+		if ($validator->fails()) {
 		    throw new \ValidationException($validator);
-/*			return Redirect::back()
-			               ->withInput()
-			               ->withErrors($validator);*/
+
 		} else {
-			$vars = [
-			    'name' => Input::get('name'),
-                'email' => Input::get('email'),
-                'date' => Input::get('date'),
-                'time' => Input::get('time'),
-                'people' => Input::get('people'),
-                'smoker' => Input::get('smoker'),
-                'sometext' => Input::get('sometext'),
-            ];
 
-			//var_dump($vars);
+			/*Spam Check*/
+			$url = Input::get('url');
 
-			$vars['datetime'] = Carbon::parse($vars['date'] . ' ' . $vars['time']);
+			//var_dump($url);
 
-			if($vars['smoker'] == null){
-			    $vars['smoker'] = 'undefined Area';
-            }
+			if (isset($url) && $url == '') {
+				$vars = [
+				    'name' => Input::get('name'),
+	                'email' => Input::get('email'),
+	                'date' => Input::get('date'),
+	                'time' => Input::get('time'),
+	                'people' => Input::get('people'),
+	                'smoker' => Input::get('smoker'),
+	                'sometext' => Input::get('sometext'),
+	            ];
 
+	            $vars['datetime'] = Carbon::parse($vars['date'] . ' ' . $vars['time']);
 
+				if($vars['smoker'] == null){
+				    $vars['smoker'] = 'undefined Area';
+	            }
 
-			Reservation::create([
-				'name' => $vars['name'],
-				'email' => $vars['email'],
-				'datetime' => $vars['datetime'],
-				'people' => $vars['people'],
-				'area' => $vars['smoker'],
-				'message' => $vars['sometext'],
-			]);
+	            Reservation::create([
+	            	'name' => $vars['name'],
+	            	'email' => $vars['email'],
+	            	'datetime' => $vars['datetime'],
+	            	'people' => $vars['people'],
+	            	'area' => $vars['smoker'],
+	            	'message' => $vars['sometext'],
+	            ]);
 
-			Mail::send('milo.reservation::mail.message', $vars, function($message) {
+	            Mail::send('milo.reservation::mail.message', $vars, function($message) {
 
-				$message->from(Input::get('email'), Input::get('name'));
-				$message->to('1060@laurel-leaf.at', 'Laurel Leaf Irish Pub');
-				$message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf GMail');
-				$message->bcc(Input::get('email'), Input::get('name'));
-				$message->subject('Reservierungsanfrage (auto-reply)');
-			});
+	            	$message->from(Input::get('email'), Input::get('name'));
+	            	$message->to('1060@laurel-leaf.at', 'Laurel Leaf Irish Pub');
+	            	$message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf GMail');
+	            	$message->bcc(Input::get('email'), Input::get('name'));
+	            	$message->bcc('emil@zeero.at', 'Milo');
+	            	$message->subject('Reservierungsanfrage (auto-reply)');
+	            });
 
-			Flash::success('Reservierungsanfrage übermittelt!');
-		}
+	            Flash::success('Reservierungsanfrage übermittelt!');
+	            return Redirect::back();
+
+			} // End if antispam test was negativ.
+
+			Flash::error('Humans only.');
+			return Redirect::back();
+
+		} 
 
     }
 }

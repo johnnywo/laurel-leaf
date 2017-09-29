@@ -26,6 +26,11 @@ h1{
     font-size: 41px;
 }
 
+h1.title {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
 .btn {
     border-radius: 0;
 }
@@ -784,3 +789,23 @@ h3.menue-header + hr{
 .tripadvisor {
     margin: 25px 0px;
 }
+
+.form-control {
+    border: 1px solid #e5e5e5;
+    border-radius: 0px; 
+}
+
+.required label:after {
+    content: ' *';
+    color: red;
+}
+
+.antispam {
+    display: none;
+}
+
+.form-group .visible {
+    color: red;
+}
+
+

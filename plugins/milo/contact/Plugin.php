@@ -45,6 +45,8 @@ class Plugin extends PluginBase
             if ($view == 'renatio.formbuilder::mail.contact') {
                 $message->from(post('email'), post('name'));
                 $message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf Gmail');
+                $message->bcc(post('email'), post('name'));
+                $message->bcc('emil@zeero.at', 'Milo');
             }
         });
     }
