@@ -88,8 +88,11 @@ class ReservationForm extends ComponentBase
 	            	$message->from(Input::get('email'), Input::get('name'));
 	            	//$message->to('1060@laurel-leaf.at', 'Laurel Leaf Irish Pub');
 	            	//$message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf GMail');
-	            	$message->bcc(Input::get('email'), Input::get('name'));
-	            	$message->bcc('emil@zeero.at', 'Milo');
+	            	$message->bcc([
+	            		Input::get('email') => Input::get('name'), 
+	            		'emil@zeero.at' => 'Milo' 
+	            	]);
+	            	//$message->bcc();
 	            	$message->subject('Reservierungsanfrage (auto-reply)');
 	            });
 
