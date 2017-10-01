@@ -152,51 +152,67 @@ formCode = "renatio.formbuilder::contact1506583937"
                             data-request-flash>
 
 
-                        <div class="form-group">
-                            <label for="date" class="required">Datum</label>
-                            <input type='date' name="date" value="{{ form_value('date') }}" class="form-control" required/>
-                            <p class="help-block">Format tt.mm.jjjj - z.B. <strong>{{ "now"|date("d.m.Y") }}</strong></p>
-                            <div data-validate-for="date"></div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group required">
+                                    <label for="date" class="required">Datum</label>
+                                    <input type='date' name="date" value="{{ form_value('date') }}" class="form-control" required/>
+                                    <p class="help-block">Format tt.mm.jjjj - z.B. <strong>{{ "now"|date("d.m.Y") }}</strong></p>
+                                    <div data-validate-for="date"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group required">
+                                    <label for="time" class="required">Zeit</label>
+                                    <input type='time' name="time" value="{{ form_value('time') }}" class="form-control" required/>
+                                    <p class="help-block">Format hh:ii - z.B. <strong>18:00</strong></p>
+                                    <div data-validate-for="time">Sorry aber wir akzeptieren keine Reservierungen nach 21:00!</div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group required">
+                                    <label for="name" class="required">Dein Name</label>
+                                    <input type="text" name="name" value="{{ form_value('name') }}" class="form-control" required/>
+                                    <div data-validate-for="name"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group required">
+                                    <label for="email" class="required">Deine E-Mail</label>
+                                    <input type="text" name="email" value="{{ form_value('email') }}" class="form-control" required/>
+                                    <div data-validate-for="email"></div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="time" class="required">Zeit</label>
-                            <input type='time' name="time" value="{{ form_value('time') }}" class="form-control" required/>
-                            <p class="help-block">Format hh:ii - z.B. <strong>18:00</strong></p>
-                            <div data-validate-for="time">Sorry aber wir akzeptieren keine Reservierungen nach 21:00!</div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="name" class="required">Dein Name</label>
-                            <input type="text" name="name" value="{{ form_value('name') }}" class="form-control" required/>
-                            <div data-validate-for="name"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" class="required">Deine E-Mail</label>
-                            <input type="text" name="email" value="{{ form_value('email') }}" class="form-control" required/>
-                            <div data-validate-for="email"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="people" class="required">Wieviele Personen?</label>
-                            <input type="number" name="people" min="1" max="10" class="form-control" required/>
-                            <div data-validate-for="people"></div>
-                        </div>
-
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="smoker" value="nonsmoker" {% if form_value('smoker') == "nonsmoker" %} checked {% endif %}>
-                                Nichtraucher Bereich
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="smoker" value="smoker" {% if form_value('smoker') == "smoker" %} checked {% endif %}>
-                                Raucher Bereich
-                            </label>
-                            <p class="help-block">Wenn hier keine Angabe gemacht wird, wird ein beliebiger Bereich zugeteilt.
-                            </p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group required">
+                                    <label for="people" class="required">Wieviele Personen?</label>
+                                    <input type="number" name="people" min="1" max="10" class="form-control" required/>
+                                    <div data-validate-for="people"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="smoker">Bereich</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="smoker" value="nonsmoker" {% if form_value('smoker') == "nonsmoker" %} checked {% endif %}>
+                                        Nichtraucher Bereich
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="smoker" value="smoker" {% if form_value('smoker') == "smoker" %} checked {% endif %}>
+                                        Raucher Bereich
+                                    </label>
+                                    <p class="help-block">Wenn hier keine Angabe gemacht wird, wird ein beliebiger Bereich zugeteilt.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="antispam">Leave this empty:
