@@ -24,17 +24,20 @@ use Milo\HeroImage\Models\HeroImage;
 
 <!-- Today's Food Section -->
 {% if todays_food|length %}
-{% if weekend == false %}
-<div class="jumbotron chalkboard">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
-				{% partial "food_today.htm" %}
+	{% if weekend == false %}
+	<div class="jumbotron chalkboard">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-1">
+					{% partial "food_today.htm" %}
+				</div>
+				<div class="col-sm-5 text-center">
+					<img src="{{ 'assets/images/burger-billard-offer-ll.jpg'|theme }}" alt="Billard Burger Offer Montag - Samstag" class="img-rotate-down-2 img-responsive">
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-{% endif %}
+	{% endif %}
 {% endif %} <!-- End Today's Food Section -->
 
 <!-- Sports TV Section -->
