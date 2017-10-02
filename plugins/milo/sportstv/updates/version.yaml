@@ -4,3 +4,6 @@
     - create_leagues_table.php
     - create_teams_table.php
     - create_games_table.php
+1.0.3:
+    - Seed Teams and Leagues Tables
+    - seed_leagues_and_teams_tables.php

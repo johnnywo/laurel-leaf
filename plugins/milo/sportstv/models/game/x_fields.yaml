@@ -19,8 +19,8 @@ fields:
         type: checkbox
     home_team:
         label: Home Team
-        type: relation
-        nameFrom: name
+        type: partial
+        path: field_home_team
         span: left
         trigger:
             action: hide
