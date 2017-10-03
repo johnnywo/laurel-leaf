@@ -43,10 +43,10 @@ class Plugin extends PluginBase
     {
         Event::listen('mailer.prepareSend', function($self, $view, $message) {
             if ($view == 'renatio.formbuilder::mail.contact') {
-                $message->from(post('email'), post('name'));
-                $message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf Gmail');
-                $message->bcc(post('email'), post('name'));
-                $message->bcc('emil@zeero.at', 'Milo');
+                // $message->from(post('email'), post('name'));
+                // $message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf Gmail');
+                // $message->bcc(post('email'), post('name'));
+                // $message->bcc('emil@zeero.at', 'Milo');
             }
         });
     }

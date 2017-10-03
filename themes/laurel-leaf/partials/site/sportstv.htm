@@ -17,7 +17,7 @@
             {% for item in chunked %}
 
                 {% if item.datetime|date('d.m.Y') not in newArray %}
-                    <div class="col-xs-12 date"><small><span class="date-sportstv">{{ item.datetime|strftime('%A, %d.%m.%Y') }}</span></small></div>
+                    <div class="col-xs-12 date"><small><span class="date-sportstv">{{ item.datetime|strftime('%A, %e.%m.%Y') }}</span></small></div>
                     {% set newArray = newArray|merge([item.datetime|date('d.m.Y')]) %}
                 {% endif %}
 

@@ -26,8 +26,8 @@ class LunchOffers extends ComponentBase
     public function onRun() {
         $this->page['lunchoffers'] = LunchOffer::listLunchoffers();
 
-        $this->page['week_start_date'] = $this->weekStartDate()->format('d.m.Y');
-        $this->page['week_end_date'] = $this->weekEndDate()->format('d.m.Y');
+        $this->page['week_start_date'] = $this->weekStartDate()->format('j.m.Y');
+        $this->page['week_end_date'] = $this->weekEndDate()->format('j.m.Y');
 
         $this->page['lunchoffer_daily'] = $this->lunchOfferDaily();
         $this->page['lunchoffer_weekly'] = $this->lunchOfferWeekly();
