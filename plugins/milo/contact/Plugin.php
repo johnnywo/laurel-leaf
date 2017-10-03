@@ -41,14 +41,14 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        Event::listen('mailer.prepareSend', function($self, $view, $message) {
+/*        Event::listen('mailer.prepareSend', function($self, $view, $message) {
             if ($view == 'laurel-leaf-contactform-template') {
                 $message->from(post('email'), post('name'));
-                // $message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf Gmail');
-                // $message->bcc(post('email'), post('name'));
+                $message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf Gmail');
+                $message->bcc(post('email'), post('name'));
                 $message->bcc('emil.esletzbichler@gmail.com', 'Milo');
             }
-        });
+        });*/
     }
 
     /**
@@ -58,10 +58,9 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return []; // Remove this line to activate
 
         return [
-            'Milo\Contact\Components\ReplyTo' => 'replyTo',
+            'Milo\Contact\Components\ContactForm' => 'contactForm',
         ];
     }
 
@@ -89,12 +88,11 @@ class Plugin extends PluginBase
      */
     public function registerNavigation()
     {
-        return []; // Remove this line to activate
 
         return [
             'contact' => [
                 'label'       => 'Contact',
-                'url'         => Backend::url('milo/contact/mycontroller'),
+                'url'         => Backend::url('milo/contact/contacts'),
                 'icon'        => 'icon-leaf',
                 'permissions' => ['milo.contact.*'],
                 'order'       => 500,

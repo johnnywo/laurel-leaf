@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Contact
+
+# Model Form Field configuration
+form: $/milo/contact/models/contact/fields.yaml
+
+# Model Class name
+modelClass: Milo\Contact\Models\Contact
+
+# Default redirect location
+defaultRedirect: milo/contact/contacts
+
+# Create page
+create:
+    title: Create Contact
+    redirect: milo/contact/contacts/update/:id
+    redirectClose: milo/contact/contacts
+
+# Update page
+update:
+    title: Edit Contact
+    redirect: milo/contact/contacts
+    redirectClose: milo/contact/contacts
+
+# Preview page
+preview:
+    title: Preview Contact

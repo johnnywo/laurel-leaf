@@ -1,0 +1,24 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+    name:
+        label: Name
+        span: left
+    email: 
+        label: E-Mail
+        span: right
+    subject:
+        label: Betreff
+    message:
+        label: Nachricht
+    file:
+        label: Dateien
+        type: fileupload
+        mode: file
+
+

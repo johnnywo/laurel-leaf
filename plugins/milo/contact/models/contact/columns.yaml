@@ -1,0 +1,21 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    name: 
+        label: Name
+        searchable: true
+    email:
+        label: E-Mail
+        searchable: true
+    subject:
+        label: Betreff
+    message:
+        label: Nachricht
+        searchable: true
+    file:
+        label: Dateien
