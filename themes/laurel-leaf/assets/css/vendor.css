@@ -7343,3 +7343,9 @@ a .icon-flip-vertical:before {
 .icon-renren:before {
   content: "\f18b";
 }
+.icon-clock-o:before {
+  content: "\f017";
+}
+.icon-facebook-square:before {
+  content: "\f082";
+}

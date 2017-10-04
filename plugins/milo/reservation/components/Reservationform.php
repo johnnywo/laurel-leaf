@@ -39,7 +39,7 @@ class ReservationForm extends ComponentBase
 			],
 			[
 				'date' => 'required|date|after:yesterday',
-				'time' => array('regex:/[1][1-9]:[0-5]\d|2[0]:[0-5]\d|[1][1-9].[0-5]\d|2[0].[0][0]$/'),
+				'time' => array('regex:/[1][1-9]:[0-5]\d|2[0]:[0][0]|[1][1-9].[0-5]\d|2[0].[0][0]$/'),
 				'name' => 'required',
 				'email' => 'required|email',
 				'people' => 'required|integer'

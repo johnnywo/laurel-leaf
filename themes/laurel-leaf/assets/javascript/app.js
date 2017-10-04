@@ -77,4 +77,7 @@ jQuery(document).ready(function($){
             window.scrollTo(0, 0);
         })
 
+    // show uploaded file on contact form
+        $('#file-upload').bind('change', function() { var fileName = ''; fileName = $(this).val(); $('#file-selected').html(fileName); })
+
 });

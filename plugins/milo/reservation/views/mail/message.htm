@@ -1,5 +1,5 @@
 subject = "Autoreply: Tischreservierungsanfrage"
-layout = "guuest"
+layout = "laurel-leaf"
 ==
 
 Hi {{ name }},
@@ -27,13 +27,18 @@ Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfra
 
             <!-- content -->
             <div class="content">
+                <div style="text-align: center;">
+                    <a href="http://www.laurel-leaf.at"><img src="http://piveb.com/laurel-leaf-2017/themes/laurel-leaf/assets/images/logo-laurel-leaf.png" alt="Laurel Leaf Irish Pub Vienna"></a>
+                </div>
+                <br>
                 <table>
                     <tr>
                         <td>
-                            <p>Auto System E-Mail —> deine Anfrage hat unsere Mailbox erreicht <br>
-                                und wird in Kürze beantwortet. <br>
+                            <p>
+                                Auto System E-Mail —> deine Anfrage hat unsere Mailbox erreicht und wird in Kürze beantwortet.<br>
                                 <br>
-                                <strong>Diese Nachricht ist keine Reservierungsbestätigung!</strong></p>
+                                <strong>Diese Nachricht ist keine Reservierungsbestätigung!</strong>
+                            </p>
                             <br>
                             <p>Hi {{ name }},<br>
                                 danke für deine Tischreservierungsanfrage,
@@ -54,7 +59,7 @@ Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfra
                                 </tr>
                             </table>
 
-                            <p>im {% if smoker == "nonsmoker" %}<strong>Nichtraucher Bereich</strong>{% elseif smoker == "smoker" %}<strong>Raucher Bereich</strong>{% else %}Laurel Leaf Pub{% endif %}.</p>
+                            <p>im {% if smoker == "nonsmoker" %}<strong>Nichtraucher Bereich</strong>{% elseif smoker == "smoker" %}<strong>Raucher Bereich</strong>{% else %}Laurel Leaf Pub{% endif %} auf den Namen <strong>{{ name }}</strong>.</p>
 
                             <p>Nachricht: <br>
                             {{ sometext }}</p>
@@ -63,13 +68,6 @@ Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfra
 
                             <p>Bis bald im Laurel Leaf, <br>
                                 die Laurel Leaf Crew
-                            </p>
-
-                            <p>
-                                Laurel Leaf Irish Pub Vienna <br>
-                                Theobaldgasse 15 <br>
-                                A-1060 Wien <br>
-                                T: +43 1 585 68 65
                             </p>
 
                         </td>
@@ -84,27 +82,4 @@ Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfra
 </table>
 <!-- /body -->
 
-<!-- footer -->
-<table class="footer-wrap">
-    <tr>
-        <td></td>
-        <td class="container">
-
-            <!-- content -->
-            <div class="content">
-                <table>
-                    <tr>
-                        <td align="center">
-                            <p><a href="http://www.laurel-leaf.at">&copy;2017 Laurel Leaf Irish Pub</a></p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <!-- /content -->
-
-        </td>
-        <td></td>
-    </tr>
-</table>
-<!-- /footer -->
 

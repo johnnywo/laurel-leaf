@@ -68,11 +68,7 @@ class ContactForm extends ComponentBase
             );
         }
 
-
-
-
         if ($validator->fails()) {
-            //throw new \ValidationException($validator);
             Flash::error('Uups, es ist ein Fehler passiert.');
             return Redirect::back()->withErrors($validator);
 
@@ -81,32 +77,25 @@ class ContactForm extends ComponentBase
             /*Spam Check*/
             $url = Input::get('url');
 
-            //var_dump($url);
-
             if (isset($url) && $url == '') {
 
-                
-                $vars = [
+                $newContact = Contact::create([
                     'name' => Input::get('name'),
                     'email' => Input::get('email'),
                     'subject' => Input::get('subject'),
-                    'nachricht' => Input::get('message'),
+                    'message' => Input::get('message'),
                     'file' => Input::file('file')
+                ]);
+                
+                $vars = [
+                    'name' => $newContact->name,
+                    'email' => $newContact->email,
+                    'subject' => $newContact->subject,
+                    'nachricht' => $newContact->message,
+                    'file' => $newContact->file
                 ];
 
-
-
-                //dd($vars['file']);
-
-                Contact::create([
-                    'name' => $vars['name'],
-                    'email' => $vars['email'],
-                    'subject' => $vars['subject'],
-                    'message' => $vars['nachricht'],
-                    'file' => $vars['file']
-                ]);
-
-                Mail::send('milo.contact::mail.message', $vars, function($message) {
+                Mail::send('milo.contact::mail.message', $vars, function ($message) use ($vars) {
 
                     $message->from(Input::get('email'), Input::get('name'));
                     //$message->to('1060@laurel-leaf.at', 'Laurel Leaf Irish Pub');
@@ -115,10 +104,10 @@ class ContactForm extends ComponentBase
                         Input::get('email') => Input::get('name'), 
                         'emil@zeero.at' => 'Milo' 
                     ]);
-                    $message->subject('Nachricht an Laurel Leaf (auto-reply)');
+                    $message->subject('Nachricht an Laurel Leaf');
 
                     if ( Input::file('file') ) {
-                        $message->attach(Input::file('file'));
+                        $message->attach($vars['file']->path);
                     }
                 });
 
