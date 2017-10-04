@@ -6,6 +6,8 @@ columns:
     id:
         label: ID
         searchable: true
+    is_active:
+        label: is active?
     image:
         type: partial
         path: ~/plugins/milo/heroimage/models/heroimage/_hero_image.htm

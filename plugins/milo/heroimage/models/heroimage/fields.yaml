@@ -21,5 +21,10 @@ fields:
     cost:
         label: Prize
         span: left
+    is_active:
+        label: Active
+        type: checkbox
+        default: true
+
 
 

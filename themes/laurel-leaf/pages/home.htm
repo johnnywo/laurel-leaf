@@ -8,7 +8,9 @@ layout = "default"
 <?
 use Milo\HeroImage\Models\HeroImage;
     function onStart() {
-        $this['heroimages'] = HeroImage::limit(3)->get();
+        $this['heroimages'] = HeroImage::limit(3)
+        						->where('is_active', '=', true)
+        						->get();
     }
 ?>
 ==
