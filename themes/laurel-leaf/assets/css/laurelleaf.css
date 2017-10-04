@@ -4,10 +4,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
     color: #424242;
     padding-top: 150px;
+    background-color: whitesmoke;
 }
 
 #footer{
-    background: #333333;
+
+}
+
+.jumbotron.dark {
+    background: #444444;
     color: white;
 }
 

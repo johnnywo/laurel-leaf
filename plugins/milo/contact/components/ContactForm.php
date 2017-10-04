@@ -98,8 +98,8 @@ class ContactForm extends ComponentBase
                 Mail::send('milo.contact::mail.message', $vars, function ($message) use ($vars) {
 
                     $message->from(Input::get('email'), Input::get('name'));
-                    //$message->to('1060@laurel-leaf.at', 'Laurel Leaf Irish Pub');
-                    //$message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf GMail');
+                    $message->to('1060@laurel-leaf.at', 'Laurel Leaf Irish Pub');
+                    $message->cc('laurelleaf1060@gmail.com', 'Laurel Leaf GMail');
                     $message->bcc([
                         Input::get('email') => Input::get('name'), 
                         'emil@zeero.at' => 'Milo' 
