@@ -63,10 +63,10 @@ jQuery(document).ready(function($){
 
     })(jQuery);
 
-    // JS Plugin niceSelect
+    // JS Plugin niceSelect (/food-drinks)
         $('select').niceSelect();
 
-   // Javascript to enable link to tab
+   // Javascript to enable link to tab (/food-drinks, /contact-reservation)
         var url = document.location.toString();
         if (url.match('#')) {
             $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');

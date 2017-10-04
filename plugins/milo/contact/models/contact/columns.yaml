@@ -3,8 +3,8 @@
 # ===================================
 
 columns:
-    id:
-        label: ID
+    created_at:
+        label: Datum
         searchable: true
     name: 
         label: Name
@@ -17,5 +17,3 @@ columns:
     message:
         label: Nachricht
         searchable: true
-    file:
-        label: Dateien

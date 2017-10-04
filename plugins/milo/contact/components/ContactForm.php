@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Input;
+use Request;
 use Mail;
 use Validator;
 use Redirect;
@@ -23,25 +24,51 @@ class ContactForm extends ComponentBase
         return [];
     }
 
-    public function onSubmitContactForm()
+    public function onRun() 
     {
 
-        $validator = Validator::make(
-            [
-                'name' => Input::get('name'),
-                'email' => Input::get('email'),
-                'message' => Input::get('message'),
-                'file' => Input::file('file')
-            ],
-            [
-                'name' => 'required',
-                'email' => 'required|email',
-                'message' => 'required',
-                'file' => 'mimes:jpeg,jpg,png,gif,bmp,pdf|max:3000'
-            ]
-        );
+    }
 
-        // dd(Input::file('files'));
+    public function onSubmitContactForm()
+    {
+         //dd(Input::file('file'));
+
+        //dd($file);
+
+        if (
+            Request::hasFile('file') &&
+            Request::file('file')->isValid()
+        ) {
+            $validator = Validator::make(
+                [
+                    'name' => Input::get('name'),
+                    'email' => Input::get('email'),
+                    'message' => Input::get('message'),
+                    'file' => Input::file('file')
+                ],
+                [
+                    'name' => 'required',
+                    'email' => 'required|email',
+                    'message' => 'required',
+                    'file' => 'mimes:jpeg,png,gif,pdf|max:2000'     
+                ]
+            );
+        } else {
+            $validator = Validator::make(
+                [
+                    'name' => Input::get('name'),
+                    'email' => Input::get('email'),
+                    'message' => Input::get('message')
+                ],
+                [
+                    'name' => 'required',
+                    'email' => 'required|email',
+                    'message' => 'required'
+                ]
+            );
+        }
+
+
 
 
         if ($validator->fails()) {
@@ -67,6 +94,8 @@ class ContactForm extends ComponentBase
                     'file' => Input::file('file')
                 ];
 
+
+
                 //dd($vars['file']);
 
                 Contact::create([
@@ -87,7 +116,10 @@ class ContactForm extends ComponentBase
                         'emil@zeero.at' => 'Milo' 
                     ]);
                     $message->subject('Nachricht an Laurel Leaf (auto-reply)');
-                    $message->attach(Input::file('file'));
+
+                    if ( Input::file('file') ) {
+                        $message->attach(Input::file('file'));
+                    }
                 });
 
                 Flash::success('Nachricht übermittelt!');
