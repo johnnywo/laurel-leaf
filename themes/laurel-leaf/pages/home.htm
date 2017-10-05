@@ -1,11 +1,14 @@
-title = "Demonstration"
+title = "Home"
 url = "/"
 layout = "default"
+meta_description = "dein Pub im Herzen Mariahilfs nähe Mariahilferstrasse. Spiele Billard oder Darts, verfolge deine Lieblingsmannschaften (Fussball) auf großen TV Leinwänden, oder genieße aus der umfangreichen Getränke- / Speisekarte."
+is_hidden = 0
 
 [lunchoffers]
+
 [games]
 ==
-<?
+<?php
 use Milo\HeroImage\Models\HeroImage;
     function onStart() {
         $this['heroimages'] = HeroImage::limit(3)
@@ -75,6 +78,3 @@ use Milo\HeroImage\Models\HeroImage;
 </div> <!-- End Billard & Darts Section -->
 
 {% partial "site/story-of-laurelleaf.htm" %}
-
-
-
