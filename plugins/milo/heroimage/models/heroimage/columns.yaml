@@ -8,6 +8,8 @@ columns:
         searchable: true
     is_active:
         label: is active?
+    sort_order:
+        label: Sort Order
     image:
         type: partial
         path: ~/plugins/milo/heroimage/models/heroimage/_hero_image.htm

@@ -15,6 +15,7 @@ class CreateHeroImagesTable extends Migration
             $table->string('description');
             $table->string('cost');
             $table->boolean('is_active')->default(false);
+            $table->integer('sort_order')->default(1);
             $table->timestamps();
         });
     }
