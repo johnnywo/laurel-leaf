@@ -1,0 +1,24 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    eventimage:
+        type: partial
+        path: ~/plugins/milo/event/models/eventimage/_image_thumb.htm
+        sortable: false
+    title:
+        label: Title
+        searchable: true
+    event_end_date:
+        label: Event End Date 
+        type: date
+        searchable: true
+    description:
+        label: Description
+        searchable: true
+    is_active:
+        label: is Active
+        searchable: true
+    sort_order:
+        label: Sort Order 

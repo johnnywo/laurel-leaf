@@ -1,0 +1,4 @@
+1.0.1: First version of Event
+1.0.2: 
+  - Table Migration Event Images Table
+  - create_event_images_table.php

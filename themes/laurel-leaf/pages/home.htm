@@ -5,8 +5,8 @@ meta_description = "dein Pub im Herzen Mariahilfs nähe Mariahilferstrasse. Spie
 is_hidden = 0
 
 [lunchoffers]
-
 [games]
+[eventImages]
 ==
 <?php
 use Milo\HeroImage\Models\HeroImage;
@@ -28,23 +28,25 @@ use Milo\HeroImage\Models\HeroImage;
 {% endif %} <!-- End Hero Section -->
 
 
-<!-- Today's Food Section -->
-{% if todays_food|length %}
-	{% if weekend == false %}
-	<div class="jumbotron chalkboard">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-1">
-					{% partial "food_today.htm" %}
-				</div>
-				<div class="col-sm-5 text-center p-b-sm">
-					<img src="{{ 'assets/images/burger-billard-offer-ll.jpg'|theme }}" alt="Billard Burger Offer Montag - Samstag" class="img-rotate-down-2 img-responsive">
-				</div>
-			</div>
+<!-- Chalkboard -->
+<div class="jumbotron chalkboard">
+	<div class="container">
+		<div class="row">
+			{% if todays_food|length %}
+				{% if weekend == false %}
+					<div class="col-sm-6 col-sm-offset-1">
+						{% partial "food_today.htm" %}
+					</div>
+				{% endif %}
+			{% endif %} 
+			
+			<!-- Events Din (A4, A1) Format -->
+			{% component 'eventImages' %}
+
 		</div>
 	</div>
-	{% endif %}
-{% endif %} <!-- End Today's Food Section -->
+</div> <!-- End Chalkboard -->
+
 
 <!-- Sports TV Section -->
 {% if sportstv|length %}

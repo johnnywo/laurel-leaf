@@ -80,4 +80,10 @@ jQuery(document).ready(function($){
     // show uploaded file on contact form
         $('#file-upload').bind('change', function() { var fileName = ''; fileName = $(this).val(); $('#file-selected').html(fileName); })
 
+    // fancybox plugin
+        $(".fancybox").fancybox({
+            openEffect: 'elastic',
+            closeEffect: 'elastic'
+        });
+
 });

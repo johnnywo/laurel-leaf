@@ -28,6 +28,7 @@ theme = "dark-bottom"
         <link href="{{ [
         'assets/css/vendor.css',
         'assets/css/simple-sidebar.css',
+        'assets/vendor/fancybox/jquery.fancybox.css',
         'assets/vendor/jquery-nice-select-1.1.0/css/nice-select.css',
         'assets/css/theme.css'
         ]|theme }}" rel="stylesheet">
@@ -65,10 +66,14 @@ theme = "dark-bottom"
         </footer>
 
         <!-- Scripts -->
-        <script src="{{ 'assets/vendor/jquery.js'|theme }}"></script>
-        <script src="{{ 'assets/vendor/jquery-nice-select-1.1.0/js/jquery.nice-select.js'|theme }}"></script>
-        <script src="{{ 'assets/vendor/bootstrap.js'|theme }}"></script>
-        <script src="{{ 'assets/javascript/app.js'|theme }}"></script>
+        <script src="{{ [
+        'assets/vendor/jquery.js',
+        'assets/vendor/jquery-nice-select-1.1.0/js/jquery.nice-select.js',
+        'assets/vendor/fancybox/jquery.fancybox.js',
+        'assets/vendor/bootstrap.js',
+        'assets/javascript/app.js'
+        ]|theme }}">
+        </script>
         {% framework extras %}
         {% scripts %}
 

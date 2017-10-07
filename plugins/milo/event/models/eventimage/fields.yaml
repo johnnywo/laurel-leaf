@@ -1,0 +1,35 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    eventimage:
+        label: Event Image
+        type: fileupload
+        mode: image
+        imageHeight: 1000
+        imageWidth: 700
+        comment: Format 7:10 = Din Formats / Portrait Mode - will be resized to 700x1000px
+        thumbOptions:
+            mode: auto
+            offset:
+                - 0
+                - 0
+            quality: 90
+            sharpen: 0
+            interlace: false
+            extension: auto
+    title:
+        label: Title
+        span: left
+    description:
+        label: Description
+        type: textarea
+    event_end_date:
+        label: Event End Date 
+        type: datepicker
+        mode: date
+        span: left
+    is_active:
+        label: is Active
+        type: checkbox

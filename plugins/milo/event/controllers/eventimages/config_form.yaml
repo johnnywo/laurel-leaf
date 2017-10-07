@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Event Image
+
+# Model Form Field configuration
+form: $/milo/event/models/eventimage/fields.yaml
+
+# Model Class name
+modelClass: Milo\Event\Models\EventImage
+
+# Default redirect location
+defaultRedirect: milo/event/eventimages
+
+# Create page
+create:
+    title: Create Event Image
+    redirect: milo/event/eventimages/update/:id
+    redirectClose: milo/event/eventimages
+
+# Update page
+update:
+    title: Edit Event Image
+    redirect: milo/event/eventimages
+    redirectClose: milo/event/eventimages
+
+# Preview page
+preview:
+    title: Preview Event Image
