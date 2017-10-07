@@ -3,6 +3,29 @@
 # ===================================
 
 fields:
+    datetime:
+        label: Date
+        span: left
+    name:
+        label: Name
+        span: left
+    email:
+        label: E-Mail
+        span: right
+    people:
+        label: People
+        span: left
+    area:
+        label: Area
+        span: right
+    message:
+        label: Message
+        type: textarea
     id:
         label: ID
         disabled: true
+        span: left
+    created_at:
+        label: Created 
+        disabled: true
+        span: right

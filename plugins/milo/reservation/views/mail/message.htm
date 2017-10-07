@@ -2,20 +2,26 @@ subject = "Autoreply: Tischreservierungsanfrage"
 layout = "laurel-leaf"
 ==
 
-Hi {{ name }},
+Hallo,
 
-danke für deine Tischreservierungsanfrage,
+danke für deine Tischreservierungsanfrage:
 
 Datum: {{ date }}
 Zeit: {{ time }}
 Personen: {{ people }}
 
-im {% if smoker == "nonsmoker" %}Nichtraucher Bereich{% elseif smoker == "smoker" %}Raucherbereich{% else %}Laurel Leaf Pub{% endif %}.
+im {% if smoker == "nonsmoker" %}Nichtraucher Bereich{% elseif smoker == "smoker" %}Raucherbereich{% else %}Laurel Leaf Pub{% endif %} auf den Namen {{ name }}.
 
+{% if sometext %}
 Nachricht:
 {{ sometext }}
+{% endif %}
 
 Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfrage zu bestätigen oder abzulehnen.
+
+<p>Bis bald, <br>
+    deine Laurel Leaf Crew
+</p>
 
 ==
 
@@ -28,7 +34,7 @@ Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfra
             <!-- content -->
             <div class="content">
                 <div style="text-align: center;">
-                    <a href="http://www.laurel-leaf.at"><img src="http://piveb.com/laurel-leaf-2017/themes/laurel-leaf/assets/images/logo-ll-mail.png" alt="Laurel Leaf Irish Pub Vienna"></a>
+                    <a href="http://www.laurel-leaf.at"><img src="https://laurel-leaf.at/themes/laurel-leaf/assets/images/logo-ll-mail.png" alt="Laurel Leaf Irish Pub Vienna"></a>
                 </div>
                 <br>
                 <table>
@@ -40,8 +46,8 @@ Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfra
                                 <strong>Diese Nachricht ist keine Reservierungsbestätigung!</strong>
                             </p>
                             <br>
-                            <p>Hi {{ name }},<br>
-                                danke für deine Tischreservierungsanfrage,
+                            <p>Hallo,<br>
+                                danke für deine Tischreservierungsanfrage:
                             </p>
 
                             <table>
@@ -61,13 +67,16 @@ Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfra
 
                             <p>im {% if smoker == "nonsmoker" %}<strong>Nichtraucher Bereich</strong>{% elseif smoker == "smoker" %}<strong>Raucher Bereich</strong>{% else %}Laurel Leaf Pub{% endif %} auf den Namen <strong>{{ name }}</strong>.</p>
 
+                            {% if sometext %}
                             <p>Nachricht: <br>
-                            {{ sometext }}</p>
+                                {{ sometext }}
+                            </p>
+                            {% endif %}
 
                             <p>Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfrage zu bestätigen oder abzulehnen.</p>
 
-                            <p>Bis bald im Laurel Leaf, <br>
-                                die Laurel Leaf Crew
+                            <p>Bis bald, <br>
+                                deine Laurel Leaf Crew
                             </p>
 
                         </td>
