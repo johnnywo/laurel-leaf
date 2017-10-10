@@ -6,7 +6,7 @@
 list: $/milo/food/models/lunchoffer/columns.yaml
 
 # Model Class name
-modelClass: Milo\Food\Models\Lunchoffer
+modelClass: Milo\Food\Models\LunchOffer
 
 # List Title
 title: Manage Lunchoffers

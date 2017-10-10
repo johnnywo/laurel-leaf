@@ -9,7 +9,7 @@ name: Lunchoffer
 form: $/milo/food/models/lunchoffer/fields.yaml
 
 # Model Class name
-modelClass: Milo\Food\Models\Lunchoffer
+modelClass: Milo\Food\Models\LunchOffer
 
 # Default redirect location
 defaultRedirect: milo/food/lunchoffers
