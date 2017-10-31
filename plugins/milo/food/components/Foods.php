@@ -52,6 +52,7 @@ class Foods extends ComponentBase
 
 		$this->page['foods'] = Food::listFrontendFood($options);
 		$this->page['categories'] = FoodCategory::where('id', '!=', 7)->get();
+		//dd($this->page['categories']);
 	}
 
 

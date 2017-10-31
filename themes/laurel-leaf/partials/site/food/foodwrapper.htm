@@ -4,7 +4,8 @@
 
         {% set foodCategory = '' %}
 
-        {% for chunked in foods.chunk(13) %}
+        {# hier die Darstellung in Vollbildansicht anpassen (wieviele Speisen pro Spalte) #}
+        {% for chunked in foods.chunk(19) %}
 
             <div class="col-sm-6 col-md-4">
 

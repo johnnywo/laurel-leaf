@@ -65,13 +65,11 @@ class Food extends Model
 		extract(array_merge([
 			'page' => 1,
 			'perPage' => 100,
-			'sort' => 'created_at desc',
+			'sort' => 'sort_order desc',
 			'foodcategory' => ''
 		], $options));
 
-		// exclude all items tagged with 'nur im Mittagsangebot'(hide_in_regular)
-		$query->where('hide_in_regular', '=', false)->orWhere('hide_in_regular', '=', null);
-
+        // wenn eine Food Category aus dem Dropdown Menü ausgewählt wurde:
 		if($foodcategory !== '') {
 
 			if(!is_array($foodcategory)) {
@@ -83,9 +81,11 @@ class Food extends Model
 					$q->where('id', '=', $category);
 				});
 			}
-		}
-
-		$query->orderBy('sort_order');
+		} else {
+            // sonst bei Darstellung von allen Speisen: exclude all items tagged with 'nur im Mittagsangebot'(hide_in_regular)
+            $query->where('hide_in_regular', '=', false)
+                ->orWhere('hide_in_regular', '=', null);
+        }
 
 		return $query->paginate($perPage, $page);
 	}

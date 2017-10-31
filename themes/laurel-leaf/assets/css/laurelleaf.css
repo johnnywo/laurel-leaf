@@ -860,3 +860,7 @@ i.icon {
     box-shadow: 0px 0px 2px #888;
 }
 
+div#drinkWrapper {
+    min-height: 650px;
+}
+
