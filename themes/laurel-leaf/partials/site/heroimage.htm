@@ -1,51 +1,95 @@
-<div id="heroImage" class="carousel slide" data-ride="carousel" data-interval="false">
-    <ol class="carousel-indicators">
-        <li data-target="#heroImage" data-slide-to="0" class="active"></li>
-        <li data-target="#heroImage" data-slide-to="1"></li>
-        <li data-target="#heroImage" data-slide-to="2"></li>
-    </ol>
+<!-- more than one image = slideshow -->
+{% if heroimages|length > 1 %}
+    <div class="container-fluid hero">
+        <div class="row">
+             <div id="heroImage" class="carousel slide" data-ride="carousel" data-interval="false">
+                 <ol class="carousel-indicators">
+                {# set carousel indicators (currently points centered bottom area) dynamic #}
+                {% set counter = 0 %}
+                {% for count in heroimages %}
+                     <li data-target="#heroImage" data-slide-to="{{ counter }}" class="{% if counter == 0 %}active{% endif %}"></li>
+                 {% set counter = counter + 1 %}
+                 {% endfor %}
+                 </ol>
 
-    <div class="carousel-inner">
-        {% set first = 1 %}
-        {% for heroimage in heroimages %}
-            <div class="item {% if first == 1 %} active {% endif %}">
-                <!-- Image Ratio for large Screens -->
-                <img src="{{ heroimage.image.thumb(1200,400, 'crop') }}"
-                                                       alt="{{ heroimage.title }} {{ heroimage.description }}"
-                                                       width="100%"
-                                                       class="hidden-xs">
-                <!-- Image Ratio for Smartphones -->
-                <img src="{{ heroimage.image.thumb(750,750, 'crop') }}"
-                     alt="{{ heroimage.title }} {{ heroimage.description }}"
-                     width="100%"
-                     class="hidden-sm hidden-md hidden-lg">
-                <!-- <div class="shadow"></div> -->
-                {% if heroimage.cost %}
-                <div class="carousel-caption">
-                    <h3>{{ heroimage.title|upper }}</h3>
-                    <p class="description">{{ heroimage.description }}</p>
-                    <div class="cost">
-                        <div class="star"></div>
-                        <div class="star-content">
-                            {{ heroimage.cost }}
-                        </div>
+                 <div class="carousel-inner">
+                     {% set first = 1 %}
+                     {% for heroimage in heroimages %}
+                         <div class="item {% if first == 1 %} active {% endif %}">
+                             <!-- Image Ratio for large Screens -->
+                             <img src="{{ heroimage.image.thumb(1200,400, 'crop') }}"
+                                                                    alt="{{ heroimage.title }} {{ heroimage.description }}"
+                                                                    width="100%"
+                                                                    class="hidden-xs">
+                             <!-- Image Ratio for Smartphones -->
+                             <img src="{{ heroimage.image.thumb(750,750, 'crop') }}"
+                                  alt="{{ heroimage.title }} {{ heroimage.description }}"
+                                  width="100%"
+                                  class="hidden-sm hidden-md hidden-lg">
+                             <!-- <div class="shadow"></div> -->
+                             {% if heroimage.cost %}
+                             <div class="carousel-caption">
+                                 <h3>{{ heroimage.title|upper }}</h3>
+                                 <p class="description">{{ heroimage.description }}</p>
+                                 <div class="cost">
+                                     <div class="star"></div>
+                                     <div class="star-content">
+                                         {{ heroimage.cost }}
+                                     </div>
 
+                                 </div>
+                             </div>
+                             {% endif %}
+                         </div>
+                         {% set first = first + 1 %}
+                     {% endfor %}
+                 </div>
+
+                 <!-- Left and right controls -->
+                 <a class="left carousel-control" href="#heroImage" data-slide="prev">
+                     <span class="icon icon-chevron-left"></span>
+                     <span class="sr-only">Previous</span>
+                 </a>
+                 <a class="right carousel-control" href="#heroImage" data-slide="next">
+                     <span class="icon icon-chevron-right"></span>
+                     <span class="sr-only">Next</span>
+                 </a>
+
+             </div>
+        </div>
+    </div>
+{% elseif heroimages|length == 1 %}
+<!-- only one image -->
+    <div id="heroImage" class="container-fluid hero">
+        <div class="row pos-r">
+            {% for heroimage in heroimages %}
+            <!-- Image Ratio for large Screens -->
+            <img src="{{ heroimage.image.thumb(1200,400, 'crop') }}"
+                                                   alt="{{ heroimage.title }} {{ heroimage.description }}"
+                                                   width="100%"
+                                                   class="hidden-xs">
+            <!-- Image Ratio for Smartphones -->
+            <img src="{{ heroimage.image.thumb(750,750, 'crop') }}"
+                 alt="{{ heroimage.title }} {{ heroimage.description }}"
+                 width="100%"
+                 class="hidden-sm hidden-md hidden-lg">
+
+            {% if heroimage.cost %}
+            <div class="single-image-caption">
+                <h3>{{ heroimage.title|upper }}</h3>
+                <p class="description">{{ heroimage.description }}</p>
+                <div class="cost">
+                    <div class="star"></div>
+                    <div class="star-content">
+                        {{ heroimage.cost }}
                     </div>
                 </div>
-                {% endif %}
             </div>
-            {% set first = first + 1 %}
-        {% endfor %}
+            {% endif %}
+
+            {% endfor %}
+        </div>
     </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#heroImage" data-slide="prev">
-        <span class="icon icon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#heroImage" data-slide="next">
-        <span class="icon icon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-    </a>
-
-</div>
+{% else %}
+<!-- currently no hero image -->
+{% endif %}

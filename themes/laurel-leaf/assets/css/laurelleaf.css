@@ -707,6 +707,20 @@ h3.menue-header + hr{
     .gallery {
         padding-left: 0;
     }
+
+    .single-image-caption {
+        left: 55%;
+        right: 5%;
+        padding-bottom: 30px;
+        background: rgba(255,255,255,0.8);
+        color: black;
+        text-align: left;
+        padding: 0px 20px 10px 20px;
+        text-shadow: none;
+        position: absolute;
+        bottom: 20px;
+        z-index: 10;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
@@ -812,6 +826,25 @@ h3.menue-header + hr{
 
     div#sports-tv-carousel {
         min-height: 450px;
+    }
+
+    .single-image-caption {
+        left: 5%;
+        right: 5%;
+        padding-bottom: 50px;
+        text-align: left;
+        padding: 0px 20px 10px 20px;
+        text-shadow: none;
+        font-size: 85%;
+        position: absolute;
+        bottom: 20px;
+        z-index: 10;
+        background: rgba(255,255,255,0.8);
+        color: black;
+    }
+
+    .single-image-caption h3 {
+        font-size: 130%;
     }
 }
 

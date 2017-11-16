@@ -18,14 +18,9 @@ use Milo\HeroImage\Models\HeroImage;
     }
 ?>
 ==
-<!-- Hero Section -->
-{% if heroimages|length %}
-<div class="container-fluid hero">
-    <div class="row">
-         {% partial 'site/heroimage.htm' %}
-    </div>
-</div> 
-{% endif %} <!-- End Hero Section -->
+<!-- Hero Section Start -->
+	{% partial 'site/heroimage' %}
+<!-- End Hero Section -->
 
 
 <!-- Chalkboard -->
