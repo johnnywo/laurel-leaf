@@ -16,17 +16,20 @@
                      {% set first = 1 %}
                      {% for heroimage in heroimages %}
                          <div class="item {% if first == 1 %} active {% endif %}">
-                             <!-- Image Ratio for large Screens -->
-                             <img src="{{ heroimage.image.thumb(1200,400, 'crop') }}"
-                                                                    alt="{{ heroimage.title }} {{ heroimage.description }}"
-                                                                    width="100%"
-                                                                    class="hidden-xs">
-                             <!-- Image Ratio for Smartphones -->
-                             <img src="{{ heroimage.image.thumb(750,750, 'crop') }}"
-                                  alt="{{ heroimage.title }} {{ heroimage.description }}"
-                                  width="100%"
-                                  class="hidden-sm hidden-md hidden-lg">
-                             <!-- <div class="shadow"></div> -->
+
+                            <picture>
+                                <source media="(max-width: 767px)" 
+                                        srcset="{{ heroimage.image.thumb(750,750, 'crop') }}"
+                                        >
+                                <source media="(min-width: 768px)" 
+                                        srcset="{{ heroimage.image.thumb(1200,400, 'crop') }}"
+                                        >
+                                <img src="{{ heroimage.image.thumb(750,750, 'crop') }}" 
+                                        alt="{{ heroimage.title }} {{ heroimage.description }}" 
+                                        width="100%"
+                                        >
+                            </picture>
+
                              {% if heroimage.cost %}
                              <div class="carousel-caption">
                                  <h3>{{ heroimage.title|upper }}</h3>
@@ -63,16 +66,18 @@
     <div id="heroImage" class="container-fluid hero">
         <div class="row pos-r">
             {% for heroimage in heroimages %}
-            <!-- Image Ratio for large Screens -->
-            <img src="{{ heroimage.image.thumb(1200,400, 'crop') }}"
-                                                   alt="{{ heroimage.title }} {{ heroimage.description }}"
-                                                   width="100%"
-                                                   class="hidden-xs">
-            <!-- Image Ratio for Smartphones -->
-            <img src="{{ heroimage.image.thumb(750,750, 'crop') }}"
-                 alt="{{ heroimage.title }} {{ heroimage.description }}"
-                 width="100%"
-                 class="hidden-sm hidden-md hidden-lg">
+            <picture>
+                <source media="(max-width: 767px)" 
+                        srcset="{{ heroimage.image.thumb(750,750, 'crop') }}"
+                        >
+                <source media="(min-width: 768px)" 
+                        srcset="{{ heroimage.image.thumb(1200,400, 'crop') }}"
+                        >
+                <img src="{{ heroimage.image.thumb(750,750, 'crop') }}" 
+                        alt="{{ heroimage.title }} {{ heroimage.description }}" 
+                        width="100%"
+                        >
+            </picture>
 
             {% if heroimage.cost %}
             <div class="single-image-caption">
