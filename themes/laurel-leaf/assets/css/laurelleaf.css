@@ -430,15 +430,21 @@ h3.menue-header + hr{
 
 .p50{
     padding: 50px;
-}
+} 
 
 .mb15 {
     margin-bottom: 15px; 
 }
 
 .chalkboard {
-    background: url('../images/chalkboard.jpg');
-    background-size: cover;
+    /*background: url('../images/chalkboard.jpg');
+    background-size: cover;*/
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#585858+0,0a0a0a+100 */
+    background: #585858; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #585858 0%, #0a0a0a 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #585858 0%,#0a0a0a 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #585858 0%,#0a0a0a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#585858', endColorstr='#0a0a0a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     color: white;
 }
 
@@ -895,5 +901,9 @@ i.icon {
 
 div#drinkWrapper {
     min-height: 650px;
+}
+
+.box-shadow {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
