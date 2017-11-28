@@ -7349,3 +7349,6 @@ a .icon-flip-vertical:before {
 .icon-facebook-square:before {
   content: "\f082";
 }
+.icon-tree:before {
+  content: "\f1bb";
+}
