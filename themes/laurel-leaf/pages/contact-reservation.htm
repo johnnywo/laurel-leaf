@@ -162,7 +162,8 @@ is_hidden = 0
                 <div class="col-sm-6">
                     <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2687.12777489514!2d16.35673813159021!3d48.20018387922846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d078f88c4d8e9%3A0x235557c19dd4fe8a!2sLaurel+Leaf+Irish+Pub+Vienna!5e0!3m2!1sde!2sat!4v1504893659845" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->     
                     
-                    {% component 'contactForm' %}
+                    {% partial 'site/derzeit-keine-reservierung' %}
+                    {# {% component 'contactForm' %} #}
 
                 </div>
 
@@ -192,7 +193,9 @@ is_hidden = 0
 
                 <div class="col-md-6">
 
-                    {% component 'reservation' %}
+                    {% partial 'site/derzeit-keine-reservierung' %}
+
+                    {# {% component 'reservation' %} #}
 
                 </div>
 
