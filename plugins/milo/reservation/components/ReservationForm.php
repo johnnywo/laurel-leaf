@@ -85,7 +85,7 @@ class ReservationForm extends ComponentBase
 
 	            //Mail::send('milo.reservation::mail.message', $vars, function($message) {
 
-	            Mail::send('milo.reservation::mail.message', $vars, function($message) use ($vars) {
+	            Mail::queue('milo.reservation::mail.message', $vars, function($message) use ($vars) {
 
 	            	$message->from($vars['email'], $vars['name']);
 	            	$message->to('1060@laurel-leaf.at', 'Laurel Leaf Irish Pub');
