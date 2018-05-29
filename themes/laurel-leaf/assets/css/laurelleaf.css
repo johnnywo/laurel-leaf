@@ -907,3 +907,13 @@ div#drinkWrapper {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
+.jumbotron.worldcup{
+    background-image: url('../images/worldcup.jpg');
+    background-size: cover;
+    background-blend-mode: darken;
+    color: white;
+}
+.jumbotron.worldcup h1 {
+    color: white;
+}
+
