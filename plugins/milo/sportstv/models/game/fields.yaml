@@ -9,6 +9,7 @@ fields:
         type: datepicker
         mode: datetime
         format: d.m.Y
+        firstDay: 1
     league:
         label: League
         type: relation
