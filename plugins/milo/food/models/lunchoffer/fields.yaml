@@ -26,8 +26,10 @@ fields:
         type: datepicker
         mode: date
         required: required
+        firstDay: 1
     date_until:
         label: Until Date
         span: right 
         type: datepicker
         mode: date
+        firstDay: 1
