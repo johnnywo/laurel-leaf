@@ -75,8 +75,9 @@ class LunchOffers extends ComponentBase
     {
         $food = Lunchoffer::where('date', '>=', Carbon::today())
                             ->where('date', '<=', Carbon::tomorrow())
-                            ->orWhere('date_until', '>=', Carbon::today())
                             ->where('always_hot', '=', false)
+                            ->orWhere('date_until', '>=', Carbon::today())
+                            
                             ->orderBy('date', 'desc')
                             ->with('food')
                             ->get();
