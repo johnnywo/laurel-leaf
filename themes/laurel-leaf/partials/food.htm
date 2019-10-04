@@ -1,0 +1,26 @@
+description = "Food 2019 Img"
+==
+<?php
+    function onStart() {
+        $this['afood'] = \Milo\Alacarte\Models\Menu::where('food_or_drinks', 'food')
+                                ->where('published', true)
+                                ->first();
+    }
+?>
+==
+{% set food = afood %}
+{% set sheets = afood.sheets %}
+<div class="container">
+    <div class="row">
+        <h1>{{ food.title }}</h1>
+        {% for sheet in sheets %}
+        <div class="col-sm-6 col-md-4 col-lg-3" style="margin-bottom: 30px;">
+            <a href="{{ sheet.getPath() }}" class="group" rel="group1">
+                <img src="{{ sheet.getThumb(420, 594) }}" alt="{{ food.title }} Laurel Leaf Page {{ loop.index }}" class="img-responsive">
+            </a>
+        </div>
+        {% endfor %}
+    
+    </div>
+
+</div>

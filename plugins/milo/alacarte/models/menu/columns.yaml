@@ -1,0 +1,14 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    title: 
+        label: Name
+        searchable: true
+    food_or_drinks:
+        label: Food or Drinks
+        searchable: true
+    published:
+        label: veröffentlicht
+        type: switch

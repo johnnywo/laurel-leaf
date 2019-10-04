@@ -1,0 +1,34 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    title: 
+        label: Name
+        span: left
+    food_or_drinks:
+        label: Food or Drinks
+        type: balloon-selector
+        options:
+            food: Food
+            drinks: Drinks
+        span: right
+    published:
+        label: veröffentlicht
+        type: checkbox
+        default: false
+    sheets:
+        label: Seiten
+        type: fileupload
+        mode: image
+        imageHeight: 297
+        imageWidth: 210
+        thumbOptions:
+            mode: crop
+            offset:
+                - 0
+                - 0
+            quality: 90
+            sharpen: 0
+            interlace: false
+            extension: auto

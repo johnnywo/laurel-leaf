@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Menu
+
+# Model Form Field configuration
+form: $/milo/alacarte/models/menu/fields.yaml
+
+# Model Class name
+modelClass: Milo\Alacarte\Models\Menu
+
+# Default redirect location
+defaultRedirect: milo/alacarte/menus
+
+# Create page
+create:
+    title: Create Menu
+    redirect: milo/alacarte/menus/update/:id
+    redirectClose: milo/alacarte/menus
+
+# Update page
+update:
+    title: Edit Menu
+    redirect: milo/alacarte/menus
+    redirectClose: milo/alacarte/menus
+
+# Preview page
+preview:
+    title: Preview Menu
