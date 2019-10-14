@@ -4,7 +4,7 @@ use Cms\Classes\ComponentBase;
 use Milo\Food\Models\LunchOffer;
 use Carbon\Carbon;
 
-class LunchOffers extends ComponentBase
+class Lunchoffers extends ComponentBase
 {
 
     public function componentDetails()
@@ -74,7 +74,8 @@ class LunchOffers extends ComponentBase
     public function lunchOfferToday()
     {
         $food = Lunchoffer::where('date', '>=', Carbon::today())
-                            ->where('date', '<=', Carbon::tomorrow())
+                            // changed 2019-10-14 - from <= to <
+                            ->where('date', '<', Carbon::tomorrow())
                             //->where('always_hot', '=', false)
                             ->orWhere('date_until', '>=', Carbon::today())
                             

@@ -2,6 +2,7 @@
 
 use Backend;
 use System\Classes\PluginBase;
+use Milo\Alacarte\Models\Menu;
 
 /**
  * Alacarte Plugin Information File
@@ -91,5 +92,24 @@ class Plugin extends PluginBase
                 'order'       => 500,
             ],
         ];
+    }
+
+    public function registerSchedule($schedule)
+    {
+        $schedule->call(function () {
+            $past_alacarte = Menu::where('published', true)
+                ->where('publish_date', '<', \Carbon\Carbon::now() )
+                ->orWhere('publish_date', NULL)
+                ->get();
+            $new_alacarte = Menu::where('published', true)
+                ->where('publish_date', \Carbon\Carbon::now() )
+                ->get();
+            if ( $new_alacarte->isNotEmpty() ) {
+                $past_alacarte->each( function ($item, $key) {
+                    $item->update(['published' => false]);
+                });
+            }
+            //\Db::table('recent_users')->delete();
+        })->dailyAt('02:00');
     }
 }
