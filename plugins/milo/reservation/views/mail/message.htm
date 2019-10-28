@@ -10,7 +10,7 @@ Datum: {{ date }}
 Zeit: {{ time }}
 Personen: {{ people }}
 
-im {% if smoker == "nonsmoker" %}Nichtraucher Bereich{% elseif smoker == "smoker" %}Raucherbereich{% else %}Laurel Leaf Pub{% endif %} auf den Namen {{ name }}.
+auf den Namen {{ name }}.
 
 {% if sometext %}
 Nachricht:
@@ -65,7 +65,7 @@ Deine E-Mail Adresse ( {{ email }} ) wird verwendet, um deine Reservierungsanfra
                                 </tr>
                             </table>
 
-                            <p>im {% if smoker == "nonsmoker" %}<strong>Nichtraucher Bereich</strong>{% elseif smoker == "smoker" %}<strong>Raucher Bereich</strong>{% else %}Laurel Leaf Pub{% endif %} auf den Namen <strong>{{ name }}</strong>.</p>
+                            <p>auf den Namen <strong>{{ name }}</strong>.</p>
 
                             {% if sometext %}
                             <p>Nachricht: <br>
