@@ -24,18 +24,18 @@ return [
 		],
 		[
 			'name'	=> 'Mod',
-			'prize'	=> 'Strongbox Liegestuhl',
+			'prize'	=> 'Strongbow Liegestuhl',
 		],
 		[
 			'name'	=> 'Barbara P.',
-			'prize'	=> 'Strongbox Liegestuhl',
+			'prize'	=> 'Strongbow Liegestuhl',
 		],
 		[
 			'name'	=> 'Michael H.',
-			'prize'	=> 'Strongbox Luftmatratze',
+			'prize'	=> 'Strongbow Luftmatratze',
 		],		[
 			'name'	=> 'Lorenz S.',
-			'prize'	=> 'Strongbox Luftmatratze',
+			'prize'	=> 'Strongbow Luftmatratze',
 		],		[
 			'name'	=> 'Lukii E.',
 			'prize'	=> '2 Pitcher Gläser',
