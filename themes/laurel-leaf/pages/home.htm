@@ -22,6 +22,22 @@ use Milo\HeroImage\Models\HeroImage;
 	{% partial 'site/heroimage' %}
 <!-- End Hero Section -->
 
+{% set winners = config('ll.winners') %}
+<div style="background: black; color: white; font-weight: bold;">
+	<div class="container" style="padding: 10px 0">
+		<div style="margin: 0 20px">
+			<marquee behavior="" direction="">
+				Gewinner der 10 Tages Geburtstagsfeier:
+				{% for winner in winners  %}
+				<span style="margin: 0 20px">
+					<span class="text-muted" style="padding-right: 5px;">{{ winner.name }}</span> {{ winner.prize }}
+				</span>
+				{% endfor %}
+			</marquee>
+		</div>
+	</div>
+</div>
+
 
 <!-- Chalkboard -->
 <div class="jumbotron chalkboard">
