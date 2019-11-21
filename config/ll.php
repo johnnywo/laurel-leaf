@@ -38,7 +38,7 @@ return [
 			'prize'	=> 'Strongbox Luftmatratze',
 		],		[
 			'name'	=> 'Lukii E.',
-			'prize'	=> '2 Pitscher Gläser',
+			'prize'	=> '2 Pitcher Gläser',
 		],
 
 	]
