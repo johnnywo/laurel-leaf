@@ -90,6 +90,7 @@ class ReservationForm extends ComponentBase
 	            	$message->from('webmaster@laurel-leaf.at', 'Laurel Leaf Irish Pub Vienna');
 	            	$message->to('laurelleaf1060@gmail.com', 'Laurel Leaf Staff');
                     $message->cc($vars['email'], $vars['name']);
+                    $message->replyTo($vars['email'], $vars['name']);
 	            	$message->subject('Reservierungsanfrage (auto-reply): ' . $vars['name']);
 	            });
 
