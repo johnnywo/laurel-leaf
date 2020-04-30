@@ -87,10 +87,10 @@ class ReservationForm extends ComponentBase
 
 	            Mail::queue('milo.reservation::mail.message', $vars, function($message) use ($vars) {
 
-	            	$message->from($vars['email'], $vars['name']);
-	            	$message->to('laurelleaf1060@gmail.com', 'Laurel Leaf GMail');
-	            	$message->bcc($vars['email'], $vars['name']);
-	            	$message->subject('Reservierungsanfrage (auto-reply)');
+	            	$message->from('web@laurel-leaf.at', 'Laurel Leaf Irish Pub Vienna');
+	            	$message->to('laurelleaf1060@gmail.com', 'Laurel Leaf Staff');
+                    $message->cc($vars['email'], $vars['name']);
+	            	$message->subject('Reservierungsanfrage (auto-reply): ' . $vars['name']);
 	            });
 
 	            Flash::success('Reservierungsanfrage übermittelt!');
