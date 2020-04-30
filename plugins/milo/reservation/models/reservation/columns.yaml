@@ -19,3 +19,5 @@ columns:
     message:
         label: Message
         searchable: true
+    created_at:
+        label: Created At
